@@ -97,7 +97,7 @@ for ($i=0; $i<$TotalReg; $i++){
 	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . ">". $uname."</a>";echo "</td>";
 	echo "<td style='color:".$tcolor.";'>" . $uprofile;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>" . $uuptime;echo "</td>";
-	echo "<td style='color:".$tcolor.";'>" . $ucomment;echo "</td>";
+	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo $ucomment;}; echo "</td>";
 	echo "<td style='color:".$tcolor.";'>";
 	if($ucomment == ""){}else{echo " | <a style='color:".$tcolor.";' title='Print' href='./voucher/print.php?id=" . $ucomment . "&qr=no' target='_blank'> Print</a>";
 	echo " | <a style='color:".$tcolor.";' title='Print QR' href='./voucher/print.php?id=" . $ucomment . "&qr=yes' target='_blank'> QR</a>";
