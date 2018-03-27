@@ -1,0 +1,1 @@
+ $(document).ready(function(){ var interval = "5000"; setInterval(function() { $("#reloadHome").load("./include/home.php"); }, interval); setInterval(function() { $("#reloadHotspotActive").load("./include/hotspotactive.php"); }, interval);});

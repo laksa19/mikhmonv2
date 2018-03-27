@@ -1,0 +1,317 @@
+body{
+	font-family: 'Helvetica', arial, sans-serif;
+  background: url('../img/textures.png');
+  background-color: #3D4241;
+  font-size: 14px;
+}
+.main {
+  max-width: 850px;
+  min-height: 80vh;
+  margin-left:auto;
+  margin-right:auto;
+	background: #f9f9f9;
+	overflow: hidden;
+	padding: 10px;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#close {
+  float:right;
+  display:inline-block;
+}
+#titleapp {
+  float:left;
+  display:inline-block;
+}
+
+table.thome {
+  margin-left:auto;
+  margin-right:auto;
+}
+table.tmenu{
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+table.tsettings {
+  padding: 2px;
+  border: 1px solid #ccc;
+  margin-left:auto;
+  margin-right:auto;
+}
+table.tsettings td {
+  padding: 3px;
+}
+table.zebra{
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  background: #f9f9f9;
+}
+table.zebra tr:nth-of-type(odd) {
+  background: #f1f1f1;
+}
+table.zebra th {
+  background: #008CCA;
+  color: white;
+  font-weight: bold;
+}
+table.zebra td, th {
+  padding: 2px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+table.tdata{
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+  border-collapse: collapse;
+  background: #f9f9f9;
+}
+table.tdata th {
+  background: #008CCA;
+  color: white;
+  font-weight: bold;
+}
+table.tdata td, th {
+  padding: 3px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+table.tlogin {
+  margin-left:auto;
+  margin-right:auto;
+  width: 200px;
+  border: 1px solid #ccc;
+}
+table.tlogin th {
+  background: #008CCA;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+table.tlogin td {
+  padding: 6px;
+  text-align: center;
+}
+.btnmenu {
+  background-color: #3D4241;
+  border: none;
+  padding: 5px 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  float: left;
+}
+.btnmenu:hover {
+  font-weight:bold;
+  background-color: #F9F9F9;
+  color: #000000;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btnhome {
+  border: none;
+  padding: 5px 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 2px 2px;
+  float: left;
+  min-width:80px;
+  text-shadow: 1px 1px 4px #424242;
+}
+.btnhome:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btnsubmit {
+  background-color: #3D4241;
+  border: none;
+  padding: 5px 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 2px 2px;
+}
+.btnsubmit:hover {
+  background-color: #f9f9f9;
+  color: #000000;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btnsubmitb {
+  background-color: #3D4241;
+  border: none;
+  padding: 5px 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 2px 2px;
+}
+.btnsubmitb:hover {
+  background-color: #008CCA;
+  color: #ffffff;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btnlogin {
+  background-color: #008CCA;
+  border: none;
+  padding: 5px 5px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  width:95%;
+  margin-left:auto;
+  margin-right:auto;
+}
+.btnsmall{
+  background-color: #3D4241;
+  padding: 0px 5px 0px 5px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 1px 2px;
+}
+.btnsmall:hover{
+  background-color: #008CCA;
+}
+
+.dsettings {
+  border: 2px solid #eee;
+	margin: 1px;
+	padding: 5px;
+}
+
+.menubg{
+	border: 1px solid #ccc;
+	padding: 5px;
+	background: url('../img/menubg.png');
+	background-color: #008CCA;
+}
+
+.header{
+	border: 2px solid #eee;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+.left{
+  width: 56%;
+  border: 2px solid #eee;
+  padding: 5px;
+  margin-top: 5px;
+  float: left;
+	}
+
+.right{
+  width: 40%;
+  border: 2px solid #eee;
+  padding: 5px;
+  margin-top: 5px;
+  float: right;
+	}
+
+textarea,input,select {
+  background-color: #FDFBFB;
+  border: 1px solid #008CCA;
+  padding: 4px;
+  margin: 2px;
+  font-size: 12px;
+  color: #000000;
+  outline: none;
+}
+#login {
+  background-color: #FFFFFF;
+  border: 1px solid #3D4241;
+  width:300px;
+  height: 100%;
+  margin-top:5%;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@media screen and (max-width: 850px) {
+
+.left {
+  width: auto;
+  float: none;
+	}
+.right {
+  width: auto;
+  float: none;
+	}
+}
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.15);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.modal-window:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window>div {
+  width: 300px;
+  position: relative;
+  margin: 5% auto;
+  padding: 1rem;
+  background: #3D4241;
+  color: #FFFFFF;
+}
+
+.modal-window header {
+  font-weight: bold;
+}
+
+.modal-close {
+  color: #ffffff;
+  line-height: 25px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 50px;
+  text-decoration: none;
+  background-color: red;
+}
+
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
