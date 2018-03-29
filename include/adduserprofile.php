@@ -123,7 +123,7 @@ echo "<!--";
         </ul>
       </p>
       <p style="padding:0px 5px;">
-        Format Validity & Grace Periode.<br>
+        Format Validity & Grace Period.<br>
         [wdhm] Contoh : 30d = 30hari, 12h = 12jam, 4w3d = 31hari.
       </p>
       <?php }else{?>
@@ -137,7 +137,7 @@ echo "<!--";
         </ul>
       </p>
       <p style="padding:0px 5px;">
-        Format Validity & Grace Periode.<br>
+        Format Validity & Grace Period.<br>
         [wdhm] Example : 30d = 30days, 12h = 12hours, 4w3d = 31days.
       </p>
       <?php }?>
