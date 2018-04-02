@@ -41,7 +41,7 @@ if(isset($remdata)){
 	  $API->write('/system/script/remove', false);
 	  $API->write('=.id=' . $ARREMD[$i]['.id']);
 	  $READ = $API->read();
-	    header("Location:#");
+	    
 	}
 	}
   }elseif(strlen($idbl) > "0"){
@@ -54,11 +54,15 @@ if(isset($remdata)){
 	  $API->write('/system/script/remove', false);
 	  $API->write('=.id=' . $ARREMD[$i]['.id']);
 	  $READ = $API->read();
-	    header("Location:#");
+	    
 	}
 	}
   
-}}}
+}
+  echo "<script>window.location='./?hotspot=selling'</script>";
+}
+  
+}
 
 
 if(strlen($idhr) > "0"){
