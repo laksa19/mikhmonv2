@@ -95,6 +95,10 @@ table.voucher {
   thead { display:table-header-group }
   tfoot { display:table-footer-group }
 }
+#num {
+  float:right;
+  display:inline-block;
+}
 		</style>
 	</head>
 	<body>
@@ -108,6 +112,7 @@ table.voucher {
 	// CHart Link
 	$chl = urlencode("http://$dnsname/login?username=$username&password=$password");
 	$qrcode = 'https://chart.googleapis.com/chart?cht=qr&chs=' . $chs . '&chld=L|0&chl=' . $chl . '&choe=utf-8';
+	$num = $i+1;
 ?>
 <?php
 if($userp != ""){

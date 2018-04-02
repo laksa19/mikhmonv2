@@ -1,9 +1,9 @@
-	            	            	            	            	            	            	            	            	            	            	            	            	            	            	            	            
+
 <table class="voucher" style=" width: 220px;">
   <tbody>
 <!-- Logo Hotspotname -->
     <tr>
-      <td style="text-align: left; font-size: 14px; font-weight:bold; border-bottom: 1px black solid;"><img src="<?php echo $logo;?>" alt="logo" style="height:30px;border:0;">  <?php echo $hotspotname;?></td>
+      <td style="text-align: left; font-size: 14px; font-weight:bold; border-bottom: 1px black solid;"><img src="<?php echo $logo;?>" alt="logo" style="height:30px;border:0;">  <?php echo $hotspotname;?>  <span id="num"><?php echo " [$num]";?></span></td>
     </tr>
 <!-- /  -->
     <tr>

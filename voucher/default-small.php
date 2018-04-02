@@ -2,7 +2,7 @@
 <table class="voucher" style=" width: 160px;">
   <tbody>
     <tr>
-      <td style="text-align: center; font-size: 14px; font-weight:bold; border-bottom: 1px black solid;"><?php echo $hotspotname;?></td>
+      <td style="text-align: left; font-size: 14px; font-weight:bold; border-bottom: 1px black solid;"><?php echo $hotspotname;?><span id="num"><?php echo " [$num]";?></span></td>
     </tr>
     <tr>
       <td>
@@ -46,4 +46,4 @@
       </td>
     </tr>
   </tbody>
-</table>	            	          	            	          	            	          
+</table>

@@ -26,7 +26,11 @@ Price :
 QR Code :
 <img src="<?php echo $qrcode ?>">
 
-Condition :
+Number Voucher:
+<?php echo $num;?>
+<span id="num"><?php echo " [$num]";?></span>
+
+Conditional :
 $usermode = "vc"
 username=password
 
