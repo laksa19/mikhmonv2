@@ -47,13 +47,13 @@ if($userp != ""){
 $getuser = $API->comm('/ip/hotspot/user/print', array("?comment" => "$id"));
   $TotalReg = count($getuser);
 }
-  $getprofile = $getuser[0]['profile'];
+  $getuprofile = $getuser[0]['profile'];
   $timelimit = $getuser[0]['limit-uptime'];
   $getdatalimit = $getuser[0]['limit-bytes-out'];
   if($getdatalimit == 0){$datalimit = "";}else{$datalimit = formatBytes2($getdatalimit,0);}
   
 
-$getprofile = $API->comm("/ip/hotspot/user/profile/print", array("?name" => "$getprofile"));
+$getprofile = $API->comm("/ip/hotspot/user/profile/print", array("?name" => "$getuprofile"));
   $ponlogin = $getprofile[0]['on-login'];
   $validity = explode(",",$ponlogin)[3];
   $getprice = explode(",",$ponlogin)[2];
@@ -65,7 +65,7 @@ $logo = "../img/logo.png";
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>.:: MIKHMON ::.</title>
+		<title>Voucher-<?php echo $hotspotname."-".$getuprofile."-".$id;  ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="pragma" content="no-cache" />
 		<link rel="icon" href="../img/favicon.png" />
