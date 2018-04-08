@@ -64,10 +64,13 @@ $(document).ready(function(){
 // default user length
 function defUserl(){
    var usr = document.getElementById('user').value;
+   var num = document.getElementById('num').style;
   if(usr === 'up'){
      $('select[name=userl] option:first').html('4');
+     num.display = 'none';
   }else if(usr === 'vc'){
     $('select[name=userl] option:first').html('8');
+    num.display = 'block';
 }}
 
 // get valid $ price
