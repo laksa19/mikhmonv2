@@ -31,7 +31,8 @@ echo "<!--";
     $server = ($_POST['server']);
     $user = ($_POST['user']);
     $userl = ($_POST['userl']);
-    $letter = ($_POST['letter']);
+    $prefix = ($_POST['prefix']);
+    $char = ($_POST['char']);
     $profile = ($_POST['profile']);
     $timelimit = ($_POST['timelimit']);
     $datalimit = ($_POST['datalimit']);
@@ -54,11 +55,11 @@ echo "<!--";
 
     if($user=="up"){
 		for($i=1;$i<=$qty;$i++){
-			if($letter == "lower"){
+			if($char == "lower"){
 			$u[$i]= substr(str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"), -$userl);
-		  }elseif($letter == "upper"){
+		  }elseif($char == "upper"){
 		  $u[$i]= substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"), -$userl);
-		  }elseif($letter == "upplow"){
+		  }elseif($char == "upplow"){
 		  $u[$i]= substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), -$userl);
 		  }
 		  if($userl == 3){
@@ -74,6 +75,8 @@ echo "<!--";
 			}elseif($userl == 8){
 				$p[$i]= rand(10000000,99999999);
 			}
+			
+			$u[$i] = "$prefix$u[$i]";
 		}
 		
 		for($i=1;$i<=$qty;$i++){
@@ -91,11 +94,11 @@ echo "<!--";
 		if($user=="vc"){
 		  $shuf = ($userl-$a[$userl]);
 		for($i=1;$i<=$qty;$i++){
-        if($letter == "lower"){
+        if($char == "lower"){
           $u[$i]= substr(str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"), -$shuf);
-        }elseif($letter == "upper"){
+        }elseif($char == "upper"){
           $u[$i]= substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"), -$shuf);
-        }elseif($letter == "upplow"){
+        }elseif($char == "upplow"){
           $u[$i]= substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"), -$shuf);
         }
         if($userl == 3){
@@ -108,7 +111,7 @@ echo "<!--";
 			  	$p[$i]= rand(1000,9999);
 			  }
 
-	      $u[$i] = "$u[$i]$p[$i]";
+	      $u[$i] = "$prefix$u[$i]$p[$i]";
 		}
 		for($i=1;$i<=$qty;$i++){
 			$API->comm("/ip/hotspot/user/add", array(
@@ -121,6 +124,37 @@ echo "<!--";
 			"comment" => "$commt",
 			));
 		}}
+		
+		if($user=="vc" & $char =="num"){
+		for($i=1;$i<=$qty;$i++){
+        if($userl == 3){
+			  	$p[$i]= rand(100,999);
+			  }elseif($userl == 4){
+			  	$p[$i]= rand(1000,9999);
+			  }elseif($userl == 5){
+			  	$p[$i]= rand(10000,99999);
+			  }elseif($userl == 6){
+			  	$p[$i]= rand(100000,999999);
+			  }elseif($userl == 7){
+			  	$p[$i]= rand(1000000,9999999);
+			  }elseif($userl == 8){
+			  	$p[$i]= rand(10000000,99999999);
+			  }
+
+	      $u[$i] = "$prefix$p[$i]";
+		}
+		for($i=1;$i<=$qty;$i++){
+			$API->comm("/ip/hotspot/user/add", array(
+			"server" => "$server",
+			"name" => "$u[$i]",
+			"password" => "$u[$i]",
+			"profile" => "$profile",
+			"limit-uptime" => "$timelimit",
+			"limit-bytes-out" => "$datalimit",
+			"comment" => "$commt",
+			));
+		}}
+		
 	if($qty < 2){
 		  echo "<script>window.location='./?hotspot-user=".$u[1]."'</script>";
 		}else{
@@ -193,11 +227,15 @@ echo "<!--";
     </td>
   </tr>
   <tr>
-    <td>Letter</td><td>
-      <select name="letter" required="1">
+    <td>Prefix</td><td><input type="text" size="4" maxlength="4" autocomplete="off" name="prefix" value=""></td>
+  </tr>
+  <tr>
+    <td>Character</td><td>
+      <select name="char" required="1">
 				<option value="lower">abcd</option>
 				<option Value="upper">ABCD</option>
 				<option Value="upplow">aBcD</option>
+				<option id="num" style="display:none;" Value="num">1234</option>
 			</select>
     </td>
   </tr>
@@ -216,7 +254,7 @@ echo "<!--";
     <td>Time Limit</td><td><input type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
   </tr>
   <tr>
-    <td>Data Limit</td><td><input type="text" size="4" autocomplete="off" name="datalimit" value=""> GB</td>
+    <td>Data Limit</td><td><input type="number" min="0" max="9999" name="datalimit" value=""> GB</td>
   </tr>
   <tr >
     <td>Validity | Price</td><td id="GetValidPrice"></td>
