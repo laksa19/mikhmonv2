@@ -151,12 +151,14 @@ $shd = "hidden";
 		        <li>Filter berdasarkan hari klik pada [19/2018].</li>
 		        <li>Filter berdasarkan bulan klik pada [jan/].</li>
 		        <li>Click CSV untuk mengunduh.</li>
+		        <li>Disarankan untuk menghapus laporan penjualan setelah mengunduh laporan CSV.</li>
 		      </ul>
 		    <?php }else{?>
 		      <ul>
 		        <li>Filter by day click on [19/2018].</li>
 		        <li>Filter by month day click on [jan/].</li>
 		        <li>Klik CSV to download.</li>
+		        <li>It is recommended to delete the sales report after download  the CSV report.</li>
 		      </ul>
 		    <?php }?>
 		    </p>
