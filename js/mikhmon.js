@@ -65,11 +65,31 @@ $(document).ready(function(){
 function defUserl(){
    var usr = document.getElementById('user').value;
    var num = document.getElementById('num').style;
+   var lower = document.getElementById('lower').style;
+   var upper = document.getElementById('upper').style;
+   var upplow = document.getElementById('upplow').style;
+   var lower1 = document.getElementById('lower1').style;
+   var upper1 = document.getElementById('upper1').style;
+   var upplow1 = document.getElementById('upplow1').style;
   if(usr === 'up'){
      $('select[name=userl] option:first').html('4');
+     $('select[name=char] option:first').html('abcd');
+     lower.display = 'block';
+     upper.display = 'block';
+     upplow.display = 'block';
+     lower1.display = 'none';
+     upper1.display = 'none';
+     upplow1.display = 'none';
      num.display = 'none';
   }else if(usr === 'vc'){
     $('select[name=userl] option:first').html('8');
+    $('select[name=char] option:first').html('abcd1234');
+    lower.display = 'none';
+    upper.display = 'none';
+    upplow.display = 'none';
+    lower1.display = 'block';
+    upper1.display = 'block';
+    upplow1.display = 'block';
     num.display = 'block';
 }}
 
