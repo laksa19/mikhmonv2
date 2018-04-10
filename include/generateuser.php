@@ -232,10 +232,13 @@ echo "<!--";
   <tr>
     <td>Character</td><td>
       <select name="char" required="1">
-				<option value="lower">abcd</option>
-				<option Value="upper">ABCD</option>
-				<option Value="upplow">aBcD</option>
-				<option id="num" style="display:none;" Value="num">1234</option>
+				<option id="lower" style="display:block;" value="lower">abcd</option>
+				<option id="upper" style="display:block;" value="upper">ABCD</option>
+				<option id="upplow" style="display:block;" value="upplow">aBcD</option>
+				<option id="lower1" style="display:none;" value="lower">abcd1234</option>
+				<option id="upper1" style="display:none;" value="upper">ABCD1234</option>
+				<option id="upplow1" style="display:none;" value="upplow">aBcD1234</option>
+				<option id="num" style="display:none;" value="num">1234</option>
 			</select>
     </td>
   </tr>
