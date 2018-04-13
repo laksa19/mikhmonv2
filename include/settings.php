@@ -196,7 +196,7 @@ if(isset($_POST['save'])){
 	<td colspan="2"><a class="btnsubmitb" title="Template editor" href="./voucher/editor.php?id=default">Template Editor</a></td>
 	</tr>
 	<tr>
-	<td colspan="2"><small>Mikhmon V2 Update 4</small></td>
+	<td colspan="2"><small>Mikhmon V2 Update 5</small></td>
 	</tr>
 </table>
 </form>
