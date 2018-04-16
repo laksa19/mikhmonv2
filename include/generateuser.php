@@ -112,22 +112,9 @@ echo "<!--";
 			  }
 
 	      $u[$i] = "$prefix$u[$i]$p[$i]";
-		}
-		for($i=1;$i<=$qty;$i++){
-			$API->comm("/ip/hotspot/user/add", array(
-			"server" => "$server",
-			"name" => "$u[$i]",
-			"password" => "$u[$i]",
-			"profile" => "$profile",
-			"limit-uptime" => "$timelimit",
-			"limit-bytes-out" => "$datalimit",
-			"comment" => "$commt",
-			));
-		}}
-		
-		if($user=="vc" & $char =="num"){
-		for($i=1;$i<=$qty;$i++){
-        if($userl == 3){
+	      
+	      if($char == "num"){
+	      if($userl == 3){
 			  	$p[$i]= rand(100,999);
 			  }elseif($userl == 4){
 			  	$p[$i]= rand(1000,9999);
@@ -142,6 +129,7 @@ echo "<!--";
 			  }
 
 	      $u[$i] = "$prefix$p[$i]";
+	      }
 		}
 		for($i=1;$i<=$qty;$i++){
 			$API->comm("/ip/hotspot/user/add", array(
@@ -154,6 +142,8 @@ echo "<!--";
 			"comment" => "$commt",
 			));
 		}}
+		
+
 		
 	if($qty < 2){
 		  echo "<script>window.location='./?hotspot-user=".$u[1]."'</script>";
