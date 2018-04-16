@@ -69,6 +69,7 @@ $logo = "../img/logo.png";
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="pragma" content="no-cache" />
 		<link rel="icon" href="../img/favicon.png" />
+	  <script type="text/javascript" src="../js/qrcode.js"></script>
 		<style>
 body {
   color: #000000;
@@ -99,9 +100,14 @@ table.voucher {
   float:right;
   display:inline-block;
 }
+.qrc {
+  width:30px;
+  height:30px;
+  margin-top:1px;
+}
 		</style>
 	</head>
-	<body>
+	<body onload="window.print()">
 
 <?php for ($i=0; $i<$TotalReg; $i++){;
    $regtable = $getuser[$i];
@@ -112,6 +118,20 @@ table.voucher {
 	// CHart Link
 	$chl = urlencode("http://$dnsname/login?username=$username&password=$password");
 	$qrcode = 'https://chart.googleapis.com/chart?cht=qr&chs=' . $chs . '&chld=L|0&chl=' . $chl . '&choe=utf-8';
+	
+	/*$qrcode = '<div style="width:30px;  height:30px;" id="'.$username.'"></div>
+	<script type="text/javascript">
+	new QRCode(document.getElementById("'.$username.'"), "http://'.$dnsname.'/login?username='.$username.'&password='.$password.'");
+	</script>';*/
+	
+	/*$qrcode = '<div id="'.$username.'"></div>
+	<script type="text/javascript">new QRCode(document.getElementById("'.$username.'"),{
+    text: "http://'.$dnsname.'/login?username='.$username.'&password='.$password.'",
+    width: 100,
+    height: 100
+  });</script>';*/
+  
+	
 	$num = $i+1;
 ?>
 <?php
