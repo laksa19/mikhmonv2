@@ -27,6 +27,7 @@ if(!isset($_SESSION["$userhost"])){
   <div class="dsettings" style="overflow-x:auto;">
   <form action="" method="post" enctype="multipart/form-data">
   <h3>Upload Logo Voucher</h3>
+  <b>Format file : logo.png</b>
   <input style="cursor: pointer;" type="file" name="UploadLogo" id="UploadLogo" name="logo">
   <input class="btnsubmitb" type="submit" value="Upload Logo" title="Upload logo" name="submit">
   <a class="btnsubmitb" href="./" title="Home">Home</a>
