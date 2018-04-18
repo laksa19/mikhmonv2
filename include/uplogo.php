@@ -18,6 +18,9 @@
 
 // hide all error
 error_reporting(0);
+if(!isset($_SESSION["$userhost"])){
+	echo "<meta http-equiv='refresh' content='0;url=./' />";
+}
 ?>
 
 <div id='login'>
