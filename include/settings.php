@@ -193,10 +193,10 @@ if(isset($_POST['save'])){
 	<td>Traffic Ether : </td><td><input type="number" min="1" max="99" name="iface" title="Traffic Interface" value="<?php echo $iface; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td colspan="2"><a class="btnsubmitb" title="Template editor" href="./voucher/editor.php?id=default">Template Editor</a></td>
+	<td colspan="2"><a class="btnsubmitb" title="Template editor" href="./voucher/editor.php?id=default">Template Editor</a> <a class="btnsubmitb" title="Upload Logo Voucher" href="./admin.php?id=uplogo">Upload Logo Voucher</a></td>
 	</tr>
 	<tr>
-	<td colspan="2"><small>Mikhmon V2 Update 5</small></td>
+	<td colspan="2"><small>Mikhmon V2 Update 6</small></td>
 	</tr>
 </table>
 </form>
