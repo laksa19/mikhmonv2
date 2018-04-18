@@ -61,5 +61,7 @@ include_once('./include/login.php');
     $_SESSION["connect"] = "Connected";
     echo "<script>window.location='./admin.php?id=settings'</script>";
   }
+}elseif($id == "uplogo"){
+  include_once('./include/uplogo.php');
 }
 ?>
