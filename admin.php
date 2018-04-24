@@ -36,7 +36,7 @@ if(isset($_POST['login'])){
 		  $_SESSION["$userhost"]=$user;
   			echo "<script>window.location='./admin.php?id=settings'</script>";
 		}else{
-			$error = "Username atau Password tidak sesuai.";
+			$error = "Invalid username or password.";
 	}
 }
 
