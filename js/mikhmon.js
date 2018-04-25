@@ -71,6 +71,7 @@ function defUserl(){
    var lower1 = document.getElementById('lower1').style;
    var upper1 = document.getElementById('upper1').style;
    var upplow1 = document.getElementById('upplow1').style;
+   var mix = document.getElementById('mix').style;
   if(usr === 'up'){
      $('select[name=userl] option:first').html('4');
      $('select[name=char] option:first').html('abcd');
@@ -81,6 +82,7 @@ function defUserl(){
      upper1.display = 'none';
      upplow1.display = 'none';
      num.display = 'none';
+     mix.display = 'none';
   }else if(usr === 'vc'){
     $('select[name=userl] option:first').html('8');
     $('select[name=char] option:first').html('abcd1234');
@@ -91,6 +93,7 @@ function defUserl(){
     upper1.display = 'block';
     upplow1.display = 'block';
     num.display = 'block';
+    mix.display = 'block';
 }}
 
 // get valid $ price
