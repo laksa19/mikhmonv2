@@ -130,6 +130,14 @@ echo "<!--";
 
 	      $u[$i] = "$prefix$p[$i]";
 	      }
+	      if($char == "mix"){
+			  	$p[$i]= substr(str_shuffle("123456789012345678901234567890abcdefghijklmnopqrstuvwxyz"), -$userl);
+			  
+
+	      $u[$i] = "$prefix$p[$i]";
+	      }
+	      
+	      
 		}
 		for($i=1;$i<=$qty;$i++){
 			$API->comm("/ip/hotspot/user/add", array(
@@ -228,6 +236,7 @@ echo "<!--";
 				<option id="lower1" style="display:none;" value="lower">abcd1234</option>
 				<option id="upper1" style="display:none;" value="upper">ABCD1234</option>
 				<option id="upplow1" style="display:none;" value="upplow">aBcD1234</option>
+				<option id="mix" style="display:none;" value="mix">1ab2c34d</option>
 				<option id="num" style="display:none;" value="num">1234</option>
 			</select>
     </td>
