@@ -30,12 +30,14 @@ error_reporting(0);
 <div style="overflow-x:auto;">
 <table style="white-space: nowrap;" class="zebra" align="center"  >
   <tr>
-    <th colspan="8">
+    <th colspan="9">
 <?php
 if($countprofile < 2 ){echo "$countprofile item  ";
   }elseif($countprofile > 1){echo "$countprofile items  ";}
 ?>
-      <a class="btnsubmit" title="Add User Profile" href="./?user-profile=add">Add</a>
+      <a class="btnsubmit" title="Add User Profile" href="./?user-profile=add">Add User Profile</a>
+      <a class="btnsubmit" title="Add User" href="./?hotspot-user=add">Add User</a>
+      <a class="btnsubmit" title="Generate Users" href="./?hotspot-user=generate">Generate User</a>
     </th>
   </tr>
 	<tr>
@@ -47,6 +49,7 @@ if($countprofile < 2 ){echo "$countprofile item  ";
 		<th >Validity</th>
 		<th >Grace<br>Period</th>
 		<th >Price <?php echo $curency;?></th>
+		<th >Total<br>User</th>
 	</tr>
 <?php
 
@@ -102,6 +105,17 @@ if($price == "" ){
 }else{
 	echo " " .number_format($price);
 }
+
+echo "</td>";
+echo "<td style='text-align:right';>";
+
+$countuser = $API->comm("/ip/hotspot/user/print", array(
+    "count-only" => "",
+    "?profile" => "$pname",
+    ));
+	if($countuser < 2 ){echo "$countuser";
+  }elseif($countuser > 1){
+  echo "$countuser";}
 echo  "</td>";
 echo "</tr>";
 }

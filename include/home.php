@@ -129,7 +129,7 @@ $resource = $getresource[0];
 // get user profiles
 $getprofile = $API->comm("/ip/hotspot/user/profile/print");
 $TotalReg = count($getprofile);
-for ($i=0; $i<$TotalReg; $i++){
+for ($i=1; $i<$TotalReg; $i++){
 $profile = $getprofile[$i]['name'];
 ?>
 <a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?user-by-profile=<?php echo $profile;?>" title="Hotspot Users by Profile <?php echo $profile;?>"><?php echo $profile;?><br>
