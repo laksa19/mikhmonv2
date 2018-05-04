@@ -85,7 +85,10 @@ table.voucher {
 @page
 {
   size: auto;
-  margin: 5mm 3mm 3mm 5mm;
+  margin-left: 7mm;
+  margin-right: 3mm;
+  margin-top: 9mm;
+  margin-bottom: 3mm;
 }
 @media print
 {
