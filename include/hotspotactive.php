@@ -43,7 +43,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
 <div id="reloadHotspotActive">
 <div style="overflow-x:auto; overflow-y:auto; max-height: 70vh;">
 <table class="zebra">
-  </thead>
+  <thead>
   <tr>
     <th colspan="8">
 <?php
@@ -62,7 +62,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
     <th>Bytes Out</th>
     <th>Login By</th>
   </tr>
-  <thead>
+  </thead>
   <tbody>
 <?php
 	for ($i=0; $i<$TotalReg; $i++){
