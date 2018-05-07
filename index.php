@@ -75,7 +75,7 @@ if($hotspot == "logout"){
 // redirect to home
 elseif(substr($url,-1) == "/"){
   ?>
-  <div>
+<div class="header">
 <table style="font-weight:bold;">
   <tr>
     <td>Welcome <?php echo $identity;?></td>
