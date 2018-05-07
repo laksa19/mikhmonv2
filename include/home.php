@@ -41,9 +41,9 @@ $API->connect( $iphost, $userhost, $passwdhost );
 ?>
 
 <div id="reloadHome">
-<div class="header">
-  <table style="width:100%;">
-    <tr>
+<div class="left">
+<table class="thome">
+	<tr>
       <td style="font-weight:bold; border-bottom: 1px solid #ccc;">System</td>
     </tr>
     <tr>
@@ -52,28 +52,19 @@ $API->connect( $iphost, $userhost, $passwdhost );
 // get MikroTik system clock
   $getclock = $API->comm("/system/clock/print");
   $clock = $getclock[0];
+
+// get routeboard info
+  $getrouterboard = $API->comm("/system/routerboard/print");
+  $routerboard = $getrouterboard[0];
+
+// get system resource MikroTik
+$getresource = $API->comm("/system/resource/print");
+$resource = $getresource[0];
 ?>
   <b class="btnhome" style="background-color: <?php echo $color[rand(1,25)];?>;" title="MikroTik System Clock">
 <?php echo $clock['date'];?>
   <br>
 <?php echo $clock['time'];?>
-  </b>
-<?php
-// get routeboard info
-  $getrouterboard = $API->comm("/system/routerboard/print");
-  $routerboard = $getrouterboard[0];
-?>
-  <b class="btnhome" style="background-color: #00BCD4;" title="Model">Model <br> <?php echo $routerboard['model'];?></b>
-<?php
-// get system resource MikroTik
-$getresource = $API->comm("/system/resource/print");
-$resource = $getresource[0];
-?>
-  <b class="btnhome" style="background-color: #006064;" title="Board Name">Board Name<br>
-<?php echo $resource['board-name'];?>
-  </b>
-  <b class="btnhome" style="background-color: #FF5722;" title="Router OS Version">Router OS <br>
-<?php echo $resource['version']?>
   </b>
   <b class="btnhome" style="background-color: #4CAF50;" title="CPU Load">CPU Load <br>
 <?php echo $resource['cpu-load']?>%
@@ -83,13 +74,18 @@ $resource = $getresource[0];
   </b>
   <b class="btnhome" style="background-color: #673AB7;" title="Free HDD Space">Free HDD <br>
 <?php echo formatBytes($resource['free-hdd-space'],0)?>
+  </b>  
+
+  <b class="btnhome" style="background-color: #00BCD4;" title="Model">Model <br> <?php echo $routerboard['model'];?></b>
+
+  <b class="btnhome" style="background-color: #006064;" title="Board Name">Board Name<br>
+<?php echo $resource['board-name'];?>
+  </b>
+  <b class="btnhome" style="background-color: #FF5722;" title="Router OS Version">Router OS <br>
+<?php echo $resource['version']?>
   </b>
       </td>
-    </tr>
-  </table>
-</div>
-<div class="left">
-<table class="thome">
+	</tr>
   <tr>
     <td style="font-weight:bold; border-bottom: 1px solid #ccc;">Hotspot</td>
   </tr>
@@ -119,33 +115,6 @@ $resource = $getresource[0];
       <a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?hotspot-user=add" title="Add Hotspot User">Add<br>Hotspot User</a>
       <a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?hotspot-user=generate" title="Generate Hotspot User">Generate<br>Hotspot User</a>
     </td>
-  </tr>
-  <tr>
-    <td style="font-weight:bold; border-bottom: 1px solid #ccc;">Hotspot Users by Profile</td>
-  </tr>
-  <tr>
-    <td>
-<?php
-// get user profiles
-$getprofile = $API->comm("/ip/hotspot/user/profile/print");
-$TotalReg = count($getprofile);
-for ($i=1; $i<$TotalReg; $i++){
-$profile = $getprofile[$i]['name'];
-?>
-<a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?user-by-profile=<?php echo $profile;?>" title="Hotspot Users by Profile <?php echo $profile;?>"><?php echo $profile;?><br>
-<?php
-// get & counting hotspot user by user profiles
-  $countuser = $API->comm("/ip/hotspot/user/print", array(
-    "count-only" => "",
-    "?profile" => "$profile",
-    ));
-	if($countuser < 2 ){echo "$countuser item";
-  }elseif($countuser > 1){
-  echo "$countuser items";}
-	echo "</a>";
-	}
-?>
-	  </td>
   </tr>
   <tr>
     <td style="font-weight:bold; border-bottom: 1px solid #ccc;">Traffic</td>
@@ -190,7 +159,7 @@ $getping = explode(",",$ping);
   </tr>
   <tr>
     <td>
-      <textarea overflow: auto; rows="25" cols="38" style="font-size:12px; background-color: #3D4241; color:#fff;">
+      <textarea overflow: auto; rows="25" cols="50" style="font-size:12px; background-color: #3D4241; color:#fff;">
 <?php
 // move hotspot log to disk
   $getlogging = $API->comm("/system/logging/print", array(
