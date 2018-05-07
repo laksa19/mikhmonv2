@@ -157,7 +157,8 @@ $getping = explode(",",$ping);
   </tr>
   <tr>
     <td>
-      <textarea overflow: auto; rows="25" cols="50" style="font-size:12px; background-color: #3D4241; color:#fff;">
+	<div class="log">
+      <textarea class="textlog" >
 <?php
 // move hotspot log to disk
   $getlogging = $API->comm("/system/logging/print", array(
@@ -176,6 +177,7 @@ $getping = explode(",",$ping);
 	}
 ?>
       </textarea>
+	</div>  
     </td>
   </tr>
 </table>
