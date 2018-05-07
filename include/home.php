@@ -75,9 +75,7 @@ $resource = $getresource[0];
   <b class="btnhome" style="background-color: #673AB7;" title="Free HDD Space">Free HDD <br>
 <?php echo formatBytes($resource['free-hdd-space'],0)?>
   </b>  
-
   <b class="btnhome" style="background-color: #00BCD4;" title="Model">Model <br> <?php echo $routerboard['model'];?></b>
-
   <b class="btnhome" style="background-color: #006064;" title="Board Name">Board Name<br>
 <?php echo $resource['board-name'];?>
   </b>
