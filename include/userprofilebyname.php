@@ -58,6 +58,7 @@ echo "<!--";
 		}
 		
 		$getprice = explode(",",$ponlogin)[2];
+    if($getprice == "0"){$getprice = "";}else{$getprice = $getprice;}
 		
 		$getvalid = explode(",",$ponlogin)[3];
 		
@@ -71,7 +72,7 @@ echo "<!--";
     $validity = ($_POST['validity']);
     $graceperiod = ($_POST['graceperiod']);
     $getprice = ($_POST['price']);
-    if($getprice == ""){$price = '""';}else{$price = $getprice;}
+    if($getprice == ""){$price = "0";}else{$price = $getprice;}
     
       $onlogin1 = ':put (",rem,'.$price.','.$validity.','.$graceperiod.',"); {:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event="[/ip hotspot active remove [find where user=$user]];[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/sys sch re [find where name=$user]];[/sys script run [find where name=$user]];[/sys script re [find where name=$user]]" start-date=$date start-time=$time];[/system script add name=$user source=":local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$graceperiod.');[/system scheduler add disabled=no interval=\$uptime name=$user on-event= \"[/ip hotspot user remove [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]\"]"] }}';
 			$onlogin2 = ':put (",ntf,'.$price.','.$validity.',,"); {:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]" start-date=$date start-time=$time] }}';

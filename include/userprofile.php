@@ -100,7 +100,7 @@ echo "<td style='text-align:right;'>";
 // get price
 $getprice = explode(",",$ponlogin);
 $price = trim($getprice[2]);
-if($price == "" ){
+if($price == "" || $price == "0" ){
 	  echo "";
 }else{
 	echo " " .number_format($price);
@@ -113,9 +113,9 @@ $countuser = $API->comm("/ip/hotspot/user/print", array(
     "count-only" => "",
     "?profile" => "$pname",
     ));
-	if($countuser < 2 ){echo "$countuser";
-  }elseif($countuser > 1){
-  echo "$countuser";}
+	if($countuser < 1 ){echo "$countuser";
+  }elseif($countuser > 0){
+  echo "<a title='Open User by profile" .$pname. "' style='color:#000;' href='./?user-by-profile=" .$pname . "'>$countuser</a>";}
 echo  "</td>";
 echo "</tr>";
 }
