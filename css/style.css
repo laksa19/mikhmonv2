@@ -220,7 +220,7 @@ table.tlogin td {
 }
 
 .left{
-  width: 56%;
+  width: 50%;
   border: 2px solid #eee;
   padding: 5px;
   margin-top: 5px;
@@ -228,7 +228,7 @@ table.tlogin td {
 	}
 
 .right{
-  width: 40%;
+  width: 46%;
   border: 2px solid #eee;
   padding: 5px;
   margin-top: 5px;
