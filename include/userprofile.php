@@ -62,7 +62,7 @@ $psharedu = $profiledetalis['shared-users'];
 $pratelimit = $profiledetalis['rate-limit'];
 $ponlogin = $profiledetalis['on-login'];
 
-echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'>-</a></td>";
+echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'>-</a> <a title='Open User by profile " .$pname. "' class='btnsmall' href='./?user-by-profile=" .$pname . "'>O</a></td>";
 echo "<td><a style='color:#000;' title='Open User Profile " . $pname . "' href='./?user-profile=".$pid."'>$pname</a></td>";
 //$profiledetalis = $ARRAY[$i];echo "<td>" . $profiledetalis['name'];echo "</td>";
 echo "<td>" . $psharedu;echo "</td>";
@@ -113,9 +113,9 @@ $countuser = $API->comm("/ip/hotspot/user/print", array(
     "count-only" => "",
     "?profile" => "$pname",
     ));
-	if($countuser < 1 ){echo "$countuser";
+	if($countuser < 1 ){echo "";
   }elseif($countuser > 0){
-  echo "<a title='Open User by profile" .$pname. "' style='color:#000;' href='./?user-by-profile=" .$pname . "'>$countuser</a>";}
+  echo "$countuser";}
 echo  "</td>";
 echo "</tr>";
 }
