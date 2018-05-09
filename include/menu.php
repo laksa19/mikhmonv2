@@ -50,7 +50,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
 <table class="tmenu">
   <tr>
     <td>
-      <strong style="font-size:12px; color:#f9f9f9; text-shadow: 1px 1px 4px #424242;"> [MikroTik Hotspot Monitor]</strong>
+      <strong style="font-size:12px; color:#f9f9f9; text-shadow: 1px 1px 4px #424242;"> [MikroTik Hotspot Monitor] <?php echo $hotspotname;?></strong>
     </td>
   </tr>
   <tr>
