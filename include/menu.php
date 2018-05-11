@@ -27,7 +27,7 @@ echo "<!--";
   $btnmenuactive = "font-weight: bold;background-color: #f9f9f9; color: #000000";
 if($hotspot == "home" || substr($url,-1) == "/"){
   $shome = "active";
-  $mpage = "Dashbord";
+  $mpage = "Dashboard";
 }elseif($hotspot == "users" || $userbyprofile != ""){
   $susersl = "active";
   $susers = "active";
