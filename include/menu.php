@@ -199,7 +199,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-gears"></i>
+              <i class="nav-icon fa fa-gear"></i>
               <p>
                 Settings
                 <i class="right fa fa-angle-left"></i>
@@ -208,7 +208,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="./admin.php?id=settings" class="nav-link">
-                  <i class="fa fa-gears nav-icon"></i>
+                  <i class="fa fa-gear nav-icon"></i>
                   <p>All Settings</p>
                 </a>
               </li>
