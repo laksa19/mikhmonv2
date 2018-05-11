@@ -17,32 +17,46 @@
  */
 session_start();
 ?>
-<div id="login">
-  <form autocomplete="off" action="" method="post">
-  <br>
-    <table style="border:0px;" class="tlogin">
-      <td><img src="./img/favicon.png" alt="Mikhmon logo" height="90" width="90" /></td>
-    </table>
-    <table class="tlogin">
-      <tr>
-        <th>MIKHMON</th>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" name="user" placeholder="User" required="1" autofocus>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="password" name="pass" placeholder="Password" required="1">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input class="btnlogin" type="submit" name="login" value="Login"><p style="font-size: 14px; color:red; "><?php if(isset($_POST['login'])){ print_r($error);}?></p>
-        </td>
-      </tr>
-    </table>
-    <br>
-</form>
+
+<div class="login-box">
+  <div class="login-logo"><img src="img/favicon.png" alt="MIKHMON Logo" style="opacity: .8">
+  
+    <div><b style="color:#fff">MIKHMON</b></div>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <div style="text-align:center"></div>
+      <center><h3>LOGIN</h3></center>
+		  <?php if(isset($_POST['login'])){ echo '<div class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h5><i class="icon fa fa-ban"></i> Alert!</h5>';
+				  print_r($error);
+                echo'</div>'; }?>
+      <form autocomplete="off" action="" method="post">
+        <div class="form-group has-feedback">
+          <input class="form-control" type="text" name="user" placeholder="User" required="1" autofocus>
+          
+        </div>
+        <div class="form-group has-feedback">
+          <input class="form-control" type="password" name="pass" placeholder="Password" required="1">
+          
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-12">
+		        <input class="btn btn-primary btn-block " type="submit" name="login" value="Login">
+		  
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
 </div>
+<!-- /.login-box -->
+
+</body>
+</html>

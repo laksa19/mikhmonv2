@@ -45,6 +45,7 @@ error_reporting(0);
 	$ueduser = $userdetails['disabled'];
 	$utimelimit = $userdetails['limit-uptime'];
 	$udatalimit = $userdetails['limit-bytes-out'];
+  $ucomment = $userdetails['comment'];
 	if($udatalimit == ""){$udatalimit = "";}else{$udatalimit = $udatalimit/1000000000;}
 	if($uname == $upass){$usermode = "vc";}else{$usermode = "up";}
   
@@ -75,6 +76,7 @@ error_reporting(0);
     $disabled = ($_POST['disabled']);
     $timelimit = ($_POST['timelimit']);
     $datalimit = ($_POST['datalimit']);
+    $comment = ($_POST['comment']);
     if($timelimit == ""){$timelimit = "0";}else{$timelimit = $timelimit;}
     if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*1000000000;}
     $API->comm("/ip/hotspot/user/set", array(
@@ -86,6 +88,7 @@ error_reporting(0);
 	    "disabled" => "$disabled",
 	    "limit-uptime" => "$timelimit",
 			"limit-bytes-out" => "$datalimit",
+      "comment" => "$comment",
 	    ));
     echo "<script>window.location='./?hotspot-user=".$uid."'</script>";
   }
@@ -100,35 +103,48 @@ error_reporting(0);
     x.type = 'password';
     }}
 </script>
-<div style="overflow-x:auto;">
+<div>
+<section class="content bg-trp">
+<div class="">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+    <h3 class="card-title pull-left">Edit User</h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="row">
+<div class="col-sm-12">
+
 <form autocomplete="new-password" method="post" action="">
-<table class="tdata">
+<table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
 <?php if($_SESSION['ubp'] != ""){
-    echo "    <a class='btnsubmit' href='./?user-by-profile=".$_SESSION['ubp']."'>Close</a>";
+    echo "    <a class='btn btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'><i class='fa fa-close'></i> Close</a>";
 }elseif($_SESSION['hua'] != ""){
     $_SESSION['ubn'] = "";
-    echo "    <a class='btnsubmit' href='./?hotspot=active'>Close</a>";
+    echo "    <a class='btn btn-warning' href='./?hotspot=active'><i class='fa fa-close'></i> Close</a>";
     $_SESSION['hua'] = "";
 }elseif($_SESSION['ubn'] != ""){
-    echo "    <a class='btnsubmit' href='./?hotspot=users'>Close</a>";
+    echo "    <a class='btn btn-warning' href='./?hotspot=users'><i class='fa fa-close'></i> Close</a>";
     $_SESSION['ubn'] = "";
 }else{
-    echo "    <a class='btnsubmit' href='./?hotspot=users'>Close</a>";
+    echo "    <a class='btn btn-warning' href='./?hotspot=users'><i class='fa fa-close'></i> Close</a>";
 }
 ?>
-    <input type="submit" name="save" class="btnsubmit" style="font-weight: bold;"   value="Save">
-    <a class="btnsubmit"  href="./?remove-hotspot-user=<?php echo $uid;?>">Remove</a>
-    <a class="btnsubmit"  title="Print" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=no','_blank','width=310,height=450').print();">Print</a>
-    <a class="btnsubmit"  title="Print QR" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=yes','_blank','width=310,height=450').print();">QR</a>
-    <?php if($utimelimit == "1s"){echo '<a class="btnsubmit"  href="./?reset-hotspot-user='.$uid.'">Reset</a>';}?>
+    <button type="submit" name="save" class="btn btn-primary btn-mrg" > <i class="fa fa-save"></i> Save</button>
+    <a class="btn btn-danger btn-mrg"  href="./?remove-hotspot-user=<?php echo $uid;?>"> <i class="fa fa-minus-square"></i> Remove</a>
+    <a class="btn btn-secondary btn-mrg"  title="Print" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=no','_blank','width=310,height=450').print();"> <i class="fa fa-print"></i> Print</a>
+    <a class="btn btn-info btn-mrg"  title="Print QR" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=yes','_blank','width=310,height=450').print();"> <i class="fa fa-qrcode"></i> QR</a>
+    <?php if($utimelimit == "1s"){echo '<a class="btn btn-info btn-mrg"  href="./?reset-hotspot-user='.$uid.'"> <i class="fa fa-reset"></i> Reset</a>';}?>
     </th>
   </tr>
   <tr>
     <td>Enabled</td>
     <td>
-			<select name="disabled" required="1">
+			<select class="form-control" name="disabled" required="1">
 				<option value="<?php echo $ueduser;?>"><?php if($ueduser == "true"){echo "No";}else{echo "Yes";}?></option>
 				<option value="no">Yes</option>
 				<option value="yes">No</option>
@@ -138,7 +154,7 @@ error_reporting(0);
   <tr>
     <td>Server</td>
     <td>
-			<select name="server" required="1">
+			<select class="form-control" name="server" required="1">
 				<option><?php if($userver == ""){echo "all";}else{echo $userver;}?></option>
 				<option>all</option>
 				<?php $TotalReg = count($srvlist);
@@ -150,14 +166,21 @@ error_reporting(0);
 		</td>
 	</tr>
   <tr>
-    <td>Name</td><td><input type="text" autocomplete="off" name="name" value="<?php echo $uname;?>"></td>
+    <td>Name</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="<?php echo $uname;?>"></td>
   </tr>
   <tr>
-    <td>Password</td><td><input id="passUser" type="password" name="pass" autocomplete="new-password" value="<?php echo  $upass;?>"><input title="Show/Hide Password" type="checkbox" onclick="PassUser()"></td>
+    <td>Password</td><td>
+	<div class="input-group">
+      <input class="form-control" id="passUser" type="password" name="pass" autocomplete="new-password" value="<?php echo  $upass;?>">
+          <div class="input-group-append">
+              <span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassUser()"></span>
+          </div>
+  </div>
+		</td>
   </tr>
   <tr>
     <td>Profile</td><td>
-			<select name="profile" required="1">
+			<select class="form-control" name="profile" required="1">
 				<option><?php echo $uprofile;?></option>
 				<?php $TotalReg = count($getprofile);
 				for ($i=0; $i<$TotalReg; $i++){
@@ -171,10 +194,20 @@ error_reporting(0);
     <td>Uptime</td><td><?php if($uuptime == 0){}else{echo $uuptime;}?></td>
   </tr>
   <tr>
-    <td>Time Limit</td><td><input type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"><?php if($utimelimit == "1s"){echo "Expired";}?></td>
+    <td>Time Limit</td><td><input class="form-control" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"><?php if($utimelimit == "1s"){echo "Expired";}?></td>
   </tr>
   <tr>
-    <td>Data Limit</td><td><input type="number" min="0" max="9999" name="datalimit" value="<?php echo $udatalimit;?>"> GB</td>
+    <td>Data Limit</td><td>
+      <div class="input-group">
+        <input class="form-control" type="number" min="0" max="9999" name="datalimit" value="<?php echo $udatalimit;?>">
+          <div class="input-group-append">
+              <span class="input-group-text">GB</span>
+          </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Comment</td><td><input class="form-control" type="text"  autocomplete="off" name="comment" value="<?php echo $ucomment;?>"></td>
   </tr>
   <tr>
     <td>Price</td><td><?php if($getprice == 0){}else{echo $curency." ".number_format($getprice);}?></td>
@@ -208,3 +241,13 @@ error_reporting(0);
 </table>
 </form>
 </div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+</div>	

@@ -144,8 +144,21 @@ $shd = "hidden";
           th.innerHTML = th.innerHTML + (sum) ;
         }
 		</script>
-		<div style="overflow-x:auto; overflow-y:auto;  max-height: 70vh;">
-		  <div>
+<div>
+<section class="content bg-trp">
+<div class="">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+	<h3 class="card-title pull-left">Selling Report</h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="row">
+<div class="col-sm-12">
+			  
+				 <p> 
 		    <?php if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){?>
 		      <ul>
 		        <li>Filter berdasarkan hari klik pada [19/2018].</li>
@@ -161,13 +174,18 @@ $shd = "hidden";
 		        <li>It is recommended to delete the sales report after download  the CSV report.</li>
 		      </ul>
 		    <?php }?>
-		    </p>
-		  </div>
-		  <input style="float:left;" type="<?php echo $shf;?>" id="filterData" size="15" onkeyup="fTgl()" placeholder="Filter date" title="Filter selling date">
-		  <button class="btnsubmitb" onclick="exportTableToCSV('report-mikhmon-<?php echo $filedownload;?>.csv')" title="Download selling report">CSV</button>
-		  <button class="btnsubmitb" onclick="location.href='./?hotspot=selling';" title="Reload all data">ALL</button>
-		  <input style="float:left;" type="<?php echo $shd;?>" name="remdata" class="btnsubmitb" onclick="location.href='#remdata';" title="Delete Data <?php echo $filedownload;?>" value="Delete data <?php echo $filedownload;?>"><br>
-			<table id="selling" style="white-space: nowrap;" class="zebra" >
+			</p>
+		<div>	   
+		  <input class="form-control btn-mrg" style="float:left; max-width: 150px;" type="<?php echo $shf;?>" id="filterData" onkeyup="fTgl()" placeholder="Filter date" title="Filter selling date"> &nbsp;
+		  <button class="btn btn-primary btn-mrg" onclick="exportTableToCSV('report-mikhmon-<?php echo $filedownload;?>.csv')" title="Download selling report"><i class="fa fa-download"></i> CSV</button>
+		  <button class="btn btn-primary btn-mrg" onclick="location.href='./?hotspot=selling';" title="Reload all data"><i class="fa fa-search"></i> ALL</button>
+		</div>  
+		<div style="margin: 5px;">
+		  <input  style="width: 250px;" type="<?php echo $shd;?>"  data-toggle="modal" data-target="#remdata" name="remdata" class="btn btn-danger btn-mrg" onclick="location.href='#remdata';" title="Delete Data <?php echo $filedownload;?>" value="Delete data <?php echo $filedownload;?>">
+		</div>
+		  <div style="padding-top:10px; overflow-x:auto; overflow-y:auto; max-height: 70vh;">
+			<table id="selling" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+
 				<tr>
 				  <th colspan=2 >Selling report <?php echo $filedownload;?><b style="font-size:0;">,</b></th>
 				  <th style="text-align:right;">Total</b></th>
@@ -211,25 +229,47 @@ $shd = "hidden";
 				?>
 			</table>
 		</div>
-	</div>
-	<div id="remdata" class="modal-window">
-		  <div>
-			<a style="font-wight:bold;"href="#" title="Close" class="modal-close">X</a>
+</div>
+</div>
+</div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+</div>	
+<!-- Modal -->
+<div class="modal fade" id="remdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure to Delete?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	
 	<?php
-	echo "<div style='overflow-x:auto;'>";
-	echo "<p style='text-align:center;'>Are you sure to delete data<br> $filedownload?</p>";
 
 	echo "<form autocomplete='off' method='post' action=''>";
 	echo "<center>";
-	echo "<input type='submit' name='remdata' title='Yes' class='btnsubmit' value='Yes'/>";
-	echo "<a class='btnsubmit' href='#' title='No'>No</a>";
+	echo "<input type='submit' name='remdata' title='Yes' class='btn btn-primary' value='Yes'/>&nbsp;";
+	echo '<button type="button" class="btn btn-danger" data-dismiss="modal" title="No">No</button>';
 	echo "</center>";
 	echo "</form>";
-	
-	echo "</div>";
 
-  ?>
+  	?>
+      </div>
     </div>
+  </div>
+</div>
+	
+		
 	<script>
 	function fTgl() {
   var input, filter, table, tr, td, i;

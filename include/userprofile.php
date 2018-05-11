@@ -27,20 +27,29 @@ error_reporting(0);
 	  "count-only" => "",));
 
 ?>
-<div style="overflow-x:auto;">
-<table style="white-space: nowrap;" class="zebra" align="center"  >
-  <tr>
-    <th colspan="9">
-<?php
-if($countprofile < 2 ){echo "$countprofile item  ";
-  }elseif($countprofile > 1){echo "$countprofile items  ";}
-?>
-      <a class="btnsubmit" title="Add User Profile" href="./?user-profile=add">Add User Profile</a>
-      <a class="btnsubmit" title="Add User" href="./?hotspot-user=add">Add User</a>
-      <a class="btnsubmit" title="Generate Users" href="./?hotspot-user=generate">Generate User</a>
-    </th>
-  </tr>
-	<tr>
+<div>
+<section class="content bg-trp">
+<div class="">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+    <h3 class="card-title pull-left">
+    <?php
+		if($countprofile < 2 ){echo "$countprofile item  ";
+  		}elseif($countprofile > 1){echo "$countprofile items   ";}
+	?>
+	</h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="row">
+<div class="col-sm-12">
+			  
+<div class="div-t"> 			   
+<table id="tFilter" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+  <thead>
+  <tr> 
 		<th ></th>
 		<th >Name</th>
 		<th >Shared<br>Users</th>
@@ -50,7 +59,9 @@ if($countprofile < 2 ){echo "$countprofile item  ";
 		<th >Grace<br>Period</th>
 		<th >Price <?php echo $curency;?></th>
 		<th >Total<br>User</th>
-	</tr>
+    </tr>
+  </thead>
+  <tbody>
 <?php
 
 for ($i=0; $i<$TotalReg; $i++){
@@ -62,8 +73,8 @@ $psharedu = $profiledetalis['shared-users'];
 $pratelimit = $profiledetalis['rate-limit'];
 $ponlogin = $profiledetalis['on-login'];
 
-echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'>-</a> <a title='Open User by profile " .$pname. "' class='btnsmall' href='./?user-by-profile=" .$pname . "'>O</a></td>";
-echo "<td><a style='color:#000;' title='Open User Profile " . $pname . "' href='./?user-profile=".$pid."'>$pname</a></td>";
+echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'><i class='fa fa-minus-square text-danger'></i></a>&nbsp;&nbsp;&nbsp;<a title='Open User by profile " .$pname. "' class='btnsmall' href='./?user-by-profile=" .$pname . "'><i class='fa fa-users text-dark'></i></a></td>";
+echo "<td><a style='color:#000;' title='Open User Profile " . $pname . "' href='./?user-profile=".$pid."'><i class='fa fa-edit'></i> $pname</a></td>";
 //$profiledetalis = $ARRAY[$i];echo "<td>" . $profiledetalis['name'];echo "</td>";
 echo "<td>" . $psharedu;echo "</td>";
 echo "<td>" . $pratelimit;echo "</td>";
@@ -113,12 +124,26 @@ $countuser = $API->comm("/ip/hotspot/user/print", array(
     "count-only" => "",
     "?profile" => "$pname",
     ));
-	if($countuser < 1 ){echo "";
-  }elseif($countuser > 0){
+	if($countuser < 2 ){echo "$countuser";
+  }elseif($countuser > 1){
   echo "$countuser";}
 echo  "</td>";
 echo "</tr>";
 }
 ?>
+  </tbody>
 </table>
 </div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+</div>	

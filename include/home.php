@@ -27,7 +27,7 @@ if(!isset($_SESSION["$userhost"])){
 }else{
 
 // array color
-$color = array ('1'=>'#D50000','#880E4F','#C51162','#9C27B0','#6A1B9A','#4A148C','#311B92','#536DFE','#3F51B5','#1565C0','#01579B','#0097A7','#00838F','#00B8D4','#00897B','#00BFA5','#388E3C','#558B2F','#827717','#E65100','#D84315','#795548','#757575','#607D8B','#37474F');
+$color = array ('1'=>'danger','warning','success','info','primary','secondary');
 
 
 // routeros api
@@ -41,146 +41,271 @@ $API->connect( $iphost, $userhost, $passwdhost );
 ?>
 
 <div id="reloadHome">
-<div class="left">
-<table class="thome">
-	<tr>
-      <td style="font-weight:bold; border-bottom: 1px solid #ccc;">System</td>
-    </tr>
-    <tr>
-      <td>
+  <!-- Main content -->
+    <section class="content bg-trp">
+      <div class="container-fluid">
+      <div class="row">
+    
+      <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-calendar"></i></span>
+        <?php
+        // get MikroTik system clock
+          $getclock = $API->comm("/system/clock/print");
+          $clock = $getclock[0];
+        ?>
+              <div class="info-box-content">
+                <span class="info-box-text">Syatem Date & Time</span>
+                <span class="info-box-number"><?php echo $clock['date'];?></span>
+                <span class="info-box-number"><?php echo $clock['time'];?></span>
+                <div class="progress">
+                  <div class="progress-bar" style="width:100%"></div>
+                </div>
+                <span class="progress-description">
+                  
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+      <div class="col-md-4 col-sm-6 col-12">
+            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-info-circle"></i></span>
 <?php
-// get MikroTik system clock
-  $getclock = $API->comm("/system/clock/print");
-  $clock = $getclock[0];
-
-// get routeboard info
-  $getrouterboard = $API->comm("/system/routerboard/print");
-  $routerboard = $getrouterboard[0];
-
 // get system resource MikroTik
 $getresource = $API->comm("/system/resource/print");
 $resource = $getresource[0];
+// get routeboard info
+$getrouterboard = $API->comm("/system/routerboard/print");
+$routerboard = $getrouterboard[0];
 ?>
-  <b class="btnhome" style="background-color: <?php echo $color[rand(1,25)];?>;" title="MikroTik System Clock">
-<?php echo $clock['date'];?>
-  <br>
-<?php echo $clock['time'];?>
-  </b>
-  <b class="btnhome" style="background-color: #4CAF50;" title="CPU Load">CPU Load <br>
-<?php echo $resource['cpu-load']?>%
-  </b>
-  <b class="btnhome" style="background-color: #607D8B;" title="Free Memory">Free Memory <br>
-<?php echo formatBytes($resource['free-memory'],0)?>
-  </b>
-  <b class="btnhome" style="background-color: #673AB7;" title="Free HDD Space">Free HDD <br>
-<?php echo formatBytes($resource['free-hdd-space'],0)?>
-  </b>  
-  <b class="btnhome" style="background-color: #00BCD4;" title="Model">Model <br> <?php echo $routerboard['model'];?></b>
-  <b class="btnhome" style="background-color: #006064;" title="Board Name">Board Name<br>
-<?php echo $resource['board-name'];?>
-  </b>
-  <b class="btnhome" style="background-color: #FF5722;" title="Router OS Version">Router OS <br>
-<?php echo $resource['version']?>
-  </b>
-      </td>
-	</tr>
-  <tr>
-    <td style="font-weight:bold; border-bottom: 1px solid #ccc;">Hotspot</td>
-  </tr>
-  <tr>
-    <td>
-      <a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?hotspot=active" title="Hotspot Active">Hotspot Active <br>
+              <div class="info-box-content">
+                <span class="info-box-number">
+        Board Name : <?php echo $resource['board-name'];?><br/>
+        Model : <?php echo $routerboard['model']?><br/>
+        Router OS : <?php echo $resource['version']?>
+                </span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 100%"></div>
+                </div>
+                <span class="progress-description">
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+    <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-server"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-number">
+        CPU Load <?php echo $resource['cpu-load']?>%<br/>
+        Free Memory <?php echo formatBytes($resource['free-memory'],0)?><br/>
+        Free HDD <?php echo formatBytes($resource['free-hdd-space'],0)?>
+                </span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: <?php echo $resource['cpu-load'];?>%"></div>
+                </div>
+                <span class="progress-description">
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+      
+          </div>
+    
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-8 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header d-flex p-0">
+                <h3 class="card-title p-3">
+                  <i class="fa fa-wifi mr-1"></i>
+                  Hotspot
+                </h3>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+        
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+      <div class="col-md-3 col-sm-6 col-12">
+          <a href="./?hotspot=active">
+            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-laptop"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Hotspot Active</span>
+                <span class="info-box-number">
 <?php
 // get & counting hotspot active
   $counthotspotactive = $API->comm("/ip/hotspot/active/print", array(
-  	"count-only" => ""));
-	if($counthotspotactive < 2 ){echo "$counthotspotactive item";
+    "count-only" => ""));
+  if($counthotspotactive < 2 ){echo "$counthotspotactive item";
   }elseif($counthotspotactive > 1){
   echo "$counthotspotactive items";
   }
-?>
-      </a>
-      <a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?hotspot=users" title="Hotspot Users">Hotspot Users<br>
+?>              </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+          <a href="./?hotspot=users">
+            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-users"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Hotspot Users</span>
+                <span class="info-box-number">
 <?php
 // get & counting hotspot users
   $countallusers = $API->comm("/ip/hotspot/user/print", array(
     "count-only" => ""));
-	if($countallusers < 2 ){echo "$countallusers item";
+  if($countallusers < 2 ){echo "$countallusers item";
   }elseif($countallusers > 1){
   echo "$countallusers items";}
-?>
-      </a>
-      <a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?hotspot-user=add" title="Add Hotspot User">Add<br>Hotspot User</a>
-      <a class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;" href="./?hotspot-user=generate" title="Generate Hotspot User">Generate<br>Hotspot User</a>
-    </td>
-  </tr>
-  <tr>
-    <td style="font-weight:bold; border-bottom: 1px solid #ccc;">Traffic</td>
-  </tr>
-  <tr>
-    <td>
-<?php /*
-$system = ini_get('system');
-$win  = is_bool($system);
-$host = "google.com";
-$ping = exec("ping -n 1 $host");
-$getping = explode(",",$ping);
-  if ( substr($ping, -2) == 'ms')
-		{
-		echo "<b class='btnhome' style='background-color: ".$color[rand(1,25)].";' title='ping $host ".$getping[2] ."'>ping $host <br>".$getping[2] ."</b>";
-		}
-	  else
-		{
-			echo "<b class='btnhome' style='background-color: ".$color[rand(1,25)].";' title='ping $host ".$getping[2] ."'>ping $host <br>request timeout...</b>";
-		}*/
-?>
+?>              </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+          <a href="./?hotspot-user=add">
+            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-user"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Add</span>
+                <span class="info-box-number">User</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </a>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+          <a href="./?hotspot-user=generate">
+            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-users"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Generate</span>
+                <span class="info-box-number">Users</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </a>
+          </div>
+      </div>
+    </div>
+  </div><!-- /.card-body -->
+</div>
+<!-- /.card -->
+<div class="card">
+  <div class="card-header d-flex p-0">
+    <h3 class="card-title p-3">
+      <i class="fa fa-area-chart mr-1"></i>
+        Traffic
+    </h3>
+  </div><!-- /.card-header -->
+    <div class="card-body">
+      <div class="tab-content p-0">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-12">
+             <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
+              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-tachometer"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text"></span>
+                <span class="info-box-number">
 <?php
-// get traffic ether1
+// get traffic ether
   $getinterface = $API->comm("/interface/print");
   $interface = $getinterface[$iface-1]['name'];
   $getinterfacetraffic = $API->comm("/interface/monitor-traffic", array(
-	  "interface" => "$interface",
-	  "once" => "",
-	  ));
-	$tx = formatBites($getinterfacetraffic[0]['tx-bits-per-second'],0);
-	$rx = formatBites($getinterfacetraffic[0]['rx-bits-per-second'],0);
+    "interface" => "$interface",
+    "once" => "",
+    ));
+  $tx = formatBites($getinterfacetraffic[0]['tx-bits-per-second'],0);
+  $rx = formatBites($getinterfacetraffic[0]['rx-bits-per-second'],0);
 ?>
-      <b class="btnhome" style="font-weight:bold; background-color: <?php echo $color[rand(1,25)];?>;"  title="Traffic <?php echo $interface." Tx : ".$tx." Rx : ".$rx;?>"><?php echo $interface;?><br>Tx : <?php echo $tx;?> Rx : <?php echo $rx;?></b>
-    </td>
-  </tr>
-</table>
-</div>
-<div class="right">
-<table class="thome">
-  <tr>
-    <td style="font-weight:bold; border-bottom: 1px solid #ccc;">Hotspot Log</td>
-  </tr>
-  <tr>
-    <td>
-	<div class="log">
-      <textarea class="textlog" >
+      <?php echo $interface;?><br> </span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: <?php echo $getinterfacetraffic[0]['tx-bits-per-second']/1000000;?>%"></div>
+                </div>
+                <span class="progress-description">
+                  Tx : <?php echo $tx;?>
+                </span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: <?php echo $getinterfacetraffic[0]['rx-bits-per-second']/1000000;?>%"></div>
+                </div>
+                <span class="progress-description">
+                  Rx : <?php echo $rx;?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+        </div>
+      </div>
+    </div><!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  </section>
+         
+  <!-- /.Left col -->
+  <!-- right col (We are only adding the ID to make the widgets sortable)-->
+  <section class="col-lg-4 connectedSortable">
+    <!-- Map card -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+              <i class="fa fa-user mr-1"></i>
+                  Hotspot Log
+          </h3>
+        </div>
+          <div class="card-body">
+            <div class="row">
+                <textarea style="overflow: auto; width:100%; height:347px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
 <?php
 // move hotspot log to disk
   $getlogging = $API->comm("/system/logging/print", array(
     "?prefix" => "->",));
-	$logging = $getlogging[0];
-	if($logging['prefix'] == "->"){}else{
+  $logging = $getlogging[0];
+  if($logging['prefix'] == "->"){}else{
   $API->comm("/system/logging/add", array("action" => "disk","prefix" => "->","topics" => "hotspot,info,debug",));
   }
 // get hotspot log
-	$getlog = $API->comm("/log/print", array(
-	  "?topics" => "hotspot,info,debug",));
-	$log = array_reverse($getlog);
-	$TotalReg = count($getlog);
-	for ($i=0; $i<$TotalReg; $i++){
-	echo "" . $log[$i]['message']."&#13;&#10;";
-	}
+  $getlog = $API->comm("/log/print", array(
+    "?topics" => "hotspot,info,debug",));
+  $log = array_reverse($getlog);
+  $TotalReg = count($getlog);
+  for ($i=0; $i<$TotalReg; $i++){
+  echo "" . $log[$i]['message']."&#13;&#10;";
+  }
 ?>
       </textarea>
-	</div>  
-    </td>
-  </tr>
-</table>
 </div>
+<!-- /.row -->
+</div>
+</div>
+<!-- /.card -->
+</section>
+<!-- right col -->
+</div>
+<!-- /.row (main row) -->
+</div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>
 

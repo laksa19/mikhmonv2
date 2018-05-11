@@ -28,33 +28,43 @@ error_reporting(0);
 	$getprofile = $API->comm("/ip/hotspot/user/profile/print");
 	$TotalReg2 = count($getprofile);
 ?>
-<div style="overflow-x:auto; overflow-y:auto; max-height: 70vh;">
-<table class="zebra" id="tFilter">
+
+<div>
+<section class="content bg-trp">
+<div class="">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+    <h3 class="card-title pull-left">
+        <?php
+				  if($counttuser < 2 ){echo "$counttuser item  ";
+				  }elseif($counttuser > 1){echo "$counttuser items  ";}
+				?>    
+    </h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="row">
+<div class="col-sm-12">
+			  
+<div class="div-t">			   
+<table id="tFilter" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <thead>
   <tr>
-    <th colspan='7'>
-<?php
-  if($counttuser < 2 ){echo "$counttuser item  ";
-  }elseif($counttuser > 1){echo "$counttuser items  ";}
-?>
-      <a class="btnsubmit" title="Add User" href="./?hotspot-user=add">Add</a>
-      <a class="btnsubmit" title="Generate Users" href="./?hotspot-user=generate">Generate</a>
-    </th>
-  </tr>
-  <tr>
-    <th></th>
+    <th style="min-width:75px;" ></th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input style="width:80%;" type="text" id="filterTable" size="auto" onkeyup="fTable()" placeholder="Server" title="Filter by Hotspot Server">
+        <input class="form-control" style="width:80%;" type="text" id="filterTable" size="auto" onkeyup="fTable()" placeholder="Server" title="Filter by Hotspot Server">
       </div>
     </th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input style="width:80%;" type="text" id="filterTable1" size="auto" onkeyup='fTable1()' placeholder="Name" title="Filter by Name">
+        <input class="form-control" style="width:80%;" type="text" id="filterTable1" size="auto" onkeyup='fTable1()' placeholder="Name" title="Filter by Name">
       </div>
     </th>
     <th>
-      <select onchange="window.location.href=this.value;" title="Filter by Profile">
+      <select class="form-control" onchange="window.location.href=this.value;" title="Filter by Profile">
         <option>
 <?php
 if($userbyprofile == ""){echo "Profile";}else {echo $userbyprofile;}
@@ -71,10 +81,10 @@ for ($i=0; $i<$TotalReg2; $i++){
     <th>Uptime</th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input style="width:80%;" type="text" id="filterTable2" size="auto" onkeyup="fTable2()" placeholder="Comment" title="Filter by Comment">
+        <input class="form-control" style="width:80%;" type="text" id="filterTable2" size="auto" onkeyup="fTable2()" placeholder="Comment" title="Filter by Comment">
       </div>
     </th>
-    <th>Print</th>
+    <th colspan="3">Print</th>
     </tr>
   </thead>
   <tbody>
@@ -91,23 +101,42 @@ for ($i=0; $i<$TotalReg; $i++){
 	$udisabled = $userdetails['disabled'];
 
 	echo "<tr>";
-	echo "<td style='text-align:center;'><a class='btnsmall' title='Remove ".$uname. "' href=./?remove-hotspot-user=".$uid . ">-</a>";
-	if($udisabled == "true"){ $tcolor = "#ccc"; echo "<a title='Enable User ".$uname . "' class='btnsmall' href='./?enable-hotspot-user=".$uid . "'>E</a></td>";}else{ $tcolor = "#000";echo "<a title='Disable User ".$uname . "' class='btnsmall' href='./?disable-hotspot-user=".$uid . "'>D</a></td>";}
+	echo "<td style='text-align:center;'><a  title='Remove ".$uname. "' href=./?remove-hotspot-user=".$uid . "><i class='fa fa-minus-square text-danger'></i></a>&nbsp;&nbsp;&nbsp;";
+	if($udisabled == "true"){ $tcolor = "#ccc"; echo "<a title='Enable User ".$uname . "'  href='./?enable-hotspot-user=".$uid . "'><i class='fa fa-lock text-dark'></i></a></td>";}else{ $tcolor = "#000";echo "<a title='Disable User ".$uname . "'  href='./?disable-hotspot-user=".$uid . "'><i class='fa fa-unlock text-dark'></i></a></td>";}
 	echo "<td style='color:".$tcolor.";'>" . $userver;echo "</td>";
-	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . ">". $uname."</a>";echo "</td>";
+	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo "</td>";
 	echo "<td style='color:".$tcolor.";'>" . $uprofile;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>" . $uuptime;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo $ucomment;}; echo "</td>";
 	echo "<td style='color:".$tcolor.";'>";
-	if($ucomment == ""){}else{echo " | <a style='color:".$tcolor.";' title='Print' href='./voucher/print.php?id=" . $ucomment . "&qr=no' target='_blank'> Print</a>";
-	echo " | <a style='color:".$tcolor.";' title='Print QR' href='./voucher/print.php?id=" . $ucomment . "&qr=yes' target='_blank'> QR</a>";
- 	echo " | <a style='color:".$tcolor.";' title='Print Small' href='./voucher/print.php?id=" . $ucomment . "&small=yes' target='_blank'> Small</a> |";
+	if($ucomment == ""){}else{echo "<a style='color:".$tcolor.";' title='Print' href='./voucher/print.php?id=" . $ucomment . "&qr=no' target='_blank'>Default</a>";echo "</td>";
 	}
-	echo "</td>";
+  echo "<td style='color:".$tcolor.";'>";
+  if($ucomment == ""){}else{echo "<a style='color:".$tcolor.";' title='Print QR' href='./voucher/print.php?id=" . $ucomment . "&qr=yes' target='_blank'> QR</a>";echo "</td>";
+  }
+  echo "<td style='color:".$tcolor.";'>";
+  if($ucomment == ""){}else{echo "<a style='color:".$tcolor.";' title='Print Small' href='./voucher/print.php?id=" . $ucomment . "&small=yes' target='_blank'> Small</a>";echo "</td>";
+  }
+	
 	echo "</tr>";
 	}
 ?>
   </tbody>
 </table>
 </div>
-
+</div>
+</div>
+</div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>	
+</div>
+	
+	
+	

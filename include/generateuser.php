@@ -131,7 +131,7 @@ echo "<!--";
 	      $u[$i] = "$prefix$p[$i]";
 	      }
 	      if($char == "mix"){
-			  	$p[$i]= substr(str_shuffle("123456789012345678901234567890abcdefghijklmnopqrstuvwxyz"), -$userl);
+			  	$p[$i]= substr(str_shuffle("123456789123456789123456789abcdefghijklmnopqrstuvwxyz"), -$userl);
 			  
 
 	      $u[$i] = "$prefix$p[$i]";
@@ -170,42 +170,55 @@ echo "<!--";
   $urlprint = "$umode-$ucode-$udate";
 }
 ?>
-<div style="overflow-x:auto;">
+<div>
+<section class="content bg-trp">
+<div class="">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+    <h3 class="card-title pull-left">Generate User</h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="row">
+<div class="col-sm-12">
+
 <form autocomplete="off" method="post" action="">
-<table class="tdata">
+<table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
 <?php if($_SESSION['ubp'] != ""){
-    echo "    <a class='btnsubmit' href='./?user-by-profile=".$_SESSION['ubp']."'>Close</a>";
+    echo "    <a class='btn btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
-    echo "    <a class='btnsubmit' href='./?hotspot=users'>Close</a>";
+    echo "    <a class='btn btn-warning' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
 }
 ?>
-    <input type="submit" name="save" class="btnsubmit" title="Generate User" style="font-weight: bold;"   value="Generate">
-    <a class="btnsubmit" title="Print Default" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=no" target="_blank">Print</a>
-    <a class="btnsubmit" title="Print QR" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=yes" target="_blank">QR</a>
-    <a class="btnsubmit" title="Print Small" href="./voucher/print.php?id=<?php echo $urlprint;?>&small=yes" target="_blank">Small</a>
+    <button type="submit" name="save" class="btn btn-primary btn-mrg" title="Generate User"> <i class="fa fa-save"></i> Generate</button>
+    <a class="btn btn-secondary btn-mrg" title="Print Default" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=no" target="_blank"> <i class="fa fa-print"></i> Print</a>
+    <a class="btn btn-danger btn-mrg" title="Print QR" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=yes" target="_blank"> <i class="fa fa-qrcode"></i> QR</a>
+    <a class="btn btn-info btn-mrg" title="Print Small" href="./voucher/print.php?id=<?php echo $urlprint;?>&small=yes" target="_blank"> <i class="fa fa-print"></i> Small</a>
     </th>
   </tr>
   <tr>
-    <td>Qty</td><td><input type="number" size="4" name="qty"  calss="test" min="1" max="100" value="1" required="1"></td>
+    <td>Qty</td><td><input class="form-control" type="number" size="4" name="qty"  calss="test" min="1" max="100" value="1" required="1"></td>
   </tr>
   <tr>
     <td>Server</td>
     <td>
-			<select name="server" required="1">
-				<option>all</option>
+		<select class="form-control" name="server" required="1">
+			<option>all</option>
 				<?php $TotalReg = count($srvlist);
 				for ($i=0; $i<$TotalReg; $i++){
 				  echo "<option>" . $srvlist[$i]['name'] . "</option>";
 				  }
 				?>
-			</select>
-		</td>
+		</select>
+	</td>
 	</tr>
 	<tr>
     <td>User Mode</td><td>
-			<select onchange="defUserl();" id="user" name="user" required="1">
+			<select class="form-control" onchange="defUserl();" id="user" name="user" required="1">
 				<option value="up">User & Pasword</option>
 				<option value="vc">User = Pasword</option>
 			</select>
@@ -213,7 +226,7 @@ echo "<!--";
 	</tr>
   <tr>
     <td>User Length</td><td>
-      <select id="userl" name="userl" required="1">
+      <select class="form-control" id="userl" name="userl" required="1">
         <option>4</option>
 				<option>3</option>
 				<option>4</option>
@@ -225,11 +238,11 @@ echo "<!--";
     </td>
   </tr>
   <tr>
-    <td>Prefix</td><td><input type="text" size="4" maxlength="4" autocomplete="off" name="prefix" value=""></td>
+    <td>Prefix</td><td><input class="form-control" type="text" size="4" maxlength="4" autocomplete="off" name="prefix" value=""></td>
   </tr>
   <tr>
     <td>Character</td><td>
-      <select name="char" required="1">
+      <select class="form-control" name="char" required="1">
 				<option id="lower" style="display:block;" value="lower">abcd</option>
 				<option id="upper" style="display:block;" value="upper">ABCD</option>
 				<option id="upplow" style="display:block;" value="upplow">aBcD</option>
@@ -243,7 +256,7 @@ echo "<!--";
   </tr>
   <tr>
     <td>Profile</td><td>
-			<select onchange="GetVP();" id="uprof" name="profile" required="1">
+			<select class="form-control" onchange="GetVP();" id="uprof" name="profile" required="1">
 				<?php $TotalReg = count($getprofile);
 				for ($i=0; $i<$TotalReg; $i++){
 				  echo "<option>" . $getprofile[$i]['name'] . "</option>";
@@ -253,10 +266,17 @@ echo "<!--";
 		</td>
 	</tr>
 	<tr>
-    <td>Time Limit</td><td><input type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
+    <td>Time Limit</td><td><input class="form-control" type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
   </tr>
   <tr>
-    <td>Data Limit</td><td><input type="number" min="0" max="9999" name="datalimit" value=""> GB</td>
+    <td>Data Limit</td><td>
+	<div class="input-group">
+        <input class="form-control" type="number" min="0" max="9999" name="datalimit" value="">
+            <div class="input-group-append">
+                <span class="input-group-text">GB</span>
+            </div>
+    </div>
+	</td>
   </tr>
   <tr >
     <td>Validity | Price</td><td id="GetValidPrice"></td>
@@ -288,4 +308,15 @@ echo "<!--";
   </tr>
 </table>
 </form>
+
 </div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+</div>	

@@ -35,6 +35,7 @@ echo "<!--";
     $disabled = ($_POST['disabled']);
     $timelimit = ($_POST['timelimit']);
     $datalimit = ($_POST['datalimit']);
+    $comment = ($_POST['comment']);
     if($timelimit == ""){$timelimit = "0";}else{$timelimit = $timelimit;}
     if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*1000000000;}
     $API->comm("/ip/hotspot/user/add", array(
@@ -45,6 +46,7 @@ echo "<!--";
 	    "disabled" => "no",
 	    "limit-uptime" => "$timelimit",
 			"limit-bytes-out" => "$datalimit",
+      "comment" => "$comment",
 	    ));
     $getuser = $API->comm("/ip/hotspot/user/print", array(
     "?name"=> "$name",
@@ -63,24 +65,38 @@ echo "<!--";
     x.type = 'password';
     }}
 </script>
-<div style="overflow-x:auto;">
+
+<div>
+<section class="content bg-trp">
+<div class="">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+    <h3 class="card-title pull-left">Add User</h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="row">
+<div class="col-sm-12">
+
 <form autocomplete="off" method="post" action="">
-<table class="tdata">
+<table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
 <?php if($_SESSION['ubp'] != ""){
-    echo "    <a class='btnsubmit' href='./?user-by-profile=".$_SESSION['ubp']."'>Close</a>";
+    echo "    <a class='btn btn-warning btn-mrg' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
-    echo "    <a class='btnsubmit' href='./?hotspot=users'>Close</a>";
+    echo "    <a class='btn btn-warning btn-mrg' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
 }
 ?>
-    <input type="submit" name="save" class="btnsubmit" style="font-weight: bold;"   value="Save">
+    <button type="submit" name="save" class="btn btn-primary btn-mrg"> <i class="fa fa-save"></i> Save</button>
     </th>
   </tr>
   <tr>
     <td>Server</td>
     <td>
-			<select name="server" required="1">
+			<select class="form-control" name="server" required="1">
 				<option>all</option>
 				<?php $TotalReg = count($srvlist);
 				for ($i=0; $i<$TotalReg; $i++){
@@ -91,14 +107,21 @@ echo "<!--";
 		</td>
 	</tr>
   <tr>
-    <td>Name</td><td><input type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td>Name</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
   </tr>
   <tr>
-    <td>Password</td><td><input id="passUser" type="password" name="pass" autocomplete="new-password" value="" required="1"><input title="Show/Hide Password" type="checkbox" onclick="PassUser()"></td>
+    <td>Password</td><td>
+        <div class="input-group">
+          <input class="form-control" id="passUser" type="password" name="pass" autocomplete="new-password" value="" required="1">
+            <div class="input-group-append">
+              <span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassUser()"></span>
+            </div>
+        </div>
+		</td>
   </tr>
   <tr>
     <td>Profile</td><td>
-			<select name="profile" required="1">
+			<select class="form-control" name="profile" required="1">
 				<?php $TotalReg = count($getprofile);
 				for ($i=0; $i<$TotalReg; $i++){
 				  echo "<option>" . $getprofile[$i]['name'] . "</option>";
@@ -108,10 +131,20 @@ echo "<!--";
 		</td>
 	</tr>
 	<tr>
-    <td>Time Limit</td><td><input type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
+    <td>Time Limit</td><td><input class="form-control" type="text"  autocomplete="off" name="timelimit" value=""></td>
   </tr>
   <tr>
-    <td>Data Limit</td><td><input type="number" min="0" max="9999" name="datalimit" value=""> GB</td>
+    <td>Data Limit</td><td>
+      <div class="input-group">
+        <input class="form-control" type="number" min="0" max="9999" name="datalimit" value="">
+          <div class="input-group-append">
+            <span class="input-group-text">GB</span>
+          </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Comment</td><td><input class="form-control" type="text"  autocomplete="off" name="comment" value=""></td>
   </tr>
   <tr>
     <td colspan="2">
@@ -130,4 +163,15 @@ echo "<!--";
   </tr>
 </table>
 </form>
+
+</div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
 </div>

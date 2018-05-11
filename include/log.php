@@ -25,17 +25,25 @@ error_reporting(0);
 	$TotalReg = count($getlog);
 
 ?>
-<div style="overflow-x:auto; overflow-y:auto; max-height: 70vh;">
-<table class="zebra" id="tFilter" >
-  <tr>
-    <th>~</th>
-    <th>Time</th>
-    <th>
-      <div style="width:50%;">
-        <input style="width:50%;" type="text" id="filterTable1" size="auto" onkeyup="fTable1()" placeholder="Messages" title="Filter hotspot message">
-      </div>
-    </th>
-  </tr>
+<div>
+<section class="content bg-trp">
+<div class="">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+    <h3 class="card-title">Log</h3>
+</div>
+<!-- /.card-header -->
+<div class="card-body">
+<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="row">
+<div class="col-sm-12">
+        
+<div class="input-group input-group-xs" style="max-width: 350px; margin: 5px;">
+    <input id="filterTable1" size="auto" onkeyup="fTable1()" placeholder="Filter log messages" title="Filter log message"class="form-control float-right" type="text">
+</div>
+<div style="padding: 5px;" class="div-t">
+<table class="table" id="tFilter" >
 <?php
 	for ($i=0; $i<$TotalReg; $i++){
 	echo "<tr>";
@@ -46,4 +54,17 @@ error_reporting(0);
 	}
 ?>
 </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
 </div>

@@ -41,17 +41,27 @@ $API->connect( $iphost, $userhost, $passwdhost );
 }
 ?>
 <div id="reloadHotspotActive">
-<div style="overflow-x:auto; overflow-y:auto; max-height: 70vh;">
-<table class="zebra">
-  <thead>
-  <tr>
-    <th colspan="8">
-<?php
+
+	<section class="content bg-trp">
+      <div class="">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title pull-left"><?php
   if($counthotspotactive < 2 ){echo "$counthotspotactive item";
   }elseif($counthotspotactive > 1){
   echo "$counthotspotactive items";};echo"</th>";
-?>
-  </tr>
+?></h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                <div class="row">
+                  <div class="col-sm-12">
+			  
+<div class="div-t">			   
+<table id="tFilter" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+  <thead>
   <tr>
     <th></th>
     <th>Server</th>
@@ -77,7 +87,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
 	$loginby = $hotspotactive['login-by'];
 	
 	echo "<tr>";
-	echo "<td style='text-align:center;'><a class='btnsmall' title='Remove ". $user . "' href='./?remove-user-active=". $id . "'>-</a></td>";
+	echo "<td style='text-align:center;'><a  title='Remove ". $user . "' href='./?remove-user-active=". $id . "'><i class='fa fa-minus-square'></i></a></td>";
 	echo "<td>" . $server . "</td>";
 	echo "<td><a title='Open User " .$user. "' style='color:#000;' href=./?hotspot-user=" .$user. ">" .$user."</a></td>";
 	echo "<td>" . $address . "</td>";
@@ -91,4 +101,16 @@ $API->connect( $iphost, $userhost, $passwdhost );
   </tbody>
 </table>
 </div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
 </div>

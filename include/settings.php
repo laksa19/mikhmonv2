@@ -31,12 +31,12 @@ if(!isset($_SESSION["$userhost"])){
 
 $url = $_SERVER['REQUEST_URI'];
 if(isset($_POST['save'])){
-	  $setupdata = ($_POST['setupdata']);
-		$siphost = ($_POST['ipmik']);
-		$suserhost = ($_POST['usermik']);
-		$spasswdhost = ($_POST['passmik']);
-		$suseradm = ($_POST['useradm']);
-		$spassadm = ($_POST['passadm']);
+	$setupdata = ($_POST['setupdata']);
+	$siphost = ($_POST['ipmik']);
+	$suserhost = ($_POST['usermik']);
+	$spasswdhost = ($_POST['passmik']);
+	$suseradm = ($_POST['useradm']);
+	$spassadm = ($_POST['passadm']);
     $shotspotname = ($_POST['hotspotname']);
     $sdnsname = ($_POST['dnsname']);
     $scurency = ($_POST['curency']);
@@ -132,72 +132,152 @@ if(isset($_POST['save'])){
     x.type = 'password';
     }}
 </script>
-<div class="dsettings" style="overflow-x:auto;">
+
+
+<div style="padding: 10px;" class="register-box settings">
+  <!-- /.login-logo -->
+  <div class="login-logo">
+    <p style="color: #fff"><b>Mikhmon</b> Settings</p>
+  </div>
+  <div class="card">
+    <div class="card-body login-card-body">
+
 <form autocomplete="off" method="post" action="">
-<table class="tsettings">
-  <tr>
-	<td colspan="2" style="color:white; font-weight:bold; background:#008CCA;"><strong style="font-size:20px;">Mikhmon Settings</strong><br>
-	  <select style="float:left;" name="setupdata" required="1">
+	<div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Settings</h3>
+              <!-- /.card-tools -->
+        </div>
+            <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">	
+	  <select class="form-control col-4 btn-mrg" style="float:left;" name="setupdata" required="1"> 
 			<option value="local" title="Save local Mikhmon">Local</option>
 			<option value="export" title="Export to MikroTik">Export</option>
 			<option value="import" title="Import from MikroTik">Import</option>
-		</select>
-		<input type="submit" style="font-weight:bold;" class="btnsubmit" name="save" value="Save"/>
-		<?php if($_SESSION["$userhost"] != "$userhost"){ echo '<a class="btnsubmit" href="./admin.php?id=login" title="Login">Login</a>';
-		}else{echo '<a class="btnsubmit" href="./" title="Home">Home</a>';}?>
-		<a class="btnsubmit" href="./admin.php?id=connect" title="Test connection to MikroTik ">Connect</a>
-	  </td>
-	</tr>
-  <tr>
-	<td colspan="2" style="color:white; font-weight:bold; background:#008CCA;">MikroTik<?php echo " <b>". $_SESSION["connect"]."</b>";?></td></td>
+		</select> &nbsp;
+		<input class="btn btn-primary btn-mrg" type="submit" style="font-weight:bold;" name="save" value="Save"/> &nbsp;
+		<?php if($_SESSION["$userhost"] != "$userhost"){ echo '<a class="btn btn-secondary btn-mrg" href="./admin.php?id=login" title="Login">Login</a>';
+		}else{echo '<a class="btn btn-secondary btn-mrg" href="./" title="Home">Home</a>';}?> &nbsp;
+		<a class="btn btn-info btn-mrg" href="./admin.php?id=connect" title="Test connection to MikroTik ">Connect</a>
+		<a class="btn btn-warning btn-mrg" title="Template editor" href="./voucher/editor.php?id=default">Template Editor</a>
+		<a class="btn btn-success btn-mrg" title="Upload Logo Voucher" href="./admin.php?id=uplogo">Upload Logo</a>	
+        </div>
+    </div>
+    </div>
+	<div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">MikroTik<?php echo " <b>". $_SESSION["connect"]."</b>";?></h3>
+              <!-- /.card-tools -->
+        </div>
+           <!-- /.card-header -->
+        <div class="card-body">
+    		<div class="row">  
+
+<table class="table">
+	<tr>
+	  <td>IP MikroTik  </td><td><input class="form-control" type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?php echo $iphost; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	  <td>IP MikroTik : </td><td><input type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?php echo $iphost; ?>" required="1"/></td>
+		<td>Username  </td><td><input class="form-control" type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
 	</tr>
 	<tr>
-		<td>Username : </td><td><input type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
+		<td>Password  </td><td>
+			<div class="input-group">
+        		<input class="form-control" id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo $passwdhost ;?>" required="1"/>
+            		<div class="input-group-append">
+                		<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassMk()"></span>
+            		</div>
+    		</div>
+				
+		</td>
+	</tr>
+	</table>
+        </div>
+        </div>
+    </div>
+	<div class="card card-primary card-outline">
+       	<div class="card-header">
+           <h3 class="card-title">Admin</h3>
+              <!-- /.card-tools -->
+        </div>
+        <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+			
+	<table class="table">
+	<tr>
+	<td>Username  </td><td><input class="form-control" type="text" size="10" name="useradm" title="User Admin" value="<?php echo $useradm; ?>" required="1"/></td>
 	</tr>
 	<tr>
-		<td>Password : </td><td><input id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo $passwdhost ;?>" required="1"/><input title="Show/Hide Password" type="checkbox" onclick="PassMk()"></td>
-	</tr>
-	<tr>
-	<td colspan="2" style="color:white; font-weight:bold; background:#008CCA;">Admin</td></td>
-	</tr>
-	<tr>
-	<td>Username : </td><td><input type="text" size="10" name="useradm" title="User Admin" value="<?php echo $useradm; ?>" required="1"/></td>
-	</tr>
-	<tr>
-	<td>Password : </td><td><input id="passadm" type="password" size="10" name="passadm" title="Password Admin" value="<?php echo $passadm; ?>" required="1"/><input title="Show/Hide Password" type="checkbox" onclick="PassAdm()"></td>
+	<td>Password  </td><td>
+	<div class="input-group">
+        <input class="form-control" id="passadm" type="password" size="10" name="passadm" title="Password Admin" value="<?php echo $passadm; ?>" required="1"/>
+             <div class="input-group-append">
+                <span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassAdm()"></span>
+             </div>
+    </div>
+	</td>
 	</tr>
 	<tr>
 		<td style="text-align:left" colspan=2>
 		<strong>Please change username and password Admin.</strong>
 		</td>
 	</tr>
+	</table>
+        </div>
+        </div>
+    </div>
+	<div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Mikhmon Data</h3>
+              <!-- /.card-tools -->
+        </div>
+            <!-- /.card-header -->
+    <div class="card-body">
+    <div class="row">
+	<table class="table">
 	<tr>
-  <td colspan="2" style="color:white; font-weight:bold; background:#008CCA;">Mikhmon Data</td></td>
-  </tr>
-	<tr>
-	<td>Hotspot Name : </td><td><input type="text" size="15" maxlength="50" name="hotspotname" title="Hotspot Name" value="<?php echo $hotspotname; ?>" required="1"/></td>
+	<td>Hotspot Name  </td><td><input class="form-control" type="text" size="15" maxlength="50" name="hotspotname" title="Hotspot Name" value="<?php echo $hotspotname; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td>DNS Name : </td><td><input type="text" size="15" maxlength="500" name="dnsname" title="DNS Name [IP->Hotspot->Server Profiles->DNS Name]" value="<?php echo $dnsname; ?>" required="1"/></td>
+	<td>DNS Name  </td><td><input class="form-control" type="text" size="15" maxlength="500" name="dnsname" title="DNS Name [IP->Hotspot->Server Profiles->DNS Name]" value="<?php echo $dnsname; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td>Curency : </td><td><input type="text" size="3" maxlength="4" name="curency" title="Curency" value="<?php echo $curency; ?>" required="1"/></td>
+	<td>Curency  </td><td><input class="form-control" type="text" size="3" maxlength="4" name="curency" title="Curency" value="<?php echo $curency; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td>Auto Reload : </td><td><input type="number" min="5" max="60" name="areload" title="Auto Reload in sec [min 5s]" value="<?php echo $areload; ?>" required="1"/> sec</td>
+	<td>Auto Reload</td><td>
+	<div class="input-group">
+        <input class="form-control" type="number" min="5" max="60" name="areload" title="Auto Reload in sec [min 5s]" value="<?php echo $areload; ?>" required="1"/>
+            <div class="input-group-append">
+                <span class="input-group-text">sec</span>
+            </div>
+        </div>
+	</td>
 	</tr>
 	<tr>
-	<td>Traffic Ether : </td><td><input type="number" min="1" max="99" name="iface" title="Traffic Interface" value="<?php echo $iface; ?>" required="1"/></td>
+	<td>Traffic Ether  </td><td><input class="form-control" type="number" min="1" max="99" name="iface" title="Traffic Interface" value="<?php echo $iface; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td colspan="2"><a class="btnsubmitb" title="Template editor" href="./voucher/editor.php?id=default">Template Editor</a> <a class="btnsubmitb" title="Upload Logo Voucher" href="./admin.php?id=uplogo">Upload Logo Voucher</a></td>
+	<td colspan="2"><small>Mikhmon V2.9</small></td>
 	</tr>
-	<tr>
-	<td colspan="2"><small>Mikhmon V2.8</small></td>
-	</tr>
-</table>
+	</table>
+    </div>
+    </div>
+    </div>
 </form>
+
 </div>
+    <!-- /.login-card-body -->
+</div>
+</div>
+<!-- /.login-box -->
+
+
+
+
+
+
+
+

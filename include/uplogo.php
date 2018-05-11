@@ -23,18 +23,47 @@ if(!isset($_SESSION["$userhost"])){
 }
 ?>
 
-<div id='login'>
-  <div class="dsettings" style="overflow-x:auto;">
+<body class="hold-transition login-page">
+<div class="register-box">
+  <!-- /.login-logo -->
+  <div class="login-logo">
+    <p style="color:#fff;" ><b>Upload</b> Logo Voucher</hp>
+  </div>
+  <div class="card">
+    <div class="card-body login-card-body">
+
   <form action="" method="post" enctype="multipart/form-data">
-  <h3>Upload Logo Voucher</h3>
-  <b>Format file : logo.png</b>
-  <input style="cursor: pointer;" type="file" name="UploadLogo" id="UploadLogo" name="logo">
-  <input class="btnsubmitb" type="submit" value="Upload Logo" title="Upload logo" name="submit">
-  <a class="btnsubmitb" href="./" title="Home">Home</a>
-  <a class="btnsubmitb" href="./admin.php?id=settings" title="Mikhmon Settings">Settings</a>
-  </form>
-<div>
-<div>
+
+<div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Upload Logo Voucher</h3>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+            <div class="row">
+			
+  <div class="form-control">Format file : logo.png</div><br/><br/><br/>
+  <input class="form-control" style="cursor: pointer;" type="file" name="UploadLogo" id="UploadLogo" name="logo">
+  <center class="form-control" >
+  <input class="btn btn-secondary btn-mrg" type="submit" value="Upload Logo" title="Upload logo" name="submit">
+  <a class="btn btn-primary btn-mrg" href="./" title="Home">Home</a>
+  <a class="btn btn-info btn-mrg" href="./admin.php?id=settings" title="Mikhmon Settings">Settings</a>
+	</center>		
+			
+            </div>
+            </div>
+          </div>
+
+
+</form>
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
 <?php
 if(isset($_POST["submit"])) {
 $logo_dir = "./img/";

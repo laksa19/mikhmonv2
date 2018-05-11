@@ -18,7 +18,7 @@ function RequiredV(){
         grpi.value = "5m";
       }
     } else if (exp === 'ntf' || exp === 'ntfc') {
-      val.display = 'table-row';
+      val.display= 'table-row';
       vali.type = 'text';
       if (vali.value === "") {
         vali.value = "";

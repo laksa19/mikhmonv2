@@ -44,14 +44,23 @@ $url = $_SERVER['REQUEST_URI'];
 // get variable
 $hotspot = $_GET['hotspot'];
 $hotspotuser = $_GET['hotspot-user'];
+$userbyname = $_GET['hotspot-user'];
 $userbyprofile = $_GET['user-by-profile'];
 $removeuseractive = $_GET['remove-user-active'];
+$removehost = $_GET['remove-host'];
+$removeipbinding = $_GET['remove-ip-binding'];
 $removehotspotuser = $_GET['remove-hotspot-user'];
 $removeuserprofile = $_GET['remove-user-profile'];
 $resethotspotuser = $_GET['reset-hotspot-user'];
 $enablehotspotuser = $_GET['enable-hotspot-user'];
 $disablehotspotuser = $_GET['disable-hotspot-user'];
+$enableipbinding = $_GET['enable-ip-binding'];
+$disableipbinding = $_GET['disable-ip-binding'];
 $userprofile = $_GET['user-profile'];
+$userprofilebyname = $_GET['user-profile'];
+$macbinding = $_GET['mac'];
+$ipbinding = $_GET['addr'];
+$srv = $_GET['srv'];
 
 }
 ?>
@@ -67,7 +76,8 @@ if(!isset($_SESSION["$userhost"])){
 <?php
 // logout
 if($hotspot == "logout"){
-  echo "<b>Logout...</b>";
+  echo "<b class='cl-w'>Logout...</b>";
+  echo "<div class='loader'></div>";
   session_destroy();
   echo "<script>window.location='./admin.php?id=login'</script>";
 }
@@ -75,16 +85,6 @@ if($hotspot == "logout"){
 // redirect to home
 elseif(substr($url,-1) == "/"){
   ?>
-<div class="header">
-<table style="font-weight:bold;">
-  <tr>
-    <td>Welcome <?php echo $identity;?></td>
-  </tr>
-  <tr>
-    <td>Login by <?php echo $userhost;?></td>
-  </tr>
-</table>
-</div>
 <?php
   include_once('./include/home.php');
   $_SESSION['ubn'] = "";
@@ -95,9 +95,15 @@ elseif($hotspot == "log"){
 	include_once('./include/log.php');
 }
 
+// about
+elseif($hotspot == "about"){
+  include_once('./include/about.php');
+}
+
 // bad request
 elseif(substr($url,-1) == "="){
   echo "<b>Bad request! redirect to Home...</b>";
+  echo "<div class='loader'></div>";
   echo "<script>window.location='./'</script>";
 }
 
@@ -143,25 +149,29 @@ elseif(substr($hotspotuser,0,1) == "*"){
 
 // remove hotspot user
 elseif($removehotspotuser != ""){
-  echo "<b>Processing...</b>";
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
   include_once('./process/removehotspotuser.php');
 }
 
 // reset hotspot user
 elseif($resethotspotuser != ""){
-  echo "<b>Processing...</b>";
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
   include_once('./process/resethotspotuser.php');
 }
 
 // enable hotspot user
 elseif($enablehotspotuser != ""){
-  echo "<b>Processing...</b>";
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
   include_once('./process/enablehotspotuser.php');
 }
 
 // disable hotspot user
 elseif($disablehotspotuser != ""){
-  echo "<b>Processing...</b>";
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
   include_once('./process/disablehotspotuser.php');
 }
 
@@ -185,7 +195,8 @@ elseif(substr($userprofile,0,1) == "*"){
 
 // remove user profile
 elseif($removeuserprofile != ""){
-  echo "<b>Processing...</b>";
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
   include_once('./process/removeuserprofile.php');
 }
 
@@ -193,13 +204,65 @@ elseif($removeuserprofile != ""){
 elseif($hotspot == "active"){
   $_SESSION['ubp'] = "";
   $_SESSION['hua'] = "hotspotactive";
+  echo "<div class='loader'></div>";
   include_once('./include/hotspotactive.php');
+}
+
+// hotspot hosts
+elseif($hotspot == "hosts" || $hotspot == "hostp" || $hotspot == "hosta"){
+  include_once('./include/hosts.php');
+}
+
+// hotspot bindings
+elseif($hotspot == "binding"){
+  include_once('./include/binding.php');
+}
+
+// hotspot Ip Bindings
+elseif($hotspot == "ipbinding"){
+  include_once('./include/ipbinding.php');
+}
+
+// enable hotspot user
+elseif($enableipbinding != ""){
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
+  include_once('./process/enableipbinding.php');
+}
+
+// disable hotspot user
+elseif($disableipbinding != ""){
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
+  include_once('./process/disableipbinding.php');
 }
 
 // remove user active
 elseif($removeuseractive != ""){
-  echo "<b>Processing...</b>";
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
   include_once('./process/removeuseractive.php');
+}
+
+// remove host
+elseif($removehost != ""){
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
+  include_once('./process/removehost.php');
+}
+
+// remove ipbinding
+elseif($removeipbinding != ""){
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
+  include_once('./process/removeipbinding.php');
+}
+
+// makebinding
+elseif($macbinding != ""){
+  echo "<b class='cl-w'>Processing...</b>";
+  echo "<div class='loader'></div>";
+  include_once('./process/makebinding.php');
 }
 
 // selling
@@ -208,5 +271,26 @@ elseif($hotspot == "selling"){
 }
 ?>
   </div>
+  <!--
+  <footer class="main-footer">
+    <strong> <a href="https://laksa19.github.io" target="_blank">Mikhmon</a> &bull; Template by <a href="https://adminlte.io/">AdminLTE</a></strong>
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version </b> 2.9
+    </div>
+  </footer>
+-->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="js/autoreload.js"></script>
+<script src="js/mikhmon.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.js"></script>
   </body>
 </html>

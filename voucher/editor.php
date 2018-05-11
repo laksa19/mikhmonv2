@@ -49,11 +49,12 @@ if($id == "default" || $id == "rdefault"){
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>.:: MIKHMON ::.</title>
+		<title>.:: MIKHMON Template Editor::.</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="pragma" content="no-cache" />
 		<link rel="icon" href="../img/favicon.png" />
-		<link rel="stylesheet" href="../css/style.css" media="screen">
+		<link rel="stylesheet" href="../css/mikhmon.css">
+  <link rel="stylesheet" href="../css/adminlte.min.css">
 		<style>
 body {
   color: #fff;
@@ -71,35 +72,35 @@ b{
   text-shadow: 1px 1px 4px #424242;
 }
 
-		</style>
+	</style>
 	</head>
 	<body align="center">
 	  <form autocomplete="off" method="post" action="">
-	    <table>
+	    <table class="table">
 	      <tr>
 	        <td>
 	          <b style="float:left;">| Variable</b>
 	        </td>
 	        <td style="float:left;">
-	          <b>| Editor </b><input type="submit" style="font-weight:bold;" title="Save template" class="btnsubmit" name="save" value="Save"/>
-	          <a class="btnsubmit" href="../" title="Close">Close</a>
-	          <a class="btnsubmit" href="./editor.php?id=default" title="Default voucher template">Default</a>
-	          <a class="btnsubmit" href="./editor.php?id=thermal" title="Default voucher template for thermal printer">Thermal</a>
-	          <a class="btnsubmit" href="./editor.php?id=small" title="Small voucher template">Small</a>
+	          <b>| Editor </b><input type="submit" style="font-weight:bold;" title="Save template" class="btn btn-primary" name="save" value="Save"/>
+	          <a class="btn btn-warning" href="../" title="Close">Close</a>
+	          <a class="btn btn-default" href="./editor.php?id=default" title="Default voucher template">Default</a>
+	          <a class="btn btn-info" href="./editor.php?id=thermal" title="Default voucher template for thermal printer">Thermal</a>
+	          <a class="btn btn-secondary" href="./editor.php?id=small" title="Small voucher template">Small</a>
 	          <b>| Reset</b>
-	          <a class="btnsubmit" href="./editor.php?id=rdefault" title="Default voucher template">Default</a>
-	          <a class="btnsubmit" href="./editor.php?id=rthermal" title="Default voucher template for thermal printer">Thermal</a>
-	          <a class="btnsubmit" href="./editor.php?id=rsmall" title="Small voucher template">Small</a>
+	          <a class="btn btn-default" href="./editor.php?id=rdefault" title="Default voucher template">Default</a>
+	          <a class="btn btn-info" href="./editor.php?id=rthermal" title="Default voucher template for thermal printer">Thermal</a>
+	          <a class="btn btn-secondary" href="./editor.php?id=rsmall" title="Small voucher template">Small</a>
 	        </td>
 	      </tr>
 	      <tr>
-	        <td>
-	          <textarea disabled class="editor" rows=40 cols=30>
+	        <td style="width:20%">
+	          <textarea class="form-control" disabled class="editor" rows=30 style="width:100%" >
 	            <?=file_get_contents ('./variable.php');?>
 	          </textarea>
 	        </td>
-	        <td>
-	          <textarea id="editor" class="editor" name="editor" rows=40 cols=150>
+	        <td style="width:80%">
+	          <textarea class="form-control" id="editor" class="editor" name="editor" style="width:100%" rows=30>
 	            <?php if($id == "default"){?>
 	            <?=file_get_contents ('./template.php');?>
 	            <?php }elseif($id == "thermal"){?>
