@@ -87,7 +87,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
 	$loginby = $hotspotactive['login-by'];
 	
 	echo "<tr>";
-	echo "<td style='text-align:center;'><a  title='Remove ". $user . "' href='./?remove-user-active=". $id . "'><i class='fa fa-minus-square'></i></a></td>";
+	echo "<td style='text-align:center;'><a  title='Remove ". $user . "' href='./?remove-user-active=". $id . "'><i class='fa fa-minus-square text-danger'></i></a></td>";
 	echo "<td>" . $server . "</td>";
 	echo "<td><a title='Open User " .$user. "' style='color:#000;' href=./?hotspot-user=" .$user. ">" .$user."</a></td>";
 	echo "<td>" . $address . "</td>";
