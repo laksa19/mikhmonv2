@@ -1,1 +1,1 @@
-<?php $iphost="192.168.1.2"; $userhost="app"; $passwdhost="Merdeka@1945"; $useradm="mikhmon"; $passadm="Lakusa19"; $hotspotname="Kemangi 41"; $dnsname="k41.net"; $curency="Rp";  $areload="5";  $iface="1";?>
+<?php $iphost=""; $userhost=""; $passwdhost=""; $useradm="mikhmon"; $passadm="1234"; $hotspotname="Kemangi 41"; $dnsname="k41.net"; $curency="Rp";  $areload="5";  $iface="1";?>
