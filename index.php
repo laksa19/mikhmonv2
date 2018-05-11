@@ -204,7 +204,6 @@ elseif($removeuserprofile != ""){
 elseif($hotspot == "active"){
   $_SESSION['ubp'] = "";
   $_SESSION['hua'] = "hotspotactive";
-  echo "<div class='loader'></div>";
   include_once('./include/hotspotactive.php');
 }
 
