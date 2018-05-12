@@ -60,7 +60,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
                   <div class="col-sm-12">
 			  
 <div class="div-t">			   
-<table id="tFilter" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+<table id="tFilter" class="table table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
   <thead>
   <tr>
     <th></th>
@@ -89,7 +89,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
 	echo "<tr>";
 	echo "<td style='text-align:center;'><a  title='Remove ". $user . "' href='./?remove-user-active=". $id . "'><i class='fa fa-minus-square text-danger'></i></a></td>";
 	echo "<td>" . $server . "</td>";
-	echo "<td><a title='Open User " .$user. "' style='color:#000;' href=./?hotspot-user=" .$user. ">" .$user."</a></td>";
+	echo "<td><a title='Open User " .$user. "' style='color:#000;' href=./?hotspot-user=" .$user. "><i class='fa fa-edit'></i> " .$user."</a></td>";
 	echo "<td>" . $address . "</td>";
 	echo "<td>" . $mac . "</td>";
 	echo "<td style='text-align:right;'>" . $uptime . "</td>";

@@ -184,7 +184,7 @@ $shd = "hidden";
 		  <input  style="width: 250px;" type="<?php echo $shd;?>"  data-toggle="modal" data-target="#remdata" name="remdata" class="btn btn-danger btn-mrg" onclick="location.href='#remdata';" title="Delete Data <?php echo $filedownload;?>" value="Delete data <?php echo $filedownload;?>">
 		</div>
 		  <div style="padding-top:10px; overflow-x:auto; overflow-y:auto; max-height: 70vh;">
-			<table id="selling" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+			<table id="selling" class="table table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
 
 				<tr>
 				  <th colspan=2 >Selling report <?php echo $filedownload;?><b style="font-size:0;">,</b></th>

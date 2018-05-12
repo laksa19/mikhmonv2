@@ -47,7 +47,7 @@ error_reporting(0);
 <div class="col-sm-12">
 			  
 <div class="div-t"> 			   
-<table id="tFilter" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+<table id="tFilter" class="table table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
   <thead>
   <tr> 
 		<th ></th>
