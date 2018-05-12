@@ -276,7 +276,7 @@ $routerboard = $getrouterboard[0];
         </div>
           <div class="card-body">
             <div class="row">
-                <textarea style="overflow: auto; width:100%; height:347px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
+                <textarea style="overflow: auto; width:100%; height:346px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
 <?php
 // move hotspot log to disk
   $getlogging = $API->comm("/system/logging/print", array(
