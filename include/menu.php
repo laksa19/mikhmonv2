@@ -245,7 +245,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-light"><?php echo $mpage;?></h1>
+            <h3 class="m-0 text-light"><?php echo $mpage;?></h3>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
