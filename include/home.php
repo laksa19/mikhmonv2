@@ -59,7 +59,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
                 <span class="info-box-number"><?php echo $clock['date'];?></span>
                 <span class="info-box-number"><?php echo $clock['time'];?></span>
                 <div class="progress">
-                  <div class="progress-bar" style="width:100%"></div>
+                  <div class="progress-bar" style="width:<?php echo substr($clock['time'],-2)/60*100;?>%"></div>
                 </div>
                 <span class="progress-description">
                   
