@@ -138,7 +138,7 @@ error_reporting(0);
     <a class="btn btn-danger btn-mrg"  href="./?remove-hotspot-user=<?php echo $uid;?>"> <i class="fa fa-minus-square"></i> Remove</a>
     <a class="btn btn-secondary btn-mrg"  title="Print" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=no','_blank','width=310,height=450').print();"> <i class="fa fa-print"></i> Print</a>
     <a class="btn btn-info btn-mrg"  title="Print QR" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=yes','_blank','width=310,height=450').print();"> <i class="fa fa-qrcode"></i> QR</a>
-    <?php if($utimelimit == "1s"){echo '<a class="btn btn-info btn-mrg"  href="./?reset-hotspot-user='.$uid.'"> <i class="fa fa-reset"></i> Reset</a>';}?>
+    <?php if($utimelimit == "1s"){echo '<a class="btn btn-info btn-mrg"  href="./?reset-hotspot-user='.$uid.'"> <i class="fa fa-retweet"></i> Reset</a>';}?>
     </th>
   </tr>
   <tr>
