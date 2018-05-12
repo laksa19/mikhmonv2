@@ -43,8 +43,7 @@ if(isset($_POST['save'])){
     $reload = ($_POST['areload']);
     $iface = ($_POST['iface']);
     if($reload < 5 ){$sareload = 5;}elseif($reload >= 5){$sareload = $reload;}
-
-
+ 
 		// Save Local
 		if($setupdata == "local"){
 		$mconfig = './include/config.php';
@@ -130,7 +129,7 @@ if(isset($_POST['save'])){
     x.type = 'text';
     } else {
     x.type = 'password';
-    }}
+  }}
 </script>
 
 
@@ -179,7 +178,7 @@ if(isset($_POST['save'])){
 	  <td>IP MikroTik  </td><td><input class="form-control" type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?php echo $iphost; ?>" required="1"/></td>
 	</tr>
 	<tr>
-		<td>Username  </td><td><input class="form-control" type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
+		<td>Username  </td><td><input class="form-control" id="usermk" type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
 	</tr>
 	<tr>
 		<td>Password  </td><td>
@@ -207,7 +206,7 @@ if(isset($_POST['save'])){
 			
 	<table class="table">
 	<tr>
-	<td>Username  </td><td><input class="form-control" type="text" size="10" name="useradm" title="User Admin" value="<?php echo $useradm; ?>" required="1"/></td>
+	<td>Username  </td><td><input class="form-control" id="useradm" type="text" size="10" name="useradm" title="User Admin" value="<?php echo $useradm; ?>" required="1"/></td>
 	</tr>
 	<tr>
 	<td>Password  </td><td>
@@ -273,9 +272,15 @@ if(isset($_POST['save'])){
 </div>
 </div>
 <!-- /.login-box -->
-
-
-
+<script type="text/javascript">
+	var mk = document.getElementById('usermk');
+  	var adm = document.getElementById('useradm');
+	useradm.addEventListener("input", function (e) {
+  	if (mk.value === adm.value){
+  		alert('Username MikroTik should not be the same with username Admin');
+  		adm.value = '';
+  	}});
+</script>
 
 
 
