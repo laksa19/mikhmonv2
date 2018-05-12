@@ -21,6 +21,8 @@ if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr
 	$title12 = "Cek Status";
 	$title13 = " Hari";
 	$title14 = " Jam";
+	$title15 = "Aktif";
+	$title16 = "Expired";
 }else{
 	$title = "Voucher Status";
 	$title1 = "User/Voucher Code";
@@ -37,7 +39,8 @@ if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr
 	$title12 = "Check Status";
 	$title13 = " Day";
 	$title14 = " Hour";
-
+	$title15 = "Active";
+	$title16 = "Expired";
 }
 
 ?>
@@ -155,18 +158,15 @@ textarea,input,select {
 					}
 				 $cekall;
 
-	if($cek == ""){}else{
-	$API->write('/ip/hotspot/user/print', false);
-	$API->write('?=name='.$name.'');
-	$ARRAY2 = $API->read();
-	$regtable = $ARRAY2[0];
-	$user = $regtable['name'];
-	$profile = $regtable['profile'];
-	$uptime = $regtable['uptime'];
-	$getbyteo = $regtable['bytes-out'];
+	
+	$getuser = $API->comm("/ip/hotspot/user/print", array("?name"=> "$name"));
+	$user = $getuser[0]['name'];
+	$profile = $getuser[0]['profile'];
+	$uptime = $getuser[0]['uptime'];
+	$getbyteo = $getuser[0]['bytes-out'];
 	$byteo = formatBytes2($getbyteo, 0);
-	$limitup = $regtable['limit-uptime'];
-	$limitbyte = $regtable['limit-bytes-out'];
+	$limitup = $getuser[0]['limit-uptime'];
+	$limitbyte = $getuser[0]['limit-bytes-out'];
 	if($limitbyte == ""){$dataleft = "Unlimited";}else{$dataleft = formatBytes2($limitbyte-$getbyteo,0);}
 	}
 	if($user == "" ){
@@ -193,7 +193,14 @@ textarea,input,select {
 	echo "		<td >$title4</td>";
 	echo "		<td > $byteo</td>";
 	echo "	</tr>";
-	if($limitup == "1s"  || $uptime == $limitup || $getbyteo == $limitbyte){}else{
+	if($limitup == "1s"  || $uptime == $limitup || $getbyteo == $limitbyte){
+	echo "	<tr>";
+	echo "		<td >Status</td>";
+	echo "		<td >$title16</td>";
+	echo "	</tr>";
+	echo "</table>";
+	echo "</div>";	
+	}else{
 	echo "	<tr>";
 	echo "		<td >$title5</td>";
 	echo "		<td > $dataleft</td>";
@@ -210,6 +217,10 @@ textarea,input,select {
 	echo "		<td >$title8</td>";
 	echo "		<td >$exp</td>";
 	echo "	</tr>";
+	echo "	<tr>";
+	echo "		<td >Status</td>";
+	echo "		<td >$title15</td>";
+	echo "	</tr>";
 	echo "</table>";
 	echo "</div>";
 	}
@@ -217,7 +228,7 @@ textarea,input,select {
 	$API->disconnect();
 	
 }
-}
+
 ?>
 </div>
 </body>
