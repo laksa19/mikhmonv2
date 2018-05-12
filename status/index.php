@@ -42,7 +42,9 @@ if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr
 	$title15 = "Active";
 	$title16 = "Expired";
 }
-
+if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){
+	$s = "";
+}else{$s = "s";}
 ?>
 <!DOCTYPE html>
 <html>
@@ -141,19 +143,19 @@ textarea,input,select {
 						$cekall = $cekw1 + $cekd1 .$title13;
 					}else{
 						$cekall = $cekw1 + $cekd1;
-						if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title13."s";}else{$cekall = $cekw1 + $cekd1 .$title13;}
+						if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title13.$s;}else{$cekall = $cekw1 + $cekd1 .$title13;}
 					}
 				}elseif (substr($cek, -1) == "h"){
 					$cek1 = substr($cek, 0,-1);
 					$cekall = $cek1;
-					if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title14."s";}else{$cekall = $cekw1 + $cekd1 .$title14;}
+					if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title14.$s;}else{$cekall = $cekw1 + $cekd1 .$title14;}
 				}elseif (substr($cek, -1) == "d"){
 					$cek1 = substr($cek, 0,-1);
 					$cekall = $cek1 .$title13;
 				}elseif (substr($cek, -1) == "w"){
 					$cek1 = substr($cek, 0,-1);
 					$cekall = ($cek1*7);
-					if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title13."s";}else{$cekall = $cekw1 + $cekd1 .$title13;}
+					if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title13.$s;}else{$cekall = $cekw1 + $cekd1 .$title13;}
 				}elseif($cekall == ""){
 					}
 				 $cekall;
