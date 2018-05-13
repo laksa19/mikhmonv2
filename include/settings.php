@@ -133,77 +133,66 @@ if(isset($_POST['save'])){
 </script>
 
 
-<div style="padding: 10px;" class="register-box settings">
-  <!-- /.login-logo -->
-  <div class="login-logo">
-    <p style="color: #fff"><b>Mikhmon</b> Settings</p>
-  </div>
-  <div class="card">
-    <div class="card-body login-card-body">
-
-<form autocomplete="off" method="post" action="">
-	<div class="card card-primary card-outline">
-        <div class="card-header">
-            <h3 class="card-title">Settings</h3>
-              <!-- /.card-tools -->
-        </div>
-            <!-- /.card-header -->
+<div style="padding: 10px;" class="register-box settings card-primary">
+  <div class="card card-primary">
     <div class="card-body">
-        <div class="row">	
-	  <select class="form-control col-4 btn-mrg" style="float:left;" name="setupdata" required="1"> 
-			<option value="local" title="Save local Mikhmon">Local</option>
-			<option value="export" title="Export to MikroTik">Export</option>
-			<option value="import" title="Import from MikroTik">Import</option>
-		</select> &nbsp;
-		<input class="btn btn-primary btn-mrg" type="submit" style="font-weight:bold;" name="save" value="Save"/> &nbsp;
-		<?php if($_SESSION["$userhost"] != "$userhost"){ echo '<a class="btn btn-secondary btn-mrg" href="./admin.php?id=login" title="Login">Login</a>';
-		}else{echo '<a class="btn btn-secondary btn-mrg" href="./" title="Home">Home</a>';}?> &nbsp;
-		<a class="btn btn-info btn-mrg" href="./admin.php?id=connect" title="Test connection to MikroTik ">Connect</a>
-		<a class="btn btn-warning btn-mrg" title="Template editor" href="./voucher/editor.php?id=default">Template Editor</a>
-		<a class="btn btn-success btn-mrg" title="Upload Logo Voucher" href="./admin.php?id=uplogo">Upload Logo</a>	
-        </div>
-    </div>
-    </div>
-	<div class="card card-primary card-outline">
-        <div class="card-header">
-            <h3 class="card-title">MikroTik<?php echo " <b>". $_SESSION["connect"]."</b>";?></h3>
-              <!-- /.card-tools -->
-        </div>
-           <!-- /.card-header -->
-        <div class="card-body">
-    		<div class="row">  
+    	<form autocomplete="off" method="post" action="">
+    		<div class="card card-primary">
+    		    <div class="card-header">
+    		    	<h3 class="card-title">Mikhmon Settings</h3>
+    		    </div>
+    			<div class="card-body">
+        			<div class="form-group">
+            			<div class="input-group">
+              				<select class="form-control" style="float:left;" name="setupdata" required="1"> 
+								<option value="local" title="Save local Mikhmon">Save Local</option>
+								<option value="export" title="Export to MikroTik">Export Mikhmon data to MikroTik</option>
+								<option value="import" title="Import from MikroTik">Import Mikhmon data  from MikroTik</option>
+							</select>
+							<div class="input-group-append">
+							<input class="input-group-text" type="submit" style="cursor: pointer;" name="save" value="Save"/>
+							<a class="input-group-text" href="./admin.php?id=connect" title="Test connection to MikroTik ">Connect</a>
+        					<?php if($_SESSION["$userhost"] != "$userhost"){ echo '<a class="input-group-text" href="./admin.php?id=login" title="Login">Login</a>';
+							}else{echo '<a class="input-group-text"  href="./" title="Dashboard">Dashboard</a>';}?>      
+              				</div>
+            			</div>
+          			</div>
 
-<table class="table">
-	<tr>
-	  <td>IP MikroTik  </td><td><input class="form-control" type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?php echo $iphost; ?>" required="1"/></td>
-	</tr>
-	<tr>
-		<td>Username  </td><td><input class="form-control" id="usermk" type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
-	</tr>
-	<tr>
-		<td>Password  </td><td>
-			<div class="input-group">
-        		<input class="form-control" id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo $passwdhost ;?>" required="1"/>
-            		<div class="input-group-append">
-                		<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassMk()"></span>
-            		</div>
+    			</div>
     		</div>
-				
-		</td>
-	</tr>
-	</table>
-        </div>
-        </div>
-    </div>
-	<div class="card card-primary card-outline">
+		<div class="card card-primary">
+        	<div class="card-header">
+            	<h3 class="card-title">MikroTik<?php echo " <b>". $_SESSION["connect"]."</b>";?></h3>
+        	</div>
+        		<div class="card-body">
+    				<div class="row">  
+						<table class="table">
+							<tr>
+	  							<td>IP MikroTik  </td><td><input class="form-control" type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?php echo $iphost; ?>" required="1"/></td>
+							</tr>
+							<tr>
+								<td>Username  </td><td><input class="form-control" id="usermk" type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
+							</tr>
+							<tr>
+							<td>Password  </td><td>
+								<div class="input-group">
+        							<input class="form-control" id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo $passwdhost ;?>" required="1"/>
+            						<div class="input-group-append">
+                						<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassMk()"></span>
+            						</div>
+    							</div>
+								</td>
+							</tr>
+						</table>
+        			</div>
+        		</div>
+    	</div>
+	<div class="card card-primary">
        	<div class="card-header">
            <h3 class="card-title">Admin</h3>
-              <!-- /.card-tools -->
         </div>
-        <!-- /.card-header -->
     <div class="card-body">
-        <div class="row">
-			
+        <div class="row">		
 	<table class="table">
 	<tr>
 	<td>Username  </td><td><input class="form-control" id="useradm" type="text" size="10" name="useradm" title="User Admin" value="<?php echo $useradm; ?>" required="1"/></td>
@@ -227,7 +216,7 @@ if(isset($_POST['save'])){
         </div>
         </div>
     </div>
-	<div class="card card-primary card-outline">
+	<div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Mikhmon Data</h3>
               <!-- /.card-tools -->

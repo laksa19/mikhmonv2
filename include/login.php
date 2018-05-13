@@ -18,45 +18,32 @@
 session_start();
 ?>
 
-<div class="login-box">
-  <div class="login-logo"><img src="img/favicon.png" alt="MIKHMON Logo" style="opacity: .8">
-  
-    <div><b style="color:#fff">MIKHMON</b></div>
-  </div>
-  <!-- /.login-logo -->
+<div style="padding-top: 5%;"  class="login-box">
   <div class="card">
     <div class="card-body login-card-body">
-      <div style="text-align:center"></div>
-      <center><h3>LOGIN</h3></center>
-		  <?php if(isset($_POST['login'])){ echo '<div class="alert alert-danger alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                  <h5><i class="icon fa fa-ban"></i> Alert!</h5>';
-				  print_r($error);
-                echo'</div>'; }?>
+      <div class="text-center">
+        <img class="img-fluid" src="img/favicon.png" alt="User profile picture">
+      </div>
+      <h3 style="margin: 30px;" class="text-center">MIKHMON</h3>
       <form autocomplete="off" action="" method="post">
         <div class="form-group has-feedback">
           <input class="form-control" type="text" name="user" placeholder="User" required="1" autofocus>
-          
         </div>
         <div class="form-group has-feedback">
           <input class="form-control" type="password" name="pass" placeholder="Password" required="1">
-          
         </div>
         <div class="row">
-          <!-- /.col -->
           <div class="col-12">
-		        <input class="btn btn-primary btn-block " type="submit" name="login" value="Login">
-		  
+		        <input class="btn btn-primary btn-block" type="submit" name="login" value="Login">
           </div>
-          <!-- /.col -->
         </div>
-      </form>
 
+      </form>
+    <div style="margin-top: 10px;" class="block">
+    <?php if(isset($_POST['login'])){ echo '<div class="alert alert-danger alert-dismissible"><h5><i class="icon fa fa-ban"></i> Alert!</h5>' .$error.'</div>'; }?>
     </div>
-    <!-- /.login-card-body -->
+    </div>
   </div>
 </div>
-<!-- /.login-box -->
-
 </body>
 </html>
