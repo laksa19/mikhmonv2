@@ -111,13 +111,14 @@ for ($i=0; $i<$TotalReg; $i++){
 	echo "<td style='color:".$tcolor.";'>" . $uuptime;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo $ucomment;}; echo "</td>";
 	echo "<td style='color:".$tcolor.";'>";
-	if($ucomment == ""){}else{echo "<a style='color:".$tcolor.";' title='Print' href='./voucher/print.php?id=" . $ucomment . "&qr=no' target='_blank'>Default</a>";echo "</td>";
+  
+	if(substr($ucomment,0,2) == "vc" || substr($ucomment,0,2) == "up"){echo "<a style='color:".$tcolor.";' title='Print' href='./voucher/print.php?id=" . $ucomment . "&qr=no' target='_blank'>Default</a>";echo "</td>";
   }
   echo "<td style='color:".$tcolor.";'>";
-  if($ucomment == ""){}else{echo "<a style='color:".$tcolor.";' title='Print QR' href='./voucher/print.php?id=" . $ucomment . "&qr=yes' target='_blank'> QR</a>";echo "</td>";
+  if(substr($ucomment,0,2) == "vc" || substr($ucomment,0,2) == "up"){echo "<a style='color:".$tcolor.";' title='Print QR' href='./voucher/print.php?id=" . $ucomment . "&qr=yes' target='_blank'> QR</a>";echo "</td>";
   }
   echo "<td style='color:".$tcolor.";'>";
-  if($ucomment == ""){}else{echo "<a style='color:".$tcolor.";' title='Print Small' href='./voucher/print.php?id=" . $ucomment . "&small=yes' target='_blank'> Small</a>";echo "</td>";
+  if(substr($ucomment,0,2) == "vc" || substr($ucomment,0,2) == "up"){echo "<a style='color:".$tcolor.";' title='Print Small' href='./voucher/print.php?id=" . $ucomment . "&small=yes' target='_blank'> Small</a>";echo "</td>";
   }
   
   echo "</tr>";
