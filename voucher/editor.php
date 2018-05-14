@@ -82,15 +82,15 @@ b{
 	          <b style="float:left;">| Variable</b>
 	        </td>
 	        <td style="float:left;">
-	          <b>| Editor </b><input type="submit" style="font-weight:bold;" title="Save template" class="btn btn-primary btn-mrg" name="save" value="Save"/>
-	          <a class="btn btn-warning btn-mrg" href="../" title="Close">Close</a>
-	          <a class="btn btn-default btn-mrg" href="./editor.php?id=default" title="Default voucher template">Default</a>
-	          <a class="btn btn-info btn-mrg" href="./editor.php?id=thermal" title="Default voucher template for thermal printer">Thermal</a>
-	          <a class="btn btn-secondary btn-mrg" href="./editor.php?id=small" title="Small voucher template">Small</a>
+	          <b>| Editor </b><input type="submit" style="font-weight:bold;" title="Save template" class="btn btn-sm btn-primary btn-mrg" name="save" value="Save"/>
+	          <a class="btn btn-sm btn-warning btn-mrg" href="../" title="Close">Close</a>
+	          <a class="btn btn-sm btn-default btn-mrg" href="./editor.php?id=default" title="Default voucher template">Default</a>
+	          <a class="btn btn-sm btn-info btn-mrg" href="./editor.php?id=thermal" title="Default voucher template for thermal printer">Thermal</a>
+	          <a class="btn btn-sm btn-secondary btn-mrg" href="./editor.php?id=small" title="Small voucher template">Small</a>
 	          <b>| Reset</b>
-	          <a class="btn btn-default btn-mrg" href="./editor.php?id=rdefault" title="Default voucher template">Default</a>
-	          <a class="btn btn-info btn-mrg" href="./editor.php?id=rthermal" title="Default voucher template for thermal printer">Thermal</a>
-	          <a class="btn btn-secondary btn-mrg" href="./editor.php?id=rsmall" title="Small voucher template">Small</a>
+	          <a class="btn btn-sm btn-default btn-mrg" href="./editor.php?id=rdefault" title="Default voucher template">Default</a>
+	          <a class="btn btn-sm btn-info btn-mrg" href="./editor.php?id=rthermal" title="Default voucher template for thermal printer">Thermal</a>
+	          <a class="btn btn-sm btn-secondary btn-mrg" href="./editor.php?id=rsmall" title="Small voucher template">Small</a>
 	        </td>
 	      </tr>
 	      <tr>
