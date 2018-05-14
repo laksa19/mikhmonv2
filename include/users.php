@@ -49,22 +49,22 @@ error_reporting(0);
 <div class="col-sm-12">
 			  
 <div class="div-t">			   
-<table id="tFilter" class="table table-bordered table-hover dataTable text-nowrap" style="white-space: nowrap;" role="grid" aria-describedby="example2_info">
+<table id="tFilter" class="table table-sm table-bordered table-hover dataTable text-nowrap" style="white-space: nowrap;" role="grid" aria-describedby="example2_info">
   <thead>
   <tr>
     <th style="min-width:75px;" ></th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input class="form-control" style="width:80%;" type="text" id="filterTable" size="auto" onkeyup="fTable()" placeholder="Server" title="Filter by Hotspot Server">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable" size="auto" onkeyup="fTable()" placeholder="Server" title="Filter by Hotspot Server">
       </div>
     </th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input class="form-control" style="width:80%;" type="text" id="filterTable1" size="auto" onkeyup='fTable1()' placeholder="Name" title="Filter by Name">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable1" size="auto" onkeyup='fTable1()' placeholder="Name" title="Filter by Name">
       </div>
     </th>
     <th>
-      <select class="form-control" onchange="window.location.href=this.value;" title="Filter by Profile">
+      <select class="form-control form-control-sm" onchange="window.location.href=this.value;" title="Filter by Profile">
         <option>
 <?php
 if($userbyprofile == ""){echo "Profile";}else {echo $userbyprofile;}
@@ -78,13 +78,13 @@ for ($i=0; $i<$TotalReg2; $i++){
 ?>
         </select>
     </th>
-    <th>Uptime</th>
+    <th class="align-middle">Uptime</th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input class="form-control" style="width:80%;" type="text" id="filterTable2" size="auto" onkeyup="fTable2()" placeholder="Comment" title="Filter by Comment">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable2" size="auto" onkeyup="fTable2()" placeholder="Comment" title="Filter by Comment">
       </div>
     </th>
-    <th colspan="3">Print</th>
+    <th class="text-center align-middle" colspan="3">Print</th>
     </tr>
   </thead>
   <tbody>

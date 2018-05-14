@@ -39,11 +39,11 @@ error_reporting(0);
 <div class="row">
 <div class="col-sm-12">
         
-<div class="input-group input-group-xs" style="max-width: 350px; margin: 5px;">
+<div class="input-group input-group-sm" style="max-width: 350px; margin: 5px;">
     <input id="filterTable1" size="auto" onkeyup="fTable1()" placeholder="Filter log messages" title="Filter log message"class="form-control float-right" type="text">
 </div>
 <div style="padding: 5px;" class="div-t">
-<table class="table" id="tFilter" >
+<table class="table table-sm" id="tFilter" >
 <?php
 	for ($i=0; $i<$TotalReg; $i++){
 	echo "<tr>";

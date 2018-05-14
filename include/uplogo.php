@@ -119,8 +119,8 @@ if ($uploadOk == 0) {
       </form>
     </div>
   <div class="card-footer">
-      <a class="btn btn-primary btn-mrg" href="./" title="Home"><i class='fa fa-tachometer'></i> Dashboard</a>
-      <a class="btn btn-info btn-mrg" href="./admin.php?id=settings" title="Mikhmon Settings"><i class='fa fa-gear'></i> Settings</a>
+      <a class="btn btn-sm btn-primary btn-mrg" href="./" title="Home"><i class='fa fa-tachometer'></i> Dashboard</a>
+      <a class="btn btn-sm btn-info btn-mrg" href="./admin.php?id=settings" title="Mikhmon Settings"><i class='fa fa-gear'></i> Settings</a>
     </div>
   </div>
 </div>

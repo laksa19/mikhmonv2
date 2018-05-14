@@ -27,10 +27,10 @@ session_start();
       <h3 style="margin: 30px;" class="text-center">MIKHMON</h3>
       <form autocomplete="off" action="" method="post">
         <div class="form-group has-feedback">
-          <input class="form-control" type="text" name="user" placeholder="User" required="1" autofocus>
+          <input class="form-control form-control-sm" type="text" name="user" placeholder="User" required="1" autofocus>
         </div>
         <div class="form-group has-feedback">
-          <input class="form-control" type="password" name="pass" placeholder="Password" required="1">
+          <input class="form-control form-control-sm" type="password" name="pass" placeholder="Password" required="1">
         </div>
         <div class="row">
           <div class="col-12">

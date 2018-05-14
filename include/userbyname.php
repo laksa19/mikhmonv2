@@ -144,7 +144,7 @@ error_reporting(0);
   <tr>
     <td>Enabled</td>
     <td>
-			<select class="form-control" name="disabled" required="1">
+			<select class="form-control form-control-sm" name="disabled" required="1">
 				<option value="<?php echo $ueduser;?>"><?php if($ueduser == "true"){echo "No";}else{echo "Yes";}?></option>
 				<option value="no">Yes</option>
 				<option value="yes">No</option>
@@ -154,7 +154,7 @@ error_reporting(0);
   <tr>
     <td>Server</td>
     <td>
-			<select class="form-control" name="server" required="1">
+			<select class="form-control form-control-sm" name="server" required="1">
 				<option><?php if($userver == ""){echo "all";}else{echo $userver;}?></option>
 				<option>all</option>
 				<?php $TotalReg = count($srvlist);
@@ -166,12 +166,12 @@ error_reporting(0);
 		</td>
 	</tr>
   <tr>
-    <td>Name</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="<?php echo $uname;?>"></td>
+    <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="<?php echo $uname;?>"></td>
   </tr>
   <tr>
     <td>Password</td><td>
 	<div class="input-group">
-      <input class="form-control" id="passUser" type="password" name="pass" autocomplete="new-password" value="<?php echo  $upass;?>">
+      <input class="form-control form-control-sm" id="passUser" type="password" name="pass" autocomplete="new-password" value="<?php echo  $upass;?>">
           <div class="input-group-append">
               <span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassUser()"></span>
           </div>
@@ -180,7 +180,7 @@ error_reporting(0);
   </tr>
   <tr>
     <td>Profile</td><td>
-			<select class="form-control" name="profile" required="1">
+			<select class="form-control form-control-sm" name="profile" required="1">
 				<option><?php echo $uprofile;?></option>
 				<?php $TotalReg = count($getprofile);
 				for ($i=0; $i<$TotalReg; $i++){
@@ -194,12 +194,12 @@ error_reporting(0);
     <td>Uptime</td><td><?php if($uuptime == 0){}else{echo $uuptime;}?></td>
   </tr>
   <tr>
-    <td>Time Limit</td><td><input class="form-control" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"><?php if($utimelimit == "1s"){echo "Expired";}?></td>
+    <td>Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"><?php if($utimelimit == "1s"){echo "Expired";}?></td>
   </tr>
   <tr>
     <td>Data Limit</td><td>
       <div class="input-group">
-        <input class="form-control" type="number" min="0" max="9999" name="datalimit" value="<?php echo $udatalimit;?>">
+        <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="<?php echo $udatalimit;?>">
           <div class="input-group-append">
               <span class="input-group-text">GB</span>
           </div>
@@ -207,7 +207,7 @@ error_reporting(0);
     </td>
   </tr>
   <tr>
-    <td>Comment</td><td><input class="form-control" type="text"  autocomplete="off" name="comment" value="<?php echo $ucomment;?>"></td>
+    <td>Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value="<?php echo $ucomment;?>"></td>
   </tr>
   <tr>
     <td>Price</td><td><?php if($getprice == 0){}else{echo $curency." ".number_format($getprice);}?></td>

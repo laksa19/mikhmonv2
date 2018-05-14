@@ -132,17 +132,17 @@ echo "<!--";
     </th>
   </tr>
   <tr>
-    <td>Name</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="<?php echo $pname;?>" required="1" autofocus></td>
+    <td>Name</td><td><input class="form-contclass="table table-sm type="text" autocomplete="off" name="name" value="<?php echo $pname;?>" required="1" autofocus></td>
   </tr>
   <tr>
-    <td>Shared Users</td><td><input class="form-control" type="text" size="4" autocomplete="off" name="sharedusers" value="<?php echo $psharedu;?>" required="1"></td>
+    <td>Shared Users</td><td><input class="form-contclass="table table-sm type="text" size="4" autocomplete="off" name="sharedusers" value="<?php echo $psharedu;?>" required="1"></td>
   </tr>
   <tr>
-    <td>Rate limit [up/down]</td><td><input class="form-control" type="text" name="ratelimit" autocomplete="off" value="<?php echo $pratelimit;?>" placeholder="Example : 512k/1M" ></td>
+    <td>Rate limit [up/down]</td><td><input class="form-contclass="table table-sm type="text" name="ratelimit" autocomplete="off" value="<?php echo $pratelimit;?>" placeholder="Example : 512k/1M" ></td>
   </tr>
   <tr>
     <td>Expired Mode</td><td>
-      <select class="form-control" onchange="RequiredV();" id="expmode" name="expmode" required="1">
+      <select class="form-contclass="table table-sm onchange="RequiredV();" id="expmode" name="expmode" required="1">
         <option value="<?php echo $getexpmode;?>"><?php echo $getexpmodet;?></option>
         <option value="0">None</option>
         <option value="rem">Remove</option>
@@ -153,13 +153,13 @@ echo "<!--";
     </td>
   </tr>
   <tr id="validity" style="display:none;">
-    <td>Validity</td><td><input class="form-control" type="text" id="validi" size="4" autocomplete="off" name="validity" value="<?php echo $getvalid;?>" required="1"></td>
+    <td>Validity</td><td><input class="form-contclass="table table-sm type="text" id="validi" size="4" autocomplete="off" name="validity" value="<?php echo $getvalid;?>" required="1"></td>
   </tr>
   <tr id="graceperiod" style="display:none;">
-    <td>Grace Period</td><td><input class="form-control" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" value="<?php echo $getgracep;?>" required="1"></td>
+    <td>Grace Period</td><td><input class="form-contclass="table table-sm type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" value="<?php echo $getgracep;?>" required="1"></td>
   </tr>
   <tr>
-    <td>Price <?php echo $curency;?></td><td><input class="form-control" type="number" min="0" name="price" value="<?php echo $getprice;?>" ></td>
+    <td>Price <?php echo $curency;?></td><td><input class="form-contclass="table table-sm type="number" min="0" name="price" value="<?php echo $getprice;?>" ></td>
   </tr>
   <tr>
     <td colspan="2">

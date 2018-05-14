@@ -88,22 +88,22 @@ echo "<!--";
 <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
-    <a class="btn btn-warning" href="./?hotspot=user-profiles"> <i class="fa fa-close btn-mrg"></i> Close</a>
-    <button type="submit" name="save" class="btn btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
+    <a class="btn btn-sm btn-warning" href="./?hotspot=user-profiles"> <i class="fa fa-close btn-mrg"></i> Close</a>
+    <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
     </th>
   </tr>
   <tr>
-    <td>Name</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
   </tr>
   <tr>
-    <td>Shared Users</td><td><input class="form-control" type="text" size="4" autocomplete="off" name="sharedusers" value="1" required="1"></td>
+    <td>Shared Users</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="sharedusers" value="1" required="1"></td>
   </tr>
   <tr>
-    <td>Rate limit [up/down]</td><td><input class="form-control" type="text" name="ratelimit" autocomplete="off" value="" placeholder="Example : 512k/1M" ></td>
+    <td>Rate limit [up/down]</td><td><input class="form-control form-control-sm" type="text" name="ratelimit" autocomplete="off" value="" placeholder="Example : 512k/1M" ></td>
   </tr>
   <tr>
     <td>Expired Mode</td><td>
-      <select class="form-control" onchange="RequiredV();" id="expmode" name="expmode" required="1">
+      <select class="form-control form-control-sm" onchange="RequiredV();" id="expmode" name="expmode" required="1">
         <option value="">Select...</option>
         <option value="0">None</option>
         <option value="rem">Remove</option>
@@ -114,13 +114,13 @@ echo "<!--";
     </td>
   </tr>
   <tr id="validity" style="display:none;">
-    <td>Validity</td><td><input class="form-control" type="text" id="validi" size="4" autocomplete="off" name="validity" value="" required="1"></td>
+    <td>Validity</td><td><input class="form-control form-control-sm" type="text" id="validi" size="4" autocomplete="off" name="validity" value="" required="1"></td>
   </tr>
   <tr id="graceperiod" style="display:none;">
-    <td>Grace Period</td><td><input class="form-control" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" placeholder="5m" value="5m" required="1"></td>
+    <td>Grace Period</td><td><input class="form-control form-control-sm" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" placeholder="5m" value="5m" required="1"></td>
   </tr>
   <tr>
-    <td>Price <?php echo $curency;?></td><td><input class="form-control" type="number" size="10" min="0" name="price" value="" ></td>
+    <td>Price <?php echo $curency;?></td><td><input class="form-control form-control-sm" type="number" size="10" min="0" name="price" value="" ></td>
   </tr>
   <tr>
     <td colspan="2">

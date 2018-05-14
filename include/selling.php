@@ -176,16 +176,16 @@ $shd = "hidden";
 		    <?php }?>
 			</p>
 		<div>	   
-		  <input class="form-control btn-mrg" style="float:left; max-width: 150px;" type="<?php echo $shf;?>" id="filterData" onkeyup="fTgl()" placeholder="Filter date" title="Filter selling date"> &nbsp;
-		  <button class="btn btn-primary btn-mrg" onclick="exportTableToCSV('report-mikhmon-<?php echo $filedownload;?>.csv')" title="Download selling report"><i class="fa fa-download"></i> CSV</button>
-		  <button class="btn btn-primary btn-mrg" onclick="location.href='./?hotspot=selling';" title="Reload all data"><i class="fa fa-search"></i> ALL</button>
+		  <input class="form-control form-control-sm btn-mrg" style="float:left; max-width: 150px;" type="<?php echo $shf;?>" id="filterData" onkeyup="fTgl()" placeholder="Filter date" title="Filter selling date"> &nbsp;
+		  <button class="btn btn-sm btn-primary btn-mrg" onclick="exportTableToCSV('report-mikhmon-<?php echo $filedownload;?>.csv')" title="Download selling report"><i class="fa fa-download"></i> CSV</button>
+		  <button class="btn btn-sm btn-primary btn-mrg" onclick="location.href='./?hotspot=selling';" title="Reload all data"><i class="fa fa-search"></i> ALL</button>
 		</div>  
 		<div style="margin: 5px;">
-		  <input  style="width: 250px;" type="<?php echo $shd;?>"  data-toggle="modal" data-target="#remdata" name="remdata" class="btn btn-danger btn-mrg" onclick="location.href='#remdata';" title="Delete Data <?php echo $filedownload;?>" value="Delete data <?php echo $filedownload;?>">
+		  <input  style="width: 250px;" type="<?php echo $shd;?>"  data-toggle="modal" data-target="#remdata" name="remdata" class="btn btn-sm btn-danger btn-mrg" onclick="location.href='#remdata';" title="Delete Data <?php echo $filedownload;?>" value="Delete data <?php echo $filedownload;?>">
 		</div>
 		  <div style="padding-top:10px; overflow-x:auto; overflow-y:auto; max-height: 70vh;">
-			<table id="selling" class="table table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
-
+			<table id="selling" class="table table-sm table-bordered table-hover dataTable text-nowrap thead-primay" role="grid" aria-describedby="example2_info">
+				<thead class="thead-light">
 				<tr>
 				  <th colspan=2 >Selling report <?php echo $filedownload;?><b style="font-size:0;">,</b></th>
 				  <th style="text-align:right;">Total</b></th>
@@ -197,6 +197,7 @@ $shd = "hidden";
 					<th >User</th>
 					<th style="text-align:right;">Price <?php echo $curency;?></th>
 				</tr>
+				</thead>
 				<?php
 					$TotalReg = count($ARRAY);
 

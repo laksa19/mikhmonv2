@@ -57,16 +57,16 @@ error_reporting(0);
     <th style="min-width:75px;" ></th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input class="form-control" style="width:80%;" type="text" id="filterTable" size="auto" onkeyup="fTable()" placeholder="Server" title="Filter by Hotspot Server">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable" size="auto" onkeyup="fTable()" placeholder="Server" title="Filter by Hotspot Server">
       </div>
     </th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input class="form-control" style="width:80%;" type="text" id="filterTable1" size="auto" onkeyup='fTable1()' placeholder="Name" title="Filter by Name">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable1" size="auto" onkeyup='fTable1()' placeholder="Name" title="Filter by Name">
       </div>
     </th>
     <th>
-      <select class="form-control" onchange="window.location.href=this.value;" title="Filter by Profile">
+      <select class="form-control form-control-sm" onchange="window.location.href=this.value;" title="Filter by Profile">
         <option>
 <?php
 if($userbyprofile == ""){echo "Profile";}else {echo $userbyprofile;}
@@ -83,7 +83,7 @@ for ($i=0; $i<$TotalReg2; $i++){
     <th>Uptime</th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input class="form-control" style="width:80%;" type="text" id="filterTable2" size="auto" onkeyup="fTable2()" placeholder="Comment" title="Filter by Comment">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable2" size="auto" onkeyup="fTable2()" placeholder="Comment" title="Filter by Comment">
       </div>
     </th>
     <th colspan="3">Print</th>

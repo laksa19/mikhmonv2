@@ -85,18 +85,18 @@ echo "<!--";
   <tr>
     <th colspan="5">
 <?php if($_SESSION['ubp'] != ""){
-    echo "    <a class='btn btn-warning btn-mrg' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
-    echo "    <a class='btn btn-warning btn-mrg' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
 }
 ?>
-    <button type="submit" name="save" class="btn btn-primary btn-mrg"> <i class="fa fa-save"></i> Save</button>
+    <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg"> <i class="fa fa-save"></i> Save</button>
     </th>
   </tr>
   <tr>
     <td>Server</td>
     <td>
-			<select class="form-control" name="server" required="1">
+			<select class="form-control form-control-sm" name="server" required="1">
 				<option>all</option>
 				<?php $TotalReg = count($srvlist);
 				for ($i=0; $i<$TotalReg; $i++){
@@ -107,12 +107,12 @@ echo "<!--";
 		</td>
 	</tr>
   <tr>
-    <td>Name</td><td><input class="form-control" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
   </tr>
   <tr>
     <td>Password</td><td>
         <div class="input-group">
-          <input class="form-control" id="passUser" type="password" name="pass" autocomplete="new-password" value="" required="1">
+          <input class="form-control form-control-sm" id="passUser" type="password" name="pass" autocomplete="new-password" value="" required="1">
             <div class="input-group-append">
               <span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassUser()"></span>
             </div>
@@ -121,7 +121,7 @@ echo "<!--";
   </tr>
   <tr>
     <td>Profile</td><td>
-			<select class="form-control" name="profile" required="1">
+			<select class="form-control form-control-sm" name="profile" required="1">
 				<?php $TotalReg = count($getprofile);
 				for ($i=0; $i<$TotalReg; $i++){
 				  echo "<option>" . $getprofile[$i]['name'] . "</option>";
@@ -131,12 +131,12 @@ echo "<!--";
 		</td>
 	</tr>
 	<tr>
-    <td>Time Limit</td><td><input class="form-control" type="text"  autocomplete="off" name="timelimit" value=""></td>
+    <td>Time Limit</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="timelimit" value=""></td>
   </tr>
   <tr>
     <td>Data Limit</td><td>
       <div class="input-group">
-        <input class="form-control" type="number" min="0" max="9999" name="datalimit" value="">
+        <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="">
           <div class="input-group-append">
             <span class="input-group-text">GB</span>
           </div>
@@ -144,7 +144,7 @@ echo "<!--";
     </td>
   </tr>
   <tr>
-    <td>Comment</td><td><input class="form-control" type="text"  autocomplete="off" name="comment" value=""></td>
+    <td>Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value=""></td>
   </tr>
   <tr>
     <td colspan="2">

@@ -47,18 +47,18 @@ error_reporting(0);
 <div class="col-sm-12">
 			  
 <div class="div-t"> 			   
-<table id="tFilter" class="table table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
+<table id="tFilter" class="table table-sm table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
   <thead>
   <tr> 
 		<th ></th>
-		<th >Name</th>
-		<th >Shared<br>Users</th>
-		<th >Rate<br>Limit</th>
-		<th >Expired Mode</th>
-		<th >Validity</th>
-		<th >Grace<br>Period</th>
-		<th >Price <?php echo $curency;?></th>
-		<th >Total<br>User</th>
+		<th class="align-middle">Name</th>
+		<th class="align-middle">Shared<br>Users</th>
+		<th class="align-middle">Rate<br>Limit</th>
+		<th class="align-middle">Expired Mode</th>
+		<th class="align-middle">Validity</th>
+		<th class="align-middle">Grace<br>Period</th>
+		<th class="text-right align-middle" >Price <?php echo $curency;?></th>
+		<th class="text-right align-middle">Total<br>User</th>
     </tr>
   </thead>
   <tbody>
