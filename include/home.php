@@ -55,7 +55,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
           $clock = $getclock[0];
         ?>
               <div class="info-box-content">
-                <span class="info-box-text">Syatem Date & Time</span>
+                <span class="info-box-text">System Date & Time</span>
                 <span class="info-box-number"><?php echo $clock['date'];?></span>
                 <span class="info-box-number"><?php echo $clock['time'];?></span>
                 <div class="progress">
