@@ -57,7 +57,7 @@ error_reporting(0);
         <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable" size="auto" onkeyup="fTable()" placeholder="Server" title="Filter by Hotspot Server">
       </div>
     </th>
-    <th style="min-width:85px;" >
+    <th colspan="2" style="min-width:85px;" >
       <div style="width:80%;">
         <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable1" size="auto" onkeyup='fTable1()' placeholder="Name" title="Filter by Name">
       </div>
@@ -107,7 +107,9 @@ for ($i=0; $i<$TotalReg; $i++){
 	echo "<td style='text-align:center;'><a  title='Remove ".$uname. "' href=./?remove-hotspot-user=".$uid . "><i class='fa fa-minus-square text-danger'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
 	if($udisabled == "true"){ $tcolor = "#ccc"; echo "<a title='Enable User ".$uname . "'  href='./?enable-hotspot-user=".$uid . "'><i class='fa fa-lock text-dark'></i></a></td>";}else{ $tcolor = "#000";echo "<a title='Disable User ".$uname . "'  href='./?disable-hotspot-user=".$uid . "'><i class='fa fa-unlock text-dark'></i></a></td>";}
 	echo "<td style='color:".$tcolor.";'>" . $userver;echo "</td>";
-	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo "</td>";
+  if($uname == $upass){$usermode = "vc";}else{$usermode = "up";} 
+  $popup = "javascript:window.open('./voucher/print.php?user=".$usermode."-".$uname."&qr=no','_blank','width=310,height=450').print();";
+	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo '</td><td class"text-center"><a style="color:'.$tcolor.';"  title="Print Thermal" href="'.$popup.'"><i class="fa fa-print text-right"></i></a></td>';
 	echo "<td style='color:".$tcolor.";'>" . $uprofile;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>" . $uuptime;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo $ucomment;}; echo "</td>";
@@ -121,7 +123,6 @@ for ($i=0; $i<$TotalReg; $i++){
   echo "<td style='color:".$tcolor.";'>";
   if(substr($ucomment,0,2) == "vc" || substr($ucomment,0,2) == "up"){echo "<a style='color:".$tcolor.";' title='Print Small' href='./voucher/print.php?id=" . $ucomment . "&small=yes' target='_blank'> Small</a>";echo "</td>";
   }
-	
 	echo "</tr>";
 	}
 ?>
