@@ -175,7 +175,7 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header">
+<div class="card-header bg-light">
     <h3 class="card-title pull-left">Generate User</h3>
 </div>
 <!-- /.card-header -->
@@ -185,7 +185,7 @@ echo "<!--";
 <div class="col-sm-12">
 
 <form autocomplete="off" method="post" action="">
-<table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
 <?php if($_SESSION['ubp'] != ""){
@@ -201,10 +201,10 @@ echo "<!--";
     </th>
   </tr>
   <tr>
-    <td>Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty"  calss="test" min="1" max="100" value="1" required="1"></td>
+    <td class="align-middle">Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty"  calss="test" min="1" max="100" value="1" required="1"></td>
   </tr>
   <tr>
-    <td>Server</td>
+    <td class="align-middle">Server</td>
     <td>
 		<select class="form-control form-control-sm" name="server" required="1">
 			<option>all</option>
@@ -217,7 +217,7 @@ echo "<!--";
 	</td>
 	</tr>
 	<tr>
-    <td>User Mode</td><td>
+    <td class="align-middle">User Mode</td><td>
 			<select class="form-control form-control-sm" onchange="defUserl();" id="user" name="user" required="1">
 				<option value="up">User & Pasword</option>
 				<option value="vc">User = Pasword</option>
@@ -225,7 +225,7 @@ echo "<!--";
 		</td>
 	</tr>
   <tr>
-    <td>User Length</td><td>
+    <td class="align-middle">User Length</td><td>
       <select class="form-control form-control-sm" id="userl" name="userl" required="1">
         <option>4</option>
 				<option>3</option>
@@ -238,10 +238,10 @@ echo "<!--";
     </td>
   </tr>
   <tr>
-    <td>Prefix</td><td><input class="form-control form-control-sm" type="text" size="4" maxlength="4" autocomplete="off" name="prefix" value=""></td>
+    <td class="align-middle">Prefix</td><td><input class="form-control form-control-sm" type="text" size="4" maxlength="4" autocomplete="off" name="prefix" value=""></td>
   </tr>
   <tr>
-    <td>Character</td><td>
+    <td class="align-middle">Character</td><td>
       <select class="form-control form-control-sm" name="char" required="1">
 				<option id="lower" style="display:block;" value="lower">abcd</option>
 				<option id="upper" style="display:block;" value="upper">ABCD</option>
@@ -255,7 +255,7 @@ echo "<!--";
     </td>
   </tr>
   <tr>
-    <td>Profile</td><td>
+    <td class="align-middle">Profile</td><td>
 			<select class="form-control form-control-sm" onchange="GetVP();" id="uprof" name="profile" required="1">
 				<?php $TotalReg = count($getprofile);
 				for ($i=0; $i<$TotalReg; $i++){
@@ -266,11 +266,11 @@ echo "<!--";
 		</td>
 	</tr>
 	<tr>
-    <td>Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
+    <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
   </tr>
   <tr>
-    <td>Data Limit</td><td>
-	<div class="input-group">
+    <td class="align-middle">Data Limit</td><td>
+	<div class="input-group input-group-sm">
         <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="">
             <div class="input-group-append">
                 <span class="input-group-text">GB</span>
@@ -279,7 +279,7 @@ echo "<!--";
 	</td>
   </tr>
   <tr >
-    <td>Validity | Price</td><td id="GetValidPrice"></td>
+    <td class="align-middle">Validity | Price</td><td id="GetValidPrice"></td>
   </tr>
   <tr >
     <td colspan="2">

@@ -135,30 +135,13 @@ if(isset($_POST['save'])){
 
 <div style="padding: 10px;" class="register-box settings card-primary">
   <div class="card card-primary">
+  	<div class="card-header">
+       	<h3 class="card-title">Mikhmon Settings</h3>
+    </div>
     <div class="card-body">
     	<form autocomplete="off" method="post" action="">
     		<div class="card card-primary">
-    		    <div class="card-header">
-    		    	<h3 class="card-title">Mikhmon Settings</h3>
-    		    </div>
-    			<div class="card-body">
-        			<div class="form-group">
-            			<div class="input-group">
-              				<select class="form-control" style="float:left;" name="setupdata" required="1"> 
-								<option value="local" title="Save local Mikhmon">Save Local</option>
-								<option value="export" title="Export to MikroTik">Export Mikhmon data to MikroTik</option>
-								<option value="import" title="Import from MikroTik">Import Mikhmon data  from MikroTik</option>
-							</select>
-							<div class="input-group-append ">
-							<input class="input-group-text" type="submit" style="cursor: pointer;" name="save" value="Save"/>
-							<a class="input-group-text" href="./admin.php?id=connect" title="Test connection to MikroTik ">Connect</a>
-        					<?php if($_SESSION["$userhost"] != "$userhost"){ echo '<a class="input-group-text" href="./admin.php?id=login" title="Login">Login</a>';
-							}else{echo '<a class="input-group-text"  href="./" title="Dashboard">Dashboard</a>';}?>      
-              				</div>
-            			</div>
-          			</div>
-
-    			</div>
+    			
     		</div>
 		<div class="card card-primary">
         	<div class="card-header">
@@ -186,6 +169,23 @@ if(isset($_POST['save'])){
 						</table>
         			</div>
         		</div>
+        		<div class="card-footer">
+        			<div class="form-group form-group-sm">
+            			<div class="input-group input-group-sm">
+              				<select class="form-control form-control-sm" style="float:left;" name="setupdata" required="1"> 
+								<option value="local" title="Save local Mikhmon">Save Local</option>
+								<option value="export" title="Export to MikroTik">Export Mikhmon data to MikroTik</option>
+								<option value="import" title="Import from MikroTik">Import Mikhmon data  from MikroTik</option>
+							</select>
+							<div class="input-group-append ">
+							<input class="input-group-text" type="submit" style="cursor: pointer;" name="save" value="Save"/>
+							<a class="input-group-text" href="./admin.php?id=connect" title="Test connection to MikroTik ">Connect</a>
+        					<?php if($_SESSION["$userhost"] != "$userhost"){ echo '<a class="input-group-text" href="./admin.php?id=login" title="Login">Login</a>';
+							}else{echo '<a class="input-group-text"  href="./" title="Dashboard">Dashboard</a>';}?>      
+              				</div>
+            			</div>
+          			</div>
+    			</div>
     	</div>
 	<div class="card card-primary">
        	<div class="card-header">

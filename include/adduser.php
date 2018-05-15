@@ -71,7 +71,7 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header">
+<div class="card-header bg-light">
     <h3 class="card-title pull-left">Add User</h3>
 </div>
 <!-- /.card-header -->
@@ -81,7 +81,7 @@ echo "<!--";
 <div class="col-sm-12">
 
 <form autocomplete="off" method="post" action="">
-<table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
 <?php if($_SESSION['ubp'] != ""){
@@ -94,7 +94,7 @@ echo "<!--";
     </th>
   </tr>
   <tr>
-    <td>Server</td>
+    <td class="align-middle" >Server</td>
     <td>
 			<select class="form-control form-control-sm" name="server" required="1">
 				<option>all</option>
@@ -107,11 +107,11 @@ echo "<!--";
 		</td>
 	</tr>
   <tr>
-    <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td class="align-middle">Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
   </tr>
   <tr>
-    <td>Password</td><td>
-        <div class="input-group">
+    <td class="align-middle">Password</td><td>
+        <div class="input-group input-group-sm">
           <input class="form-control form-control-sm" id="passUser" type="password" name="pass" autocomplete="new-password" value="" required="1">
             <div class="input-group-append">
               <span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassUser()"></span>
@@ -120,7 +120,7 @@ echo "<!--";
 		</td>
   </tr>
   <tr>
-    <td>Profile</td><td>
+    <td class="align-middle">Profile</td><td>
 			<select class="form-control form-control-sm" name="profile" required="1">
 				<?php $TotalReg = count($getprofile);
 				for ($i=0; $i<$TotalReg; $i++){
@@ -131,11 +131,11 @@ echo "<!--";
 		</td>
 	</tr>
 	<tr>
-    <td>Time Limit</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="timelimit" value=""></td>
+    <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="timelimit" value=""></td>
   </tr>
   <tr>
-    <td>Data Limit</td><td>
-      <div class="input-group">
+    <td class="align-middle">Data Limit</td><td>
+      <div class="input-group input-group-sm">
         <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="">
           <div class="input-group-append">
             <span class="input-group-text">GB</span>
@@ -144,7 +144,7 @@ echo "<!--";
     </td>
   </tr>
   <tr>
-    <td>Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value=""></td>
+    <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value=""></td>
   </tr>
   <tr>
     <td colspan="2">

@@ -149,7 +149,7 @@ $shd = "hidden";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header">
+<div class="card-header bg-light">
 	<h3 class="card-title pull-left">Selling Report</h3>
 </div>
 <!-- /.card-header -->

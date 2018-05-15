@@ -76,7 +76,7 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header">
+<div class="card-header bg-light">
     <h3 class="card-title pull-left">Add Users Profiles</h3>
 </div>
 <!-- /.card-header -->
@@ -85,7 +85,7 @@ echo "<!--";
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="off" method="post" action="">
-<table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
     <a class="btn btn-sm btn-warning" href="./?hotspot=user-profiles"> <i class="fa fa-close btn-mrg"></i> Close</a>
@@ -93,16 +93,16 @@ echo "<!--";
     </th>
   </tr>
   <tr>
-    <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
+    <td class="align-middle">Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
   </tr>
   <tr>
-    <td>Shared Users</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="sharedusers" value="1" required="1"></td>
+    <td class="align-middle">Shared Users</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="sharedusers" value="1" required="1"></td>
   </tr>
   <tr>
-    <td>Rate limit [up/down]</td><td><input class="form-control form-control-sm" type="text" name="ratelimit" autocomplete="off" value="" placeholder="Example : 512k/1M" ></td>
+    <td class="align-middle">Rate limit [up/down]</td><td><input class="form-control form-control-sm" type="text" name="ratelimit" autocomplete="off" value="" placeholder="Example : 512k/1M" ></td>
   </tr>
   <tr>
-    <td>Expired Mode</td><td>
+    <td class="align-middle">Expired Mode</td><td>
       <select class="form-control form-control-sm" onchange="RequiredV();" id="expmode" name="expmode" required="1">
         <option value="">Select...</option>
         <option value="0">None</option>
@@ -114,13 +114,13 @@ echo "<!--";
     </td>
   </tr>
   <tr id="validity" style="display:none;">
-    <td>Validity</td><td><input class="form-control form-control-sm" type="text" id="validi" size="4" autocomplete="off" name="validity" value="" required="1"></td>
+    <td class="align-middle">Validity</td><td><input class="form-control form-control-sm" type="text" id="validi" size="4" autocomplete="off" name="validity" value="" required="1"></td>
   </tr>
   <tr id="graceperiod" style="display:none;">
-    <td>Grace Period</td><td><input class="form-control form-control-sm" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" placeholder="5m" value="5m" required="1"></td>
+    <td class="align-middle">Grace Period</td><td><input class="form-control form-control-sm" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" placeholder="5m" value="5m" required="1"></td>
   </tr>
   <tr>
-    <td>Price <?php echo $curency;?></td><td><input class="form-control form-control-sm" type="number" size="10" min="0" name="price" value="" ></td>
+    <td class="align-middle">Price <?php echo $curency;?></td><td><input class="form-control form-control-sm" type="number" size="10" min="0" name="price" value="" ></td>
   </tr>
   <tr>
     <td colspan="2">

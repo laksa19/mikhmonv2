@@ -30,7 +30,7 @@ if(!isset($_SESSION["$userhost"])){
       <div class="">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-light">
               <h3 class="card-title pull-left">MikroTik Hotspot Monitor</h3>
             </div>
             <!-- /.card-header -->

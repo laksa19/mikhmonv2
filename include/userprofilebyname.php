@@ -113,7 +113,7 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header">
+<div class="card-header bg-light">
     <h3 class="card-title pull-left">Edit Users Profiles</h3>
 </div>
 <!-- /.card-header -->
@@ -123,26 +123,26 @@ echo "<!--";
 <div class="col-sm-12">
         
 <form autocomplete="off" method="post" action="">
-<table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
   <tr>
     <th colspan="5">
-    <a class="btn btn-warning btn-mrg" href="./?hotspot=user-profiles"> <i class="fa fa-close"></i> Close</a>
-    <button type="submit" name="save" class="btn btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
-    <a class="btn btn-danger btn-mrg" href="./?remove-user-profile=<?php echo $pid;?>"><i class="fa fa-minus-square"></i> Remove</a>
+    <a class="btn btn-sm btn-warning btn-mrg" href="./?hotspot=user-profiles"> <i class="fa fa-close"></i> Close</a>
+    <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
+    <a class="btn btn-sm btn-danger btn-mrg" href="./?remove-user-profile=<?php echo $pid;?>"><i class="fa fa-minus-square"></i> Remove</a>
     </th>
   </tr>
   <tr>
-    <td>Name</td><td><input class="form-contclass="table table-sm type="text" autocomplete="off" name="name" value="<?php echo $pname;?>" required="1" autofocus></td>
+    <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="<?php echo $pname;?>" required="1" autofocus></td>
   </tr>
   <tr>
-    <td>Shared Users</td><td><input class="form-contclass="table table-sm type="text" size="4" autocomplete="off" name="sharedusers" value="<?php echo $psharedu;?>" required="1"></td>
+    <td>Shared Users</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="sharedusers" value="<?php echo $psharedu;?>" required="1"></td>
   </tr>
   <tr>
-    <td>Rate limit [up/down]</td><td><input class="form-contclass="table table-sm type="text" name="ratelimit" autocomplete="off" value="<?php echo $pratelimit;?>" placeholder="Example : 512k/1M" ></td>
+    <td>Rate limit [up/down]</td><td><input class="form-control form-control-sm" type="text" name="ratelimit" autocomplete="off" value="<?php echo $pratelimit;?>" placeholder="Example : 512k/1M" ></td>
   </tr>
   <tr>
     <td>Expired Mode</td><td>
-      <select class="form-contclass="table table-sm onchange="RequiredV();" id="expmode" name="expmode" required="1">
+      <select class="form-control form-control-sm" onchange="RequiredV();" id="expmode" name="expmode" required="1">
         <option value="<?php echo $getexpmode;?>"><?php echo $getexpmodet;?></option>
         <option value="0">None</option>
         <option value="rem">Remove</option>
@@ -153,13 +153,13 @@ echo "<!--";
     </td>
   </tr>
   <tr id="validity" style="display:none;">
-    <td>Validity</td><td><input class="form-contclass="table table-sm type="text" id="validi" size="4" autocomplete="off" name="validity" value="<?php echo $getvalid;?>" required="1"></td>
+    <td>Validity</td><td><input class="form-control form-control-sm" type="text" id="validi" size="4" autocomplete="off" name="validity" value="<?php echo $getvalid;?>" required="1"></td>
   </tr>
   <tr id="graceperiod" style="display:none;">
-    <td>Grace Period</td><td><input class="form-contclass="table table-sm type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" value="<?php echo $getgracep;?>" required="1"></td>
+    <td>Grace Period</td><td><input class="form-control form-control-sm" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" value="<?php echo $getgracep;?>" required="1"></td>
   </tr>
   <tr>
-    <td>Price <?php echo $curency;?></td><td><input class="form-contclass="table table-sm type="number" min="0" name="price" value="<?php echo $getprice;?>" ></td>
+    <td>Price <?php echo $curency;?></td><td><input class="form-control form-control-sm" type="number" min="0" name="price" value="<?php echo $getprice;?>" ></td>
   </tr>
   <tr>
     <td colspan="2">
