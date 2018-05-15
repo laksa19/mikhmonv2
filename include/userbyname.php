@@ -108,19 +108,16 @@ error_reporting(0);
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
+<div class="card-header">
     <h3 class="card-title pull-left">Edit User</h3>
 </div>
 <!-- /.card-header -->
 <div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 <div class="row">
 <div class="col-sm-12">
-
 <form autocomplete="new-password" method="post" action="">
-<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-  <tr>
-    <th colspan="5">
+<div class="card">
+<div class="card-header">
 <?php if($_SESSION['ubp'] != ""){
     echo "    <a class='btn btn-sm btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'><i class='fa fa-close'></i> Close</a>";
 }elseif($_SESSION['hua'] != ""){
@@ -139,8 +136,8 @@ error_reporting(0);
     <a class="btn btn-sm btn-secondary btn-mrg"  title="Print" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=no','_blank','width=310,height=450').print();"> <i class="fa fa-print"></i> Print</a>
     <a class="btn btn-sm btn-info btn-mrg"  title="Print QR" href="javascript:window.open('./voucher/print.php?user=<?php echo $usermode."-".$uname;?>&qr=yes','_blank','width=310,height=450').print();"> <i class="fa fa-qrcode"></i> QR</a>
     <?php if($utimelimit == "1s"){echo '<a class="btn btn-sm btn-info btn-mrg"  href="./?reset-hotspot-user='.$uid.'"> <i class="fa fa-retweet"></i> Reset</a>';}?>
-    </th>
-  </tr>
+</div>  
+<table class="table table-sm ">
   <tr>
     <td class="align-middle">Enabled</td>
     <td>
@@ -239,8 +236,8 @@ error_reporting(0);
     </td>
   </tr>
 </table>
-</form>
 </div>
+</form>
 </div>
 <!-- /.card-body -->
 </div>

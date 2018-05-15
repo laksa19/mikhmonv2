@@ -133,43 +133,36 @@ if(isset($_POST['save'])){
 </script>
 
 
-<div style="padding: 10px;" class="register-box settings card-primary">
+<div style="padding: 10px;" class="register-box settings">
   <div class="card card-primary">
   	<div class="card-header">
-       	<h3 class="card-title">Mikhmon Settings</h3>
+       	<h3 class="card-title"><i class="fa fa-gear"></i> Mikhmon Settings</h3>
     </div>
     <div class="card-body">
     	<form autocomplete="off" method="post" action="">
-    		<div class="card card-primary">
-    			
-    		</div>
-		<div class="card card-primary">
+		<div class="card card-light">
         	<div class="card-header">
             	<h3 class="card-title">MikroTik<?php echo " <b>". $_SESSION["connect"]."</b>";?></h3>
         	</div>
-        		<div class="card-body">
-    				<div class="row">  
-						<table class="table table-sm">
-							<tr>
-	  							<td>IP MikroTik  </td><td><input class="form-control form-control-sm" type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?php echo $iphost; ?>" required="1"/></td>
-							</tr>
-							<tr>
-								<td>Username  </td><td><input class="form-control form-control-sm" id="usermk" type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
-							</tr>
-							<tr>
-							<td>Password  </td><td>
-								<div class="input-group">
-        							<input class="form-control form-control-sm" id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo $passwdhost ;?>" required="1"/>
-            						<div class="input-group-append">
-                						<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassMk()"></span>
-            						</div>
-    							</div>
-								</td>
-							</tr>
-						</table>
-        			</div>
-        		</div>
-        		<div class="card-footer">
+				<table class="table table-sm">
+					<tr>
+	  					<td class="align-middle">IP MikroTik  </td><td><input class="form-control form-control-sm" type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?php echo $iphost; ?>" required="1"/></td>
+					</tr>
+					<tr>
+						<td class="align-middle">Username  </td><td><input class="form-control form-control-sm" id="usermk" type="text" size="10" name="usermik" title="User MikroTik" value="<?php echo $userhost; ?>" required="1"/></td>
+					</tr>
+					<tr>
+						<td class="align-middle">Password  </td><td>
+							<div class="input-group">
+        						<input class="form-control form-control-sm" id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo $passwdhost ;?>" required="1"/>
+            					<div class="input-group-append">
+                					<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassMk()"></span>
+            					</div>
+    						</div>
+						</td>
+					</tr>
+				</table>
+         		<div class="card-footer">
         			<div class="form-group form-group-sm">
             			<div class="input-group input-group-sm">
               				<select class="form-control form-control-sm" style="float:left;" name="setupdata" required="1"> 
@@ -187,55 +180,48 @@ if(isset($_POST['save'])){
           			</div>
     			</div>
     	</div>
-	<div class="card card-primary">
+	<div class="card card-light">
        	<div class="card-header">
            <h3 class="card-title">Admin</h3>
         </div>
-    <div class="card-body">
-        <div class="row">		
-	<table class="table table-sm">
-	<tr>
-	<td>Username  </td><td><input class="form-control form-control-sm" id="useradm" type="text" size="10" name="useradm" title="User Admin" value="<?php echo $useradm; ?>" required="1"/></td>
-	</tr>
-	<tr>
-	<td>Password  </td><td>
-	<div class="input-group">
-        <input class="form-control form-control-sm" id="passadm" type="password" size="10" name="passadm" title="Password Admin" value="<?php echo $passadm; ?>" required="1"/>
-             <div class="input-group-append">
-                <span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassAdm()"></span>
-             </div>
-    </div>
-	</td>
-	</tr>
-	<tr>
-		<td style="text-align:left" colspan=2>
-		<strong>Please change username and password Admin.</strong>
-		</td>
-	</tr>
-	</table>
-        </div>
-        </div>
-    </div>
-	<div class="card card-primary">
+			<table class="table table-sm">
+				<tr>
+					<td class="align-middle">Username  </td><td><input class="form-control form-control-sm" id="useradm" type="text" size="10" name="useradm" title="User Admin" value="<?php echo $useradm; ?>" required="1"/></td>
+				</tr>
+				<tr>
+					<td class="align-middle">Password  </td>
+				<td>
+					<div class="input-group">
+        				<input class="form-control form-control-sm" id="passadm" type="password" size="10" name="passadm" title="Password Admin" value="<?php echo $passadm; ?>" required="1"/>
+             		<div class="input-group-append">
+                		<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassAdm()"></span>
+             		</div>
+    				</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="align-middle" colspan=2>
+					<strong>Please change username and password Admin.</strong>
+				</td>
+			</tr>
+			</table>
+    	</div>
+	<div class="card card-light">
         <div class="card-header">
             <h3 class="card-title">Mikhmon Data</h3>
-              <!-- /.card-tools -->
         </div>
-            <!-- /.card-header -->
-    <div class="card-body">
-    <div class="row">
 	<table class="table table-sm">
 	<tr>
-	<td>Hotspot Name  </td><td><input class="form-control form-control-sm" type="text" size="15" maxlength="50" name="hotspotname" title="Hotspot Name" value="<?php echo $hotspotname; ?>" required="1"/></td>
+	<td class="align-middle">Hotspot Name  </td><td><input class="form-control form-control-sm" type="text" size="15" maxlength="50" name="hotspotname" title="Hotspot Name" value="<?php echo $hotspotname; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td>DNS Name  </td><td><input class="form-control form-control-sm" type="text" size="15" maxlength="500" name="dnsname" title="DNS Name [IP->Hotspot->Server Profiles->DNS Name]" value="<?php echo $dnsname; ?>" required="1"/></td>
+	<td class="align-middle">DNS Name  </td><td><input class="form-control form-control-sm" type="text" size="15" maxlength="500" name="dnsname" title="DNS Name [IP->Hotspot->Server Profiles->DNS Name]" value="<?php echo $dnsname; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td>Curency  </td><td><input class="form-control form-control-sm" type="text" size="3" maxlength="4" name="curency" title="Curency" value="<?php echo $curency; ?>" required="1"/></td>
+	<td class="align-middle">Curency  </td><td><input class="form-control form-control-sm" type="text" size="3" maxlength="4" name="curency" title="Curency" value="<?php echo $curency; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td>Auto Reload</td><td>
+	<td class="align-middle">Auto Reload</td><td>
 	<div class="input-group">
         <input class="form-control form-control-sm" type="number" min="5" max="60" name="areload" title="Auto Reload in sec [min 5s]" value="<?php echo $areload; ?>" required="1"/>
             <div class="input-group-append">
@@ -245,14 +231,12 @@ if(isset($_POST['save'])){
 	</td>
 	</tr>
 	<tr>
-	<td>Traffic Ether  </td><td><input class="form-control form-control-sm" type="number" min="1" max="99" name="iface" title="Traffic Interface" value="<?php echo $iface; ?>" required="1"/></td>
+	<td class="align-middle">Traffic Ether  </td><td><input class="form-control form-control-sm" type="number" min="1" max="99" name="iface" title="Traffic Interface" value="<?php echo $iface; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td colspan="2"><small>Mikhmon V2.9</small></td>
+	<td colspan="2">Mikhmon V2.10</td>
 	</tr>
 	</table>
-    </div>
-    </div>
     </div>
 </form>
 

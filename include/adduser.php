@@ -71,19 +71,16 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
+<div class="card-header">
     <h3 class="card-title pull-left">Add User</h3>
 </div>
 <!-- /.card-header -->
 <div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 <div class="row">
 <div class="col-sm-12">
-
-<form autocomplete="off" method="post" action="">
-<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-  <tr>
-    <th colspan="5">
+<form autocomplete="off" method="post" action="">  
+<div class="card">
+<div class="card-header">
 <?php if($_SESSION['ubp'] != ""){
     echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
@@ -91,8 +88,8 @@ echo "<!--";
 }
 ?>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg"> <i class="fa fa-save"></i> Save</button>
-    </th>
-  </tr>
+</div>
+<table class="table table-sm">
   <tr>
     <td class="align-middle" >Server</td>
     <td>
@@ -162,6 +159,7 @@ echo "<!--";
     </td>
   </tr>
 </table>
+</div>
 </form>
 
 </div>

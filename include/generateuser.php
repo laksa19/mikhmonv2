@@ -175,19 +175,16 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
+<div class="card-header">
     <h3 class="card-title pull-left">Generate User</h3>
 </div>
 <!-- /.card-header -->
 <div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 <div class="row">
 <div class="col-sm-12">
-
 <form autocomplete="off" method="post" action="">
-<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-  <tr>
-    <th colspan="5">
+<div class="card">
+<div class="card-header">
 <?php if($_SESSION['ubp'] != ""){
     echo "    <a class='btn btn-sm btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
@@ -198,8 +195,8 @@ echo "<!--";
     <a class="btn btn-sm btn-secondary btn-mrg" title="Print Default" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=no" target="_blank"> <i class="fa fa-print"></i> Print</a>
     <a class="btn btn-sm btn-danger btn-mrg" title="Print QR" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=yes" target="_blank"> <i class="fa fa-qrcode"></i> QR</a>
     <a class="btn btn-sm btn-info btn-mrg" title="Print Small" href="./voucher/print.php?id=<?php echo $urlprint;?>&small=yes" target="_blank"> <i class="fa fa-print"></i> Small</a>
-    </th>
-  </tr>
+</div>	
+<table class="table table-sm">
   <tr>
     <td class="align-middle">Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty"  calss="test" min="1" max="100" value="1" required="1"></td>
   </tr>
@@ -307,9 +304,8 @@ echo "<!--";
     </td>
   </tr>
 </table>
-</form>
-
 </div>
+</form>
 </div>
 <!-- /.card-body -->
 </div>

@@ -76,21 +76,20 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
+<div class="card-header">
     <h3 class="card-title pull-left">Add Users Profiles</h3>
 </div>
 <!-- /.card-header -->
 <div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="off" method="post" action="">
-<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-  <tr>
-    <th colspan="5">
+<div class="card">
+<div class="card-header">
     <a class="btn btn-sm btn-warning" href="./?hotspot=user-profiles"> <i class="fa fa-close btn-mrg"></i> Close</a>
-    <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
-    </th>
+    <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save btn-mrg"></i> Save</button>
+</div>  
+<table class="table table-sm">
   </tr>
   <tr>
     <td class="align-middle">Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="" required="1" autofocus></td>
@@ -130,7 +129,7 @@ echo "<!--";
         Pilihan : Remove, Notice, Remove & Record,Notice & Record.
         <ul>
         <li>Remove : User akan dihapus ketika sudah grace period habis.</li>
-        <li>Notice : User akan mendapatkan notifikasi setelah user expired.</li>
+        <li>Notice : User tidah dihapus dan akan mendapatkan notifikasi setelah user expired.</li>
         <li>Record : Menyimpan data harga tiap user yang login. Untuk menghitung total penjualan user hotspot.</li>
         </ul>
       </p>
@@ -144,7 +143,7 @@ echo "<!--";
         Options : Remove, Notice, Remove & Record, Notice & Record.
         <ul>
         <li>Remove: User will be deleted when the grace period expires.</li>
-        <li>Notice: User will get notification after user expiration.</li>
+        <li>Notice: User will not deleted and get notification after user expiration.</li>
         <li>Record: Save the price of each user login. To calculate total sales of hotspot users.</li>
         </ul>
       </p>
@@ -156,8 +155,8 @@ echo "<!--";
     </td>
   </tr>
 </table>
-</form>
 </div>
+</form>
 </div>
 <!-- /.card-body -->
 </div>

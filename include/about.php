@@ -30,15 +30,13 @@ if(!isset($_SESSION["$userhost"])){
       <div class="">
         <div class="col-12">
           <div class="card">
-            <div class="card-header bg-light">
+            <div class="card-header>
               <h3 class="card-title pull-left">MikroTik Hotspot Monitor</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
-                  <div class="col-sm-12">
-			  
+                  <div class="col-sm-12">		  
 <div class="div-t">
 <p>
   Aplikasi ini dipersembahkan untuk pengusaha hotspot di manapun Anda berada.
@@ -74,7 +72,6 @@ if(!isset($_SESSION["$userhost"])){
 </p>
 <div>
     <i>Copyright &copy; <i> 2018 Laksamadi Guko</i></i>
-</div>
 </div>
 </div>
 </div>

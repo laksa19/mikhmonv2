@@ -32,7 +32,7 @@ error_reporting(0);
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
+<div class="card-header">
     <h3 class="card-title pull-left">
     <?php
 		if($countprofile < 2 ){echo "$countprofile item  ";
@@ -42,15 +42,14 @@ error_reporting(0);
 </div>
 <!-- /.card-header -->
 <div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 <div class="row">
 <div class="col-sm-12">
 			  
 <div class="div-t"> 			   
-<table id="tFilter" class="table table-sm table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
+<table id="tFilter" class="table table-sm table-bordered table-hover text-nowrap">
   <thead>
   <tr> 
-		<th ></th>
+		<th style="min-width:75px;" ></th>
 		<th class="align-middle">Name</th>
 		<th class="align-middle">Shared<br>Users</th>
 		<th class="align-middle">Rate<br>Limit</th>
@@ -73,7 +72,7 @@ $psharedu = $profiledetalis['shared-users'];
 $pratelimit = $profiledetalis['rate-limit'];
 $ponlogin = $profiledetalis['on-login'];
 
-echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'><i class='fa fa-minus-square text-danger'></i></a>&nbsp;&nbsp;&nbsp;<a title='Open User by profile " .$pname. "' class='btnsmall' href='./?user-by-profile=" .$pname . "'><i class='fa fa-users text-dark'></i></a></td>";
+echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'><i class='fa fa-minus-square text-danger'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a title='Open User by profile " .$pname. "' class='btnsmall' href='./?user-by-profile=" .$pname . "'><i class='fa fa-users text-dark'></i></a></td>";
 echo "<td><a style='color:#000;' title='Open User Profile " . $pname . "' href='./?user-profile=".$pid."'><i class='fa fa-edit'></i> $pname</a></td>";
 //$profiledetalis = $ARRAY[$i];echo "<td>" . $profiledetalis['name'];echo "</td>";
 echo "<td>" . $psharedu;echo "</td>";
@@ -133,7 +132,6 @@ echo "</tr>";
 ?>
   </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>

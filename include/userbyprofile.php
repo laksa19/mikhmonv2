@@ -36,7 +36,7 @@ error_reporting(0);
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
+<div class="card-header">
     <h3 class="card-title pull-left">
       <?php
 				  if($counttuser < 2 ){echo "$counttuser item  ";
@@ -80,7 +80,11 @@ for ($i=0; $i<$TotalReg2; $i++){
 ?>
         </select>
     </th>
-    <th  class="align-middle">Uptime</th>
+    <th style="min-width:85px;" >
+      <div style="width:80%;">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable3" size="auto" onkeyup='fTable3()' placeholder="Uptune" title="Filter by Uptime">
+      </div>
+    </th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
         <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable2" size="auto" onkeyup="fTable2()" placeholder="Comment" title="Filter by Comment">
@@ -103,7 +107,7 @@ for ($i=0; $i<$TotalReg; $i++){
 	$udisabled = $userdetails['disabled'];
 
 	echo "<tr>";
-	echo "<td style='text-align:center;'><a  title='Remove ".$uname. "' href=./?remove-hotspot-user=".$uid . "><i class='fa fa-minus-square text-danger'></i></a>&nbsp;&nbsp;&nbsp;";
+	echo "<td style='text-align:center;'><a  title='Remove ".$uname. "' href=./?remove-hotspot-user=".$uid . "><i class='fa fa-minus-square text-danger'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
   if($udisabled == "true"){ $tcolor = "#ccc"; echo "<a title='Enable User ".$uname . "'  href='./?enable-hotspot-user=".$uid . "'><i class='fa fa-lock text-dark'></i></a></td>";}else{ $tcolor = "#000";echo "<a title='Disable User ".$uname . "'  href='./?disable-hotspot-user=".$uid . "'><i class='fa fa-unlock text-dark'></i></a></td>";}
 	echo "<td style='color:".$tcolor.";'>" . $userver;echo "</td>";
 	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo "</td>";

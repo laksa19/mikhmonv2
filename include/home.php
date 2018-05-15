@@ -125,8 +125,8 @@ $routerboard = $getrouterboard[0];
           <section class="col-lg-8 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
-              <div class="card-header d-flex p-0">
-                <h3 class="card-title p-3">
+              <div class="card-header">
+                <h3 class="card-title">
                   <i class="fa fa-wifi mr-1"></i>
                   Hotspot
                 </h3>
@@ -211,8 +211,8 @@ $routerboard = $getrouterboard[0];
 </div>
 <!-- /.card -->
 <div class="card">
-  <div class="card-header d-flex p-0">
-    <h3 class="card-title p-3">
+  <div class="card-header">
+    <h3 class="card-title">
       <i class="fa fa-area-chart mr-1"></i>
         Traffic
     </h3>
@@ -270,13 +270,13 @@ $routerboard = $getrouterboard[0];
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">
-              <i class="fa fa-user mr-1"></i>
+              <i class="fa fa-align-justify mr-1"></i>
                   Hotspot Log
           </h3>
         </div>
           <div class="card-body">
             <div class="row">
-                <textarea style="overflow: auto; width:100%; height:346px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
+                <textarea style="overflow: auto; width:100%; height:330px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
 <?php
 // move hotspot log to disk
   $getlogging = $API->comm("/system/logging/print", array(

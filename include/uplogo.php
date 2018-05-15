@@ -99,7 +99,7 @@ if ($uploadOk == 0) {
 <div style="padding: 10px;" class="register-box settings card-primary">
   <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Upload Logo Voucher</h3>
+        <h3 class="card-title"><i class="fa fa-upload"></i> Upload Logo Voucher</h3>
     </div>
     <div class="card-body">
     <?php echo $galat;?>
@@ -119,8 +119,8 @@ if ($uploadOk == 0) {
       </form>
     </div>
   <div class="card-footer">
-      <a class="btn btn-sm btn-primary btn-mrg" href="./" title="Home"><i class='fa fa-tachometer'></i> Dashboard</a>
-      <a class="btn btn-sm btn-info btn-mrg" href="./admin.php?id=settings" title="Mikhmon Settings"><i class='fa fa-gear'></i> Settings</a>
+      <a class="btn btn-sm btn-primary mx-1 my-1" href="./" title="Home"><i class='fa fa-tachometer'></i> Dashboard</a>
+      <a class="btn btn-sm btn-info mx-1 my-1" href="./admin.php?id=settings" title="Mikhmon Settings"><i class='fa fa-gear'></i> Settings</a>
     </div>
   </div>
 </div>

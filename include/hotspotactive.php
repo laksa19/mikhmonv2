@@ -46,7 +46,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
       <div class="">
         <div class="col-12">
           <div class="card">
-            <div class="card-header bg-light">
+            <div class="card-header">
               <h3 class="card-title pull-left"><?php
   if($counthotspotactive < 2 ){echo "$counthotspotactive item";
   }elseif($counthotspotactive > 1){
@@ -55,12 +55,12 @@ $API->connect( $iphost, $userhost, $passwdhost );
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+
                 <div class="row">
                   <div class="col-sm-12">
 			  
 <div class="div-t">			   
-<table id="tFilter" class="table table-sm table-bordered table-hover dataTable text-nowrap" role="grid" aria-describedby="example2_info">
+<table id="tFilter" class="table table-sm table-bordered table-hover text-nowrap">
   <thead>
   <tr>
     <th></th>
@@ -100,7 +100,6 @@ $API->connect( $iphost, $userhost, $passwdhost );
 ?>
   </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>

@@ -113,24 +113,21 @@ echo "<!--";
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
-    <h3 class="card-title pull-left">Edit Users Profiles</h3>
+<div class="card-header">
+    <h3 class="card-title pull-left">Edit Users Profile</h3>
 </div>
 <!-- /.card-header -->
 <div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 <div class="row">
 <div class="col-sm-12">
-        
 <form autocomplete="off" method="post" action="">
-<table class="table table-sm table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-  <tr>
-    <th colspan="5">
+<div class="card">
+<div class="card-header">
     <a class="btn btn-sm btn-warning btn-mrg" href="./?hotspot=user-profiles"> <i class="fa fa-close"></i> Close</a>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
     <a class="btn btn-sm btn-danger btn-mrg" href="./?remove-user-profile=<?php echo $pid;?>"><i class="fa fa-minus-square"></i> Remove</a>
-    </th>
-  </tr>
+</div>  
+<table class="table table-sm">
   <tr>
     <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="<?php echo $pname;?>" required="1" autofocus></td>
   </tr>
@@ -195,10 +192,8 @@ echo "<!--";
     </td>
   </tr>
 </table>
+</div>
 </form>
-</div>
-</div>
-</div>
 </div>
 <!-- /.card-body -->
 </div>

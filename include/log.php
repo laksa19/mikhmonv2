@@ -30,12 +30,11 @@ error_reporting(0);
 <div class="">
 <div class="col-12">
 <div class="card">
-<div class="card-header bg-light">
+<div class="card-header">
     <h3 class="card-title">Log</h3>
 </div>
 <!-- /.card-header -->
 <div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 <div class="row">
 <div class="col-sm-12">
         
@@ -54,7 +53,6 @@ error_reporting(0);
 	}
 ?>
 </table>
-</div>
 </div>
 </div>
 </div>
