@@ -109,7 +109,7 @@ for ($i=0; $i<$TotalReg; $i++){
 	echo "<td style='color:".$tcolor.";'>" . $userver;echo "</td>";
   if($uname == $upass){$usermode = "vc";}else{$usermode = "up";} 
   $popup = "javascript:window.open('./voucher/print.php?user=".$usermode."-".$uname."&qr=no','_blank','width=310,height=450').print();";
-	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo '</td><td class"text-center"><a style="color:'.$tcolor.';"  title="Print Thermal" href="'.$popup.'"><i class="fa fa-print text-right"></i></a></td>';
+	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo '</td><td class"text-center"><a style="color:'.$tcolor.';"  title="Print '.$uname.'" href="'.$popup.'"><i class="fa fa-print text-right"></i></a></td>';
 	echo "<td style='color:".$tcolor.";'>" . $uprofile;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>" . $uuptime;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo $ucomment;}; echo "</td>";
