@@ -44,7 +44,7 @@ if($userp != ""){
   $TotalReg = count($getuser);
 }elseif($id != ""){
   $usermode = explode('-',$id)[0];
-$getuser = $API->comm('/ip/hotspot/user/print', array("?comment" => "$id"));
+$getuser = $API->comm('/ip/hotspot/user/print', array("?comment" => "$id", "?uptime"=> "0s"));
   $TotalReg = count($getuser);
 }
   $getuprofile = $getuser[0]['profile'];
