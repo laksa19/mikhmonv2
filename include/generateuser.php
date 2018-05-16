@@ -18,7 +18,7 @@
 session_start();
 // hide all error
 error_reporting(0);
-
+ini_set('max_execution_time', 300);
 
 if(!isset($_SESSION["$userhost"])){
 echo "<!--";
@@ -198,7 +198,7 @@ echo "<!--";
 </div>	
 <table class="table table-sm">
   <tr>
-    <td class="align-middle">Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty" min="1" max="250" value="1" required="1"></td>
+    <td class="align-middle">Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty" min="1" max="500" value="1" required="1"></td>
   </tr>
   <tr>
     <td class="align-middle">Server</td>
