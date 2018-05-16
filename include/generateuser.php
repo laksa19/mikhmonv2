@@ -198,7 +198,7 @@ echo "<!--";
 </div>	
 <table class="table table-sm">
   <tr>
-    <td class="align-middle">Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty"  calss="test" min="1" max="100" value="1" required="1"></td>
+    <td class="align-middle">Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty" min="1" max="500" value="1" required="1"></td>
   </tr>
   <tr>
     <td class="align-middle">Server</td>
