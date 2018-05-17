@@ -187,7 +187,7 @@ error_reporting(0);
 		</td>
 	</tr>
   <tr>
-    <td class="align-middle">Uptime</td><td><?php if($uuptime == 0){}else{echo $uuptime;}?></td>
+    <td class="align-middle">Uptime</td><td><input class="form-control form-control-sm" type="text" value="<?php if($uuptime == 0){}else{echo $uuptime;}?>" disabled></td>
   </tr>
   <tr>
     <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"><?php if($utimelimit == "1s"){echo "Expired";}?></td>
@@ -206,17 +206,17 @@ error_reporting(0);
     <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value="<?php echo $ucomment;?>"></td>
   </tr>
   <tr>
-    <td class="align-middle">Price</td><td><?php if($getprice == 0){}else{echo $curency." ".number_format($getprice);}?></td>
+    <td class="align-middle">Price</td><td><input class="form-control form-control-sm" type="text" value="<?php if($getprice == 0){}else{echo $curency." ".number_format($getprice);}?>" disabled></td>
   </tr>
   <?php if($getvalid != ""){?>
   <tr>
-    <td class="align-middle">Validity</td><td><?php echo $getvalid;?></td>
+    <td class="align-middle">Validity</td><td><input class="form-control form-control-sm" type="text" value="<?php echo $getvalid;?>" disabled></td>
   </tr>
   <tr>
-    <td class="align-middle">Start</td><td><?php echo $start;?></td>
+    <td class="align-middle">Start</td><td><input class="form-control form-control-sm" type="text" value="<?php echo $start;?>" disabled></td>
   </tr>
   <tr>
-    <td class="align-middle">End</td><td><?php echo $end;?></td>
+    <td class="align-middle">End</td><td><input class="form-control form-control-sm" type="text" value="<?php echo $end;?>" disabled></td>
   </tr>
   <?php }else{}?>
   <tr>
