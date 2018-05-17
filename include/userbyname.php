@@ -190,7 +190,7 @@ error_reporting(0);
     <td class="align-middle">Uptime</td><td><input class="form-control form-control-sm" type="text" value="<?php if($uuptime == 0){}else{echo $uuptime;}?>" disabled></td>
   </tr>
   <tr>
-    <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"><?php if($utimelimit == "1s"){echo "Expired";}?></td>
+    <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"></td>
   </tr>
   <tr>
     <td class="align-middle">Data Limit</td><td>
@@ -216,7 +216,7 @@ error_reporting(0);
     <td class="align-middle">Start</td><td><input class="form-control form-control-sm" type="text" value="<?php echo $start;?>" disabled></td>
   </tr>
   <tr>
-    <td class="align-middle">End</td><td><input class="form-control form-control-sm" type="text" value="<?php echo $end;?>" disabled></td>
+    <td class="align-middle"><?php if($utimelimit == "1s"){echo "Expired";}else{echo "End";}?></td><td><input class="form-control form-control-sm" type="text" value="<?php echo $end;?>" disabled></td>
   </tr>
   <?php }else{}?>
   <tr>
