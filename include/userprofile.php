@@ -28,11 +28,11 @@ error_reporting(0);
 
 ?>
 <div>
-<section class="content bg-trp">
+<section class="content p-0 bg-trp">
 <div class="">
-<div class="col-12">
+<div class="col-12 p-1">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-2 ">
     <h3 class="card-title pull-left">
     <?php
 		if($countprofile < 2 ){echo "$countprofile item  ";
@@ -41,7 +41,7 @@ error_reporting(0);
 	</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body">
+<div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
 			  

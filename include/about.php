@@ -26,15 +26,15 @@ if(!isset($_SESSION["$userhost"])){
 ?>
 <div>
 
-	<section class="content bg-trp">
+	<section class="content p-0 bg-trp">
       <div class="">
-        <div class="col-12">
+        <div class="col-12 p-1">
           <div class="card">
-            <div class="card-header>
+            <div class="card-header p-2">
               <h3 class="card-title pull-left">MikroTik Hotspot Monitor</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body p-2">
                 <div class="row">
                   <div class="col-sm-12">		  
 <div class="div-t">

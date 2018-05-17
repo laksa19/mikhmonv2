@@ -33,11 +33,10 @@ ini_set('max_execution_time', 300);
   $TotalReg2 = count($getprofile);
 ?>
 <div>
-<section class="content bg-trp">
-<div class="">
-<div class="col-12">
+<section class="content p-0 bg-trp">
+<div class="col-12 p-1">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-2">
     <h3 class="card-title pull-left">
       <?php
 				  if($counttuser < 2 ){echo "$counttuser item  ";
@@ -46,8 +45,7 @@ ini_set('max_execution_time', 300);
     </h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body">
-<div id="example2_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+<div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
 			  
@@ -136,14 +134,11 @@ for ($i=0; $i<$TotalReg; $i++){
 </div>
 </div>
 </div>
-</div>
  <!-- /.card-body -->
 </div>
 <!-- /.card -->
 </div>
 <!-- /.col -->
-</div>
-<!-- /.row -->
 </section>
 </div>	
 	

@@ -72,20 +72,19 @@ echo "<!--";
 }
 ?>
 <div>
-<section class="content bg-trp">
-<div class="">
-<div class="col-12">
+<section class="content p-0 bg-trp">
+<div class="col-12 p-1">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-2">
     <h3 class="card-title pull-left">Add Users Profiles</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body">
+<div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="off" method="post" action="">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-1">
     <a class="btn btn-sm btn-warning" href="./?hotspot=user-profiles"> <i class="fa fa-close btn-mrg"></i> Close</a>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save btn-mrg"></i> Save</button>
 </div>  
@@ -157,6 +156,7 @@ echo "<!--";
 </table>
 </div>
 </form>
+</div>
 </div>
 <!-- /.card-body -->
 </div>

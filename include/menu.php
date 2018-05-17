@@ -81,7 +81,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
 ?>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand bg-primary navbar-light border-bottom">
+  <nav class="main-header navbar navbar navbar-expand  navbar-light bg-primary border-bottom border-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -241,9 +241,9 @@ if($hotspot == "home" || substr($url,-1) == "/"){
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper bg-trp">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
+    <div class="content-header p-0">
+      <div class="container-fluid p-1">
+        <div class="row p-0">
           <div class="col-sm-6">
             <h4 class="m-0 text-light"><?php echo $mpage;?></h4>
           </div><!-- /.col -->

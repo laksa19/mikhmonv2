@@ -42,8 +42,8 @@ $API->connect( $iphost, $userhost, $passwdhost );
 
 <div id="reloadHome">
   <!-- Main content -->
-    <section class="content bg-trp">
-      <div class="container-fluid">
+    <section class="content p-0 bg-trp">
+      <div class="container-fluid p-1">
       <div class="row">
     
       <div class="col-md-4 col-sm-6 col-12">
@@ -125,13 +125,13 @@ $routerboard = $getrouterboard[0];
           <section class="col-lg-8 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
-              <div class="card-header">
+              <div class="card-header p-2">
                 <h3 class="card-title">
                   <i class="fa fa-wifi mr-1"></i>
                   Hotspot
                 </h3>
               </div><!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body p-2">
                 <div class="tab-content p-0">
         
         <!-- Small boxes (Stat box) -->
@@ -211,13 +211,13 @@ $routerboard = $getrouterboard[0];
 </div>
 <!-- /.card -->
 <div class="card">
-  <div class="card-header">
+  <div class="card-header p-2">
     <h3 class="card-title">
       <i class="fa fa-area-chart mr-1"></i>
         Traffic
     </h3>
   </div><!-- /.card-header -->
-    <div class="card-body">
+    <div class="card-body p-2">
       <div class="tab-content p-0">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -268,15 +268,15 @@ $routerboard = $getrouterboard[0];
   <section class="col-lg-4 connectedSortable">
     <!-- Map card -->
       <div class="card">
-        <div class="card-header">
+        <div class="card-header p-2">
           <h3 class="card-title">
               <i class="fa fa-align-justify mr-1"></i>
                   Hotspot Log
           </h3>
         </div>
-          <div class="card-body">
-            <div class="row">
-                <textarea style="overflow: auto; width:100%; height:330px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
+          <div class="card-body p-2">
+            <div class="row p-2">
+                <textarea style="overflow: auto; width:100%; height:282px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
 <?php
 // move hotspot log to disk
   $getlogging = $API->comm("/system/logging/print", array(

@@ -145,15 +145,14 @@ $shd = "hidden";
         }
 		</script>
 <div>
-<section class="content bg-trp">
-<div class="">
-<div class="col-12">
+<section class="content p-0 bg-trp">
+<div class="col-12 p-1">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-2">
 	<h3 class="card-title pull-left">Selling Report</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body">
+<div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
 			  
@@ -230,9 +229,6 @@ $shd = "hidden";
 			</table>
 		</div>
 </div>
-</div>
-</div>
-</div>
 <!-- /.card-body -->
 </div>
 <!-- /.card -->
@@ -241,7 +237,7 @@ $shd = "hidden";
 </div>
 <!-- /.row -->
 </section>
-</div>	
+
 <!-- Modal -->
 <div class="modal fade" id="remdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -268,7 +264,7 @@ $shd = "hidden";
     </div>
   </div>
 </div>
-	
+</div>		
 		
 	<script>
 	function fTgl() {

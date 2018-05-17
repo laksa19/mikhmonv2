@@ -29,13 +29,11 @@ ini_set('max_execution_time', 300);
 	$getprofile = $API->comm("/ip/hotspot/user/profile/print");
 	$TotalReg2 = count($getprofile);
 ?>
-
 <div>
-<section class="content bg-trp">
-<div class="">
-<div class="col-12">
+<section class="content p-0 bg-trp">
+<div class="col-12 p-1">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-2">
     <h3 class="card-title pull-left">
         <?php
 				  if($counttuser < 2 ){echo "$counttuser item  ";
@@ -44,7 +42,7 @@ ini_set('max_execution_time', 300);
     </h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body">
+<div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
 			  
@@ -138,8 +136,6 @@ for ($i=0; $i<$TotalReg; $i++){
 <!-- /.card -->
 </div>
 <!-- /.col -->
-</div>
-<!-- /.row -->
 </section>	
 </div>
 	

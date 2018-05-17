@@ -42,11 +42,10 @@ $API->connect( $iphost, $userhost, $passwdhost );
 ?>
 <div id="reloadHotspotActive">
 
-	<section class="content bg-trp">
-      <div class="">
-        <div class="col-12">
+	<section class="content p-0 bg-trp">
+        <div class="col-12 p-1">
           <div class="card">
-            <div class="card-header">
+            <div class="card-header p-2">
               <h3 class="card-title pull-left"><?php
   if($counthotspotactive < 2 ){echo "$counthotspotactive item";
   }elseif($counthotspotactive > 1){
@@ -54,7 +53,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
 ?></h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body p-1">
 
                 <div class="row">
                   <div class="col-sm-12">
@@ -109,7 +108,5 @@ $API->connect( $iphost, $userhost, $passwdhost );
 <!-- /.card -->
 </div>
 <!-- /.col -->
-</div>
-<!-- /.row -->
 </section>
 </div>

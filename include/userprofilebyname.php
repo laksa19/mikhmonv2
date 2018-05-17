@@ -109,20 +109,19 @@ echo "<!--";
 
 ?>
 <div>
-<section class="content bg-trp">
-<div class="">
-<div class="col-12">
+<section class="content p-0 bg-trp">
+<div class="col-12 p-1">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-2">
     <h3 class="card-title pull-left">Edit Users Profile</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body">
+<div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="off" method="post" action="">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-1">
     <a class="btn btn-sm btn-warning btn-mrg" href="./?hotspot=user-profiles"> <i class="fa fa-close"></i> Close</a>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
     <a class="btn btn-sm btn-danger btn-mrg" href="./?remove-user-profile=<?php echo $pid;?>"><i class="fa fa-minus-square"></i> Remove</a>

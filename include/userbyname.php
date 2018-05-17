@@ -104,20 +104,19 @@ error_reporting(0);
     }}
 </script>
 <div>
-<section class="content bg-trp">
-<div class="">
-<div class="col-12">
+<section class="content p-0 bg-trp">
+<div class="col-12 p-1 ">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-2">
     <h3 class="card-title pull-left">Edit User</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body">
+<div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="new-password" method="post" action="">
 <div class="card">
-<div class="card-header">
+<div class="card-header p-1">
 <?php if($_SESSION['ubp'] != ""){
     echo "    <a class='btn btn-sm btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'><i class='fa fa-close'></i> Close</a>";
 }elseif($_SESSION['hua'] != ""){
@@ -239,6 +238,7 @@ error_reporting(0);
 </div>
 </form>
 </div>
+</div>
 <!-- /.card-body -->
 </div>
 <!-- /.card -->
@@ -247,4 +247,4 @@ error_reporting(0);
 </div>
 <!-- /.row -->
 </section>
-</div>	
+</div>
