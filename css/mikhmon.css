@@ -20,7 +20,7 @@
 .div-t{
   overflow-x:auto; 
   overflow-y:auto; 
-  max-height: 65vh;
+  max-height: 75vh;
 }
 .loader {
   z-index: 1;
