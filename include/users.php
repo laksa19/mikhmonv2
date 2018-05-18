@@ -78,7 +78,7 @@ for ($i=0; $i<$TotalReg2; $i++){
     </th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
-        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable3" size="auto" onkeyup='fTable3()' placeholder="Uptune" title="Filter by Uptime">
+        <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable3" size="auto" onkeyup='fTable3()' placeholder="Uptime" title="Filter by Uptime">
       </div>
     </th>
     <th style="min-width:85px;" >
