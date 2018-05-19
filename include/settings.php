@@ -49,7 +49,7 @@ if(isset($_POST['save'])){
 		$mconfig = './include/config.php';
 		$handleconfig = fopen($mconfig, 'w') or die('Cannot open file:  '.$mconfig);
 		
-		$dataconfig = '<?php $iphost="'.$siphost.'"; $userhost="'.$suserhost.'"; $passwdhost="'.$spasswdhost.'"; $useradm="'.$suseradm.'"; $passadm="'.$spassadm.'"; $hotspotname="'.$shotspotname.'"; $dnsname="'.$sdnsname.'"; $curency="'.$scurency.'";  $areload="'.$sareload.'";  $iface="'.$iface.'";?>';
+		$dataconfig = '<?php $iphost="'.$siphost.'"; $userhost="'.$suserhost.'"; $passwdhost="'.$spasswdhost.'"; $useradm="'.$suseradm.'"; $passadm="'.$spassadm.'"; $hotspotname="'.$shotspotname.'"; $dnsname="'.$sdnsname.'"; $curency="'.$scurency.'";  $areload="'.$sareload.'";  $iface="'.$iface.'"; if(substr($_SERVER["REQUEST_URI"], -10) == "config.php"){header("Location:./");};?>';
     
 		fwrite($handleconfig, $dataconfig);
 		
@@ -98,7 +98,7 @@ if(isset($_POST['save'])){
 	  $mconfig = './include/config.php';
 		$handleconfig = fopen($mconfig, 'w') or die('Cannot open file:  '.$mconfig);
 		
-		$dataconfig = '<?php $iphost="'.$siphost.'"; $userhost="'.$suserhost.'"; $passwdhost="'.$spasswdhost.'"; $useradm="'.$suseradm.'"; $passadm="'.$spassadm.'"; $hotspotname="'.$shotspotname.'"; $dnsname="'.$sdnsname.'"; $curency="'.$scurency.'"; $areload="'.$sareload.'";  $iface="'.$iface.'";?>';
+		$dataconfig = '<?php $iphost="'.$siphost.'"; $userhost="'.$suserhost.'"; $passwdhost="'.$spasswdhost.'"; $useradm="'.$suseradm.'"; $passadm="'.$spassadm.'"; $hotspotname="'.$shotspotname.'"; $dnsname="'.$sdnsname.'"; $curency="'.$scurency.'"; $areload="'.$sareload.'";  $iface="'.$iface.'";if(substr($_SERVER["REQUEST_URI"], -10) == "config.php"){header("Location:./");};?>';
     
 		fwrite($handleconfig, $dataconfig);
 		
