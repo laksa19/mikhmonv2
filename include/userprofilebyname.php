@@ -116,17 +116,18 @@ echo "<!--";
     <h3 class="card-title pull-left">Edit Users Profile</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body p-1">
+<div class="card-body p-0">
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="off" method="post" action="">
-<div class="card">
-<div class="card-header p-1">
+<table class="table table-sm table-hover">
+  <tr>
+    <td colspan="2">
     <a class="btn btn-sm btn-warning btn-mrg" href="./?hotspot=user-profiles"> <i class="fa fa-close"></i> Close</a>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" ><i class="fa fa-save"></i> Save</button>
     <a class="btn btn-sm btn-danger btn-mrg" href="./?remove-user-profile=<?php echo $pid;?>"><i class="fa fa-minus-square"></i> Remove</a>
-</div>  
-<table class="table table-sm">
+    </td>
+  </tr>
   <tr>
     <td>Name</td><td><input class="form-control form-control-sm" type="text" autocomplete="off" name="name" value="<?php echo $pname;?>" required="1" autofocus></td>
   </tr>
@@ -191,7 +192,6 @@ echo "<!--";
     </td>
   </tr>
 </table>
-</div>
 </form>
 </div>
 <!-- /.card-body -->

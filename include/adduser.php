@@ -74,21 +74,22 @@ echo "<!--";
     <h3 class="card-title pull-left">Add User</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body p-1">
+<div class="card-body p-0">
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="off" method="post" action="">  
-<div class="card">
-<div class="card-header p-1">
-<?php if($_SESSION['ubp'] != ""){
+<table class="table table-sm table-hover">
+  <tr>
+    <td colspan="2">
+      <?php if($_SESSION['ubp'] != ""){
     echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
     echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
 }
 ?>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg"> <i class="fa fa-save"></i> Save</button>
-</div>
-<table class="table table-sm">
+    </td>
+  </tr>
   <tr>
     <td class="align-middle" >Server</td>
     <td>
@@ -158,9 +159,7 @@ echo "<!--";
     </td>
   </tr>
 </table>
-</div>
 </form>
-
 </div>
 </div>
 <!-- /.card-body -->

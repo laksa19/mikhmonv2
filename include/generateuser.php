@@ -61,6 +61,12 @@ echo "<!--";
 		  $u[$i]= substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"), -$userl);
 		  }elseif($char == "upplow"){
 		  $u[$i]= substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), -$userl);
+		  }elseif($char == "mix"){
+		  $u[$i]= substr(str_shuffle("123456789123456789123456789abcdefghijklmnopqrstuvwxyz"), -$userl);
+		  }elseif($char == "mix1"){
+		  $u[$i]= substr(str_shuffle("123456789123456789123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), -$userl);
+		  }elseif($char == "mix2"){
+		  $u[$i]= substr(str_shuffle("123456789123456789123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"), -$userl);
 		  }
 		  if($userl == 3){
 				$p[$i]= rand(100,999);
@@ -136,7 +142,18 @@ echo "<!--";
 
 	      $u[$i] = "$prefix$p[$i]";
 	      }
-	      
+	      if($char == "mix1"){
+			  	$p[$i]= substr(str_shuffle("123456789123456789123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), -$userl);
+			  
+
+	      $u[$i] = "$prefix$p[$i]";
+	      }
+	      if($char == "mix2"){
+			  	$p[$i]= substr(str_shuffle("123456789123456789123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"), -$userl);
+			  
+
+	      $u[$i] = "$prefix$p[$i]";
+	      }
 	      
 		}
 		for($i=1;$i<=$qty;$i++){
@@ -178,13 +195,14 @@ echo "<!--";
     <h3 class="card-title pull-left">Generate User</h3>
 </div>
 <!-- /.card-header -->
-<div class="card-body p-1">
+<div class="card-body p-0">
 <div class="row">
 <div class="col-sm-12">
 <form autocomplete="off" method="post" action="">
-<div class="card">
-<div class="card-header p-1">
-<?php if($_SESSION['ubp'] != ""){
+<table class="table table-sm table-hover">
+  <tr>
+  	<td colspan="2">
+  <?php if($_SESSION['ubp'] != ""){
     echo "    <a class='btn btn-sm btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
     echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
@@ -194,8 +212,8 @@ echo "<!--";
     <a class="btn btn-sm btn-secondary btn-mrg" title="Print Default" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=no" target="_blank"> <i class="fa fa-print"></i> Print</a>
     <a class="btn btn-sm btn-danger btn-mrg" title="Print QR" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=yes" target="_blank"> <i class="fa fa-qrcode"></i> QR</a>
     <a class="btn btn-sm btn-info btn-mrg" title="Print Small" href="./voucher/print.php?id=<?php echo $urlprint;?>&small=yes" target="_blank"> <i class="fa fa-print"></i> Small</a>
-</div>	
-<table class="table table-sm">
+    </td>
+  </tr>	
   <tr>
     <td class="align-middle">Qty</td><td><input class="form-control form-control-sm" type="number" size="4" name="qty" min="1" max="500" value="1" required="1"></td>
   </tr>
@@ -245,7 +263,9 @@ echo "<!--";
 				<option id="lower1" style="display:none;" value="lower">abcd1234</option>
 				<option id="upper1" style="display:none;" value="upper">ABCD1234</option>
 				<option id="upplow1" style="display:none;" value="upplow">aBcD1234</option>
-				<option id="mix" style="display:none;" value="mix">1ab2c34d</option>
+				<option id="mix" style="display:block;" value="mix">1ab2c34d</option>
+				<option id="mix1" style="display:block;" value="mix1">1AB2C34D</option>
+				<option id="mix2" style="display:block;" value="mix2">1aB2c34D</option>
 				<option id="num" style="display:none;" value="num">1234</option>
 			</select>
     </td>
@@ -303,7 +323,6 @@ echo "<!--";
     </td>
   </tr>
 </table>
-</div>
 </form>
 </div>
 </div>

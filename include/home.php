@@ -136,13 +136,12 @@ $routerboard = $getrouterboard[0];
         
         <!-- Small boxes (Stat box) -->
         <div class="row">
-      <div class="col-md-3 col-sm-6 col-12">
-          <a href="./?hotspot=active">
-            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
-              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-laptop"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Hotspot Active</span>
-                <span class="info-box-number">
+          <div class="col-sm-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-<?php echo $color[rand(1,6)];?> p-2">
+              <a href="./?hotspot=active">
+              <div class="inner">
+                <h5>
 <?php
 // get & counting hotspot active
   $counthotspotactive = $API->comm("/ip/hotspot/active/print", array(
@@ -151,20 +150,23 @@ $routerboard = $getrouterboard[0];
   }elseif($counthotspotactive > 1){
   echo "$counthotspotactive items";
   }
-?>              </span>
+?>
+                </h5>
+                <p>Hotspot Active</p>
               </div>
-              <!-- /.info-box-content -->
+              <div class="icon">
+                <i class="fa fa-laptop"></i>
+              </div>
+                <i class="fa fa-laptop"></i>
+              </a>
             </div>
-            <!-- /.info-box -->
-          </a>
-      </div>
-      <div class="col-md-3 col-sm-6 col-12">
-          <a href="./?hotspot=users">
-            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
-              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-users"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Hotspot Users</span>
-                <span class="info-box-number">
+          </div>
+          <div class="col-sm-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-<?php echo $color[rand(1,6)];?> p-2">
+              <a href="./?hotspot=users">
+              <div class="inner">
+                <h5>
 <?php
 // get & counting hotspot users
   $countallusers = $API->comm("/ip/hotspot/user/print", array(
@@ -172,38 +174,46 @@ $routerboard = $getrouterboard[0];
   if($countallusers < 2 ){echo "$countallusers item";
   }elseif($countallusers > 1){
   echo "$countallusers items";}
-?>              </span>
+?>
+                </h5>
+                <p>Hotspot Users</p>
               </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </a>
-      </div>
-      <div class="col-md-3 col-sm-6 col-12">
-          <a href="./?hotspot-user=add">
-            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
-              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-user"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Add</span>
-                <span class="info-box-number">User</span>
+              <div class="icon">
+                <i class="fa fa-list"></i>
               </div>
-              <!-- /.info-box-content -->
+                <i class="fa fa-list"></i>
+              </a>
             </div>
-            <!-- /.info-box -->
-          </a>
-      </div>
-      <div class="col-md-3 col-sm-6 col-12">
-          <a href="./?hotspot-user=generate">
-            <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
-              <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-users"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Generate</span>
-                <span class="info-box-number">Users</span>
+          </div>
+          <div class="col-sm-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-<?php echo $color[rand(1,6)];?> p-2">
+              <a href="./?hotspot-user=add">
+              <div class="inner">
+                <h5>Add</h5>
+                <p>Hotspot User</p>
               </div>
-              <!-- /.info-box-content -->
+              <div class="icon">
+                <i class="fa fa-user"></i>
+              </div>
+                <i class="fa fa-user"></i>
+              </a>
             </div>
-            <!-- /.info-box -->
-          </a>
+          </div>
+          <div class="col-sm-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-<?php echo $color[rand(1,6)];?> p-2">
+              <a href="./?hotspot-user=generate">
+              <div class="inner">
+                <h5>Generate</h5>
+                <p>Hotspot User</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-users"></i>
+              </div>
+                <i class="fa fa-users"></i>
+              </a>
+            </div>
           </div>
       </div>
     </div>
@@ -276,7 +286,7 @@ $routerboard = $getrouterboard[0];
         </div>
           <div class="card-body p-2">
             <div class="row p-2">
-                <textarea style="overflow: auto; width:100%; height:282px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
+                <textarea style="overflow: auto; width:100%; height:309px; font-size:11px; background-color: #fff; color:#111; border:0;" disabled>
 <?php
 // move hotspot log to disk
   $getlogging = $API->comm("/system/logging/print", array(
