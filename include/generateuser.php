@@ -233,8 +233,8 @@ echo "<!--";
 	<tr>
     <td class="align-middle">User Mode</td><td>
 			<select class="form-control form-control-sm" onchange="defUserl();" id="user" name="user" required="1">
-				<option value="up">User & Pasword</option>
-				<option value="vc">User = Pasword</option>
+				<option value="up">Username & Pasword</option>
+				<option value="vc">Username = Pasword</option>
 			</select>
 		</td>
 	</tr>
