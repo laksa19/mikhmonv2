@@ -31,7 +31,14 @@ if($uprofname != ""){
   $ponlogin = $getprofile[0]['on-login'];
   $getvalid = explode(",",$ponlogin)[3];
   $getprice = explode(",",$ponlogin)[2];
-  if($getprice == 0){}else{$price = "| ".$curency." ".number_format($getprice);}
+  if($getprice == 0){
+  }else{
+  	if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){
+       $price = "| ".$curency." ".number_format($getprice,0,",",".");
+     }else{
+    $price = "| ".$curency." ".number_format($getprice);
+  }
+  }
   echo '<b>'.$getvalid.' '.$price.'</b>';
 }
 ?>
