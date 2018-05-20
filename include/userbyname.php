@@ -212,7 +212,7 @@ error_reporting(0);
     <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value="<?php echo $ucomment;?>"></td>
   </tr>
   <tr>
-    <td class="align-middle">Price</td><td><input class="form-control form-control-sm" type="text" value="<?php if($getprice == 0){}else{echo $curency." ".number_format($getprice);}?>" disabled></td>
+    <td class="align-middle">Price</td><td><input class="form-control form-control-sm" type="text" value="<?php if($getprice == 0){}else{if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){echo $curency." ".number_format($getprice,0,",",".");}else{ echo $curency." ".number_format($getprice); }}?>" disabled></td>
   </tr>
   <?php if($getvalid != ""){?>
   <tr>

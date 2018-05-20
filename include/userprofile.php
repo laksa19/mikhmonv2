@@ -113,7 +113,11 @@ $price = trim($getprice[2]);
 if($price == "" || $price == "0" ){
 	  echo "";
 }else{
-	echo " " .number_format($price);
+	if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){
+		echo number_format($price,0,",",".");
+	}else{ 
+		echo number_format($price); 
+	}
 }
 
 echo "</td>";
