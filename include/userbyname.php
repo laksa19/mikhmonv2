@@ -45,6 +45,8 @@ error_reporting(0);
 	$ueduser = $userdetails['disabled'];
 	$utimelimit = $userdetails['limit-uptime'];
 	$udatalimit = $userdetails['limit-bytes-out'];
+  $ubytesout = $userdetails['bytes-out'];
+  $ubytesin = $userdetails['bytes-in'];
   $ucomment = $userdetails['comment'];
 	if($udatalimit == ""){$udatalimit = "";}else{$udatalimit = $udatalimit/1000000000;}
 	if($uname == $upass){$usermode = "vc";}else{$usermode = "up";}
@@ -189,6 +191,9 @@ error_reporting(0);
 	</tr>
   <tr>
     <td class="align-middle">Uptime</td><td><input class="form-control form-control-sm" type="text" value="<?php if($uuptime == 0){}else{echo $uuptime;}?>" disabled></td>
+  </tr>
+  <tr>
+    <td class="align-middle">Bytes Out</td><td><input class="form-control form-control-sm" type="text" value="<?php if($ubytesout == 0){}else{echo formatBytes($ubytesout,0);}?>" disabled></td>
   </tr>
   <tr>
     <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"></td>
