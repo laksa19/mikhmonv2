@@ -57,7 +57,7 @@ $getprofile = $API->comm("/ip/hotspot/user/profile/print", array("?name" => "$ge
   $ponlogin = $getprofile[0]['on-login'];
   $validity = explode(",",$ponlogin)[3];
   $getprice = explode(",",$ponlogin)[2];
-  if($getprice == 0){$price = "";}else{$price = $curency."".number_format($getprice);}
+  if($getprice == 0){$price = "";}else{$price = $curency." ".number_format($getprice);}
 
 $logo = "../img/logo.png";
 
