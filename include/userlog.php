@@ -74,7 +74,7 @@ if(strlen($idhr) > "0"){
   }
 	$filedownload = $idhr;
 	$shf = "hidden";
-	$shd = "submit";
+	$shd = "text";
 }elseif(strlen($idbl) > "0"){
   if ($API->connect( $iphost, $userhost, $passwdhost )) {
 	$API->write('/system/script/print', false);
@@ -84,7 +84,7 @@ if(strlen($idhr) > "0"){
   }
 	$filedownload = $idbl;
 	$shf = "hidden";
-	$shd = "submit";
+	$shd = "text";
 }elseif($idhr == "" || $idbl == ""){
   if ($API->connect( $iphost, $userhost, $passwdhost )) {
 	$API->write('/system/script/print', false);
@@ -119,7 +119,7 @@ $shd = "hidden";
 			  
 			  function exportTableToCSV(filename) {
 			    var csv = [];
-			    var rows = document.querySelectorAll("#selling tr");
+			    var rows = document.querySelectorAll("#userlog tr");
 			    
 			   for (var i = 0; i < rows.length; i++) {
 			      var row = [], cols = rows[i].querySelectorAll("td, th");
@@ -149,49 +149,31 @@ $shd = "hidden";
 <div class="col-12 p-1">
 <div class="card">
 <div class="card-header p-2">
-	<h3 class="card-title pull-left">Selling Report</h3>
+	<h3 class="card-title pull-left">User Log</h3>
 </div>
 <!-- /.card-header -->
 <div class="card-body p-1">
 <div class="row">
 <div class="col-sm-12">
-			  
-				 <p> 
-		    <?php if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){?>
-		      <ul>
-		        <li>Filter berdasarkan hari klik pada [19/2018].</li>
-		        <li>Filter berdasarkan bulan klik pada [jan/].</li>
-		        <li>Click CSV untuk mengunduh.</li>
-		        <li>Disarankan untuk menghapus laporan penjualan setelah mengunduh laporan CSV.</li>
-		      </ul>
-		    <?php }else{?>
-		      <ul>
-		        <li>Filter by day click on [19/2018].</li>
-		        <li>Filter by month day click on [jan/].</li>
-		        <li>Klik CSV to download.</li>
-		        <li>It is recommended to delete the sales report after download  the CSV report.</li>
-		      </ul>
-		    <?php }?>
-			</p>
 		<div>	   
-		  <input class="form-control form-control-sm mx-1 my-1" style="float:left; max-width: 150px;" type="<?php echo $shf;?>" id="filterData" onkeyup="fTgl()" placeholder="Filter date" title="Filter selling date"> &nbsp;
-		  <button class="btn btn-sm btn-primary mx-1 my-1" onclick="exportTableToCSV('report-mikhmon-<?php echo $filedownload;?>.csv')" title="Download selling report"><i class="fa fa-download"></i> CSV</button>
-		  <button class="btn btn-sm btn-primary mx-1 my-1" onclick="location.href='./?hotspot=selling';" title="Reload all data"><i class="fa fa-search"></i> ALL</button>
-		  <input type="<?php echo $shd;?>"  data-toggle="modal" data-target="#remdata" name="remdata" class="btn btn-sm btn-danger mx-1 my-1" onclick="location.href='#remdata';" title="Delete Data <?php echo $filedownload;?>" value="Delete data <?php echo $filedownload;?>">
-		</div>
+		  <input class="form-control form-control-sm mx-1 my-1" style="float:left; max-width: 150px;" type="<?php echo $shf;?>" id="filterData" onkeyup="fTgl()" placeholder="Filter date" title="Filter date"> 
+		  <input class="form-control form-control-sm mx-1 my-1" style="float:left; max-width: 150px;" type="<?php echo $shd;?>" id="filterData1" onkeyup="fTgl1()" placeholder="Filter Username" title="Filter Username">&nbsp;
+		  <button class="btn btn-sm btn-primary mx-1 my-1" onclick="exportTableToCSV('user-log-mikhmon-<?php echo $filedownload;?>.csv')" title="Download user log"><i class="fa fa-download"></i> CSV</button>
+		  <button class="btn btn-sm btn-primary mx-1 my-1" onclick="location.href='./?hotspot=userlog';" title="Reload all data"><i class="fa fa-search"></i> ALL</button>
+		</div>  
 		  <div style="padding-top:10px; overflow-x:auto; overflow-y:auto; max-height: 70vh;">
-			<table id="selling" class="table table-sm table-bordered table-hover text-nowrap">
+			<table id="userlog" class="table table-sm table-bordered table-hover text-nowrap">
 				<thead class="thead-light">
 				<tr>
-				  <th colspan=2 >Selling report <?php echo $filedownload;?><b style="font-size:0;">,</b></th>
-				  <th style="text-align:right;">Total</b></th>
-				  <th style="text-align:right;" id="total"></th>
+				  <th colspan=6 >User Log <?php echo $filedownload;?></th>
 				</tr>
 				<tr>
 					<th >Date</th>
 					<th >Time</th>
 					<th >Username</th>
-					<th style="text-align:right;">Price <?php echo $curency;?></th>
+					<th >address</th>
+					<th >Mac Address</th>
+					<th >Validity</th>
 				</tr>
 				</thead>
 				<?php
@@ -207,7 +189,7 @@ $shd = "hidden";
 							$getdy = explode("/",$tgl);
 							$m = $getdy[0];
 							$dy = $getdy[1]."/".$getdy[2];
-							echo "<a style='color:#000;' href='./?hotspot=selling&idbl=".$getowner ."' title='Filter selling report month : ".$getowner."'>$m/</a><a style='color:#000;' href='./?hotspot=selling&idhr=".$tgl ."' title='Filter selling report day : ".$tgl."'>$dy</a>";
+							echo "<a style='color:#000;' href='./?hotspot=userlog&idbl=".$getowner ."' title='Filter user log month : ".$getowner."'>$m/</a><a style='color:#000;' href='./?hotspot=userlog&idhr=".$tgl ."' title='Filter userlog day : ".$tgl."'>$dy</a>";
 							echo "</td>";
 							echo "<td>";
 							$ltime = $getname[1];
@@ -217,9 +199,17 @@ $shd = "hidden";
 							$username = $getname[2];
 							echo $username;
 							echo "</td>";
-							echo "<td style='text-align:right;'>";
-							$price = $getname[3];
-							echo $price;
+							echo "<td>";
+							$addr = $getname[4];
+							echo $addr;
+							echo "</td>";
+							echo "<td>";
+							$mac = $getname[5];
+							echo $mac;
+							echo "</td>";
+							echo "<td>";
+							$val = $getname[6];
+							echo $val;
 							echo "</td>";
 							echo "</tr>";
 							}
@@ -241,25 +231,13 @@ $shd = "hidden";
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title p-0" id="exampleModalLabel">Are you sure to Delete?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure to Delete?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-	<p>
-        <?php if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){?>
-		      <ul>
-		        <li>Menghapus Selling Report akan menghapus User Log juga.</li>
-		        <li>Disarankan untuk mengunduh User Log terlebih dahulu.</li>
-		      </ul>
-		    <?php }else{?>
-		      <ul>
-		        <li>Deleting the Selling Report will delete the User Log as well. </li>
-		        <li>It is recommended to download User Log first. </li>
-		      </ul>
-		    <?php }?>
-		</p>
+	
 	<?php
 
 	echo "<form autocomplete='off' method='post' action=''>";
@@ -276,12 +254,12 @@ $shd = "hidden";
 </div>
 </div>		
 		
-	<script>
-	function fTgl() {
+<script>
+function fTgl() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("filterData");
   filter = input.value.toUpperCase();
-  table = document.getElementById("selling");
+  table = document.getElementById("userlog");
   tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
@@ -294,4 +272,21 @@ $shd = "hidden";
     }
   }
 }
-	</script>
+function fTgl1() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("filterData1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("userlog");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

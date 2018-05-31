@@ -234,7 +234,7 @@ if(isset($_POST['save'])){
 	<td class="align-middle">Traffic Ether  </td><td><input class="form-control form-control-sm" type="number" min="1" max="99" name="iface" title="Traffic Interface" value="<?php echo $iface; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td colspan="2">Mikhmon V2.10</td>
+	<td colspan="2">Mikhmon V2.11</td>
 	</tr>
 	</table>
     </div>

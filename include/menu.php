@@ -48,8 +48,15 @@ if($hotspot == "home" || substr($url,-1) == "/"){
   $sipbind = $btnmenuactive;
   $mpage = "IP Bindings";
 }elseif($hotspot == "log"){
+  $log = "active";
   $slog = "active";
   $mpage = "Hotspot Log";
+  $lmenu = "menu-open";
+}elseif($hotspot == "userlog"){
+  $log = "active";
+  $sulog = "active";
+  $mpage = "User Log";
+  $lmenu = "menu-open";
 }elseif($hotspot == "selling"){
   $sselling = "active";
   $mpage = "Report";
@@ -185,11 +192,28 @@ if($hotspot == "home" || substr($url,-1) == "/"){
               <p>Hotspot Active</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="./?hotspot=log" class="nav-link <?php echo $slog;?>">
+          <li class="nav-item has-treeview <?php echo $lmenu;?>">
+            <a href="#" class="nav-link <?php echo $log;?>">
               <i class="nav-icon fa fa-align-justify"></i>
-              <p>Hotspot Log</p>
+              <p>
+                Log
+                <i class="right fa fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./?hotspot=log" class="nav-link <?php echo $slog;?>">
+                  <i class="fa fa-wifi nav-icon"></i>
+                  <p>Hotspot Log</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./?hotspot=userlog" class="nav-link <?php echo $sulog;?>">
+                  <i class="fa fa-user nav-icon"></i>
+                  <p>User Log</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="./?hotspot=selling" class="nav-link <?php echo $sselling;?>">

@@ -301,7 +301,7 @@ $routerboard = $getrouterboard[0];
   $log = array_reverse($getlog);
   $TotalReg = count($getlog);
   for ($i=0; $i<$TotalReg; $i++){
-  echo "" . $log[$i]['message']."&#13;&#10;";
+  echo "".$log[$i]['time'] ." " . $log[$i]['message']."&#13;&#10;";
   }
 ?>
       </textarea>
