@@ -171,12 +171,12 @@ textarea,input,select {
 	$limitbyte = $getuser[0]['limit-bytes-out'];
 	if($limitbyte == ""){$dataleft = "Unlimited";}else{$dataleft = formatBytes2($limitbyte-$getbyteo,0);}
 	}
-	if($user == "" ){
+	if($user == "" || $exp == ""){
 		echo "<h3>User <i style='color:#008CCA;'>$name</i> $title9</h3>";
 	}elseif($limitup == "1s" || $uptime == $limitup || $getbyteo == $limitbyte){
 		echo "<h3>User <i style='color:#008CCA;'>$name</i> $title10</h3>";
 	}
-	if($user == "" ){}else{
+	if($user == "" || $exp == ""){}else{
 	echo "<div style='overflow-x:auto;'>";
 	echo "<table style='width:200;'>";
 	echo "	<tr>";
