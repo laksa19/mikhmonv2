@@ -58,7 +58,7 @@ echo "<!--";
 					  "name" => "$name",
 					  "rate-limit" => "$ratelimit",
 					  "shared-users" => "$sharedusers",
-					  "status-autorefresh" => "15",
+					  "status-autorefresh" => "1m",
 					  "transparent-proxy" => "yes",
 					  "on-login" => "$onlogin",
 			));
