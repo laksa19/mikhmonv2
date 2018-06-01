@@ -158,7 +158,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
               <li class="nav-item">
                 <a href="./?hotspot-user=generate" class="nav-link <?php echo $sgenuser;?>">
                   <i class="fa fa-users nav-icon"></i>
-                  <p>Ganerate</p>
+                  <p>Generate</p>
                 </a>
               </li>
             </ul>
