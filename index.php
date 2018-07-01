@@ -85,7 +85,7 @@ if($hotspot == "logout"){
 }
 
 // redirect to home
-elseif(substr($url,-1) == "/"){
+elseif(substr($url,-1) == "/" || substr($url,-9) == "index.php"){
   ?>
 <?php
   include_once('./include/home.php');

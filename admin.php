@@ -36,7 +36,7 @@ if(isset($_POST['login'])){
 		  $_SESSION["$userhost"]=$user;
   			echo "<script>window.location='./admin.php?id=settings'</script>";
 		}else{
-			$error = "Invalid username or password.";
+			$error = '<div class="alert alert-danger alert-dismissible"><h5><i class="icon fa fa-ban"></i> Alert!</h5>Invalid username or password.</div>';
 	}
 }
 
