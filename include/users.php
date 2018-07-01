@@ -68,7 +68,7 @@ if($comm != ""){
           }
           if($counttuser == 0 ){echo "<script>window.location='./?hotspot=users&profile=all'</script>";}
           if($comm != ""){
-            echo '<a class="btn btn-sm btn-warning" href="./?hotspot=users&profile=all"><i class="fa fa-close"></i> Close</a> <a class="btn btn-sm btn-danger btn-mrg" title="Remove user by comment '.$comm.'" href="./?remove-hotspot-user-by-comment='.$comm.'"> <i class="fa fa-minus-square"></i> Remove All</a>';
+            echo '<a class="btn btn-sm btn-info" href="./?hotspot=users&profile=all"><i class="fa fa-search"></i> Show All</a> <a class="btn btn-sm btn-danger btn-mrg" title="Remove user by comment '.$comm.'" href="./?remove-hotspot-user-by-comment='.$comm.'"> <i class="fa fa-minus-square"></i> Remove All</a>';
           }
 				?>    
     </h3>
