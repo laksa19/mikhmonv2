@@ -19,9 +19,6 @@ session_start();
 // hide all error
 error_reporting(0);
 
-// load ip user pass MikroTik
-include_once('./config.php');
-
 if(!isset($_SESSION["$userhost"])){
 	echo "<meta http-equiv='refresh' content='0;url=./' />";
 }else{
@@ -32,7 +29,7 @@ $remdata = ($_POST['remdata']);
 
 if(isset($remdata)){
   if(strlen($idhr) > "0"){
-	if ($API->connect( $iphost, $userhost, $passwdhost )) {
+	if ($API->connect( $iphost, $userhost, decrypt($passwdhost))) {
 	  $API->write('/system/script/print', false);
 	  $API->write('?source='.$idhr.'', false);
 	  $API->write('=.proplist=.id');
@@ -45,7 +42,7 @@ if(isset($remdata)){
 	}
 	}
   }elseif(strlen($idbl) > "0"){
-  if ($API->connect( $iphost, $userhost, $passwdhost )) {
+  if ($API->connect( $iphost, $userhost, decrypt($passwdhost))) {
 	  $API->write('/system/script/print', false);
 	  $API->write('?owner='.$idbl.'', false);
 	  $API->write('=.proplist=.id');
@@ -66,7 +63,7 @@ if(isset($remdata)){
 
 
 if(strlen($idhr) > "0"){
-  if ($API->connect( $iphost, $userhost, $passwdhost )) {
+  if ($API->connect( $iphost, $userhost, decrypt($passwdhost))) {
 	$API->write('/system/script/print', false);
 	$API->write('?=source='.$idhr.'');
 	$ARRAY = $API->read();
@@ -76,7 +73,7 @@ if(strlen($idhr) > "0"){
 	$shf = "hidden";
 	$shd = "text";
 }elseif(strlen($idbl) > "0"){
-  if ($API->connect( $iphost, $userhost, $passwdhost )) {
+  if ($API->connect( $iphost, $userhost, decrypt($passwdhost))) {
 	$API->write('/system/script/print', false);
 	$API->write('?=owner='.$idbl.'');
 	$ARRAY = $API->read();
@@ -86,7 +83,7 @@ if(strlen($idhr) > "0"){
 	$shf = "hidden";
 	$shd = "text";
 }elseif($idhr == "" || $idbl == ""){
-  if ($API->connect( $iphost, $userhost, $passwdhost )) {
+  if ($API->connect( $iphost, $userhost, decrypt($passwdhost))) {
 	$API->write('/system/script/print', false);
 	$API->write('?=comment=mikhmon');
 	$ARRAY = $API->read();

@@ -20,11 +20,14 @@ session_start();
 error_reporting(0);
 
 $API->comm("/ip/hotspot/user/remove", array(
-	    ".id"=> "$removehotspotuser",));
+	    ".id"=> "$removehotspotuser",
+	));
 if($_SESSION['ubp'] != ""){
-echo "<script>window.location='./?user-by-profile=".$_SESSION['ubp']."'</script>";
+echo "<script>window.location='./?hotspot=users&profile=".$_SESSION['ubp']."'</script>";
+}elseif($_SESSION['ubc'] != ""){
+echo "<script>window.location='./?hotspot=users&comment=".$_SESSION['ubc']."'</script>";
 }else{
-echo "<script>window.location='./?hotspot=users'</script>";
+echo "<script>window.location='./?hotspot=users&profile=all'</script>";
 }
   
 ?>

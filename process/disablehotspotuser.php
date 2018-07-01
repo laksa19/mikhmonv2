@@ -23,10 +23,13 @@ $API->comm("/ip/hotspot/user/set", array(
 	    ".id"=> "$disablehotspotuser",
 	    "disabled" => "yes",
 	    ));
-if($_SESSION['ubp'] != "" ){
-echo "<script>window.location='./?user-by-profile=".$_SESSION['ubp']."'</script>";
+if($_SESSION['ubp'] != ""){
+echo "<script>window.location='./?hotspot=users&profile=".$_SESSION['ubp']."'</script>";
+}elseif($_SESSION['ubc'] != ""){
+echo "<script>window.location='./?hotspot=users&comment=".$_SESSION['ubc']."'</script>";
 }else{
-echo "<script>window.location='./?hotspot=users'</script>";
+echo "<script>window.location='./?hotspot=users&profile=all'</script>";
 }
+  
   
 ?>

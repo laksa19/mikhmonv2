@@ -57,6 +57,7 @@ error_reporting(0);
 		<th class="align-middle">Validity</th>
 		<th class="align-middle">Grace<br>Period</th>
 		<th class="text-right align-middle" >Price <?php echo $curency;?></th>
+		<th class="align-middle">Lock<br>User</th>
 		<th class="text-right align-middle">Total<br>User</th>
     </tr>
   </thead>
@@ -72,7 +73,7 @@ $psharedu = $profiledetalis['shared-users'];
 $pratelimit = $profiledetalis['rate-limit'];
 $ponlogin = $profiledetalis['on-login'];
 
-echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'><i class='fa fa-minus-square text-danger'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a title='Open User by profile " .$pname. "' class='btnsmall' href='./?user-by-profile=" .$pname . "'><i class='fa fa-users text-dark'></i></a></td>";
+echo "<td style='text-align:center;'><a class='btnsmall' href='./?remove-user-profile=".$pid . "' title='Remove User Profile " . $pname . "'><i class='fa fa-minus-square text-danger'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a title='Open User by profile " .$pname. "' class='btnsmall' href='./?hotspot=users&profile=" .$pname . "'><i class='fa fa-users text-dark'></i></a></td>";
 echo "<td><a style='color:#000;' title='Open User Profile " . $pname . "' href='./?user-profile=".$pid."'><i class='fa fa-edit'></i> $pname</a></td>";
 //$profiledetalis = $ARRAY[$i];echo "<td>" . $profiledetalis['name'];echo "</td>";
 echo "<td>" . $psharedu;echo "</td>";
@@ -121,11 +122,16 @@ if($price == "" || $price == "0" ){
 }
 
 echo "</td>";
+echo "<td>";
+
+$getgracep= explode(",",$ponlogin);
+echo $getgracep[6];
+echo "</td>";
 echo "<td style='text-align:right';>";
 
 $countuser = $API->comm("/ip/hotspot/user/print", array(
     "count-only" => "",
-    "?profile" => "$pname",
+	"?profile" => "$pname",
     ));
 	if($countuser < 2 ){echo "$countuser";
   }elseif($countuser > 1){

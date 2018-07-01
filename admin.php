@@ -29,10 +29,10 @@ if($id == "login" || substr($url,-1) == "p"){
 if(isset($_POST['login'])){
 	$user = $_POST['user'];
 	$pass = $_POST['pass'];
-		if($user == $userhost && $pass == $passwdhost){
+    if($user == $userhost && $pass == decrypt($passwdhost)){
 			$_SESSION["$userhost"]=$user;
 				echo "<script>window.location='.'</script>";
-		}elseif ($user == $useradm && $pass == $passadm){
+		}elseif ($user == $useradm && $pass == decrypt($passadm)){
 		  $_SESSION["$userhost"]=$user;
   			echo "<script>window.location='./admin.php?id=settings'</script>";
 		}else{
@@ -51,7 +51,7 @@ include_once('./include/login.php');
 }elseif($id == "connect"){
   $API = new RouterosAPI();
   $API->debug = false;
-  $API->connect( $iphost, $userhost, $passwdhost );
+  $API->connect( $iphost, $userhost, decrypt($passwdhost));
   $getidentity = $API->comm("/system/identity/print");
   $identity = $getidentity[0]['name'];
   if($identity == "" ){
@@ -63,5 +63,7 @@ include_once('./include/login.php');
   }
 }elseif($id == "uplogo"){
   include_once('./include/uplogo.php');
+}elseif($id == "reboot"){
+  include_once('./process/reboot.php');
 }
 ?>

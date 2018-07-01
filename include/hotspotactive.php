@@ -30,7 +30,7 @@ include_once('../lib/routeros_api.class.php');
 include_once('../lib/formatbytesbites.php');
 $API = new RouterosAPI();
 $API->debug = false;
-$API->connect( $iphost, $userhost, $passwdhost );
+$API->connect( $iphost, $userhost, decrypt($passwdhost));
 
   $gethotspotactive = $API->comm("/ip/hotspot/active/print");
 	$TotalReg = count($gethotspotactive);
@@ -82,7 +82,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
 	$address = $hotspotactive['address'];
 	$mac = $hotspotactive['mac-address'];
 	$uptime = $hotspotactive['uptime'];
-	$byteso = formatBytes2($hotspotactive['bytes-out'], 0);
+	$byteso = formatBytes($hotspotactive['bytes-out'], 2);
 	$loginby = $hotspotactive['login-by'];
 	
 	echo "<tr>";

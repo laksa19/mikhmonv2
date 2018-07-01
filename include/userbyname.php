@@ -39,7 +39,8 @@ error_reporting(0);
 	$uid = $userdetails['.id'];
 	$userver = $userdetails['server'];
 	$uname = $userdetails['name'];
-	$upass = $userdetails['password'];
+  $upass = $userdetails['password'];
+  $umac = $userdetails['mac-address'];
 	$uprofile = $userdetails['profile'];
 	$uuptime = $userdetails['uptime'];
 	$ueduser = $userdetails['disabled'];
@@ -48,7 +49,18 @@ error_reporting(0);
   $ubytesout = $userdetails['bytes-out'];
   $ubytesin = $userdetails['bytes-in'];
   $ucomment = $userdetails['comment'];
-	if($udatalimit == ""){$udatalimit = "";}else{$udatalimit = $udatalimit/1000000000;}
+
+  if(substr(formatBytes2($udatalimit,2),-2) == "MB"){
+    $udatalimit = $udatalimit/1000000;
+    $MG = "MB";
+  }elseif(substr(formatBytes2($udatalimit,2),-2) == "GB"){
+    $udatalimit = $udatalimit/1000000000;
+    $MG = "GB";
+  }elseif($udatalimit == ""){
+    $udatalimit = "";
+    $MG = "MB";
+  }
+
 	if($uname == $upass){$usermode = "vc";}else{$usermode = "up";}
   
   if($uname == ""){ echo "<b>User not found redirect to user list...</b>"; echo "<script>window.location='./?hotspot=users'</script>";}
@@ -79,8 +91,9 @@ error_reporting(0);
     $timelimit = ($_POST['timelimit']);
     $datalimit = ($_POST['datalimit']);
     $comment = ($_POST['comment']);
+    $mbgb = ($_POST['mbgb']);
     if($timelimit == ""){$timelimit = "0";}else{$timelimit = $timelimit;}
-    if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*1000000000;}
+    if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*$mbgb;}
     $API->comm("/ip/hotspot/user/set", array(
 	    ".id"=> "$uid",
 	    "server" => "$server",
@@ -121,16 +134,18 @@ error_reporting(0);
   <tr>
     <td colspan="2">
 <?php if($_SESSION['ubp'] != ""){
-    echo "    <a class='btn btn-sm btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'><i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users&profile=".$_SESSION['ubp']."'><i class='fa fa-close'></i> Close</a>";
+}elseif($_SESSION['ubc'] != ""){
+    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users&comment=".$_SESSION['ubc']."'><i class='fa fa-close'></i> Close</a>";
 }elseif($_SESSION['hua'] != ""){
     $_SESSION['ubn'] = "";
     echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=active'><i class='fa fa-close'></i> Close</a>";
     $_SESSION['hua'] = "";
 }elseif($_SESSION['ubn'] != ""){
-    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users'><i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users&profile=all'><i class='fa fa-close'></i> Close</a>";
     $_SESSION['ubn'] = "";
 }else{
-    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users'><i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users&profile=all'><i class='fa fa-close'></i> Close</a>";
 }
 ?>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" > <i class="fa fa-save"></i> Save</button>
@@ -190,10 +205,13 @@ error_reporting(0);
 		</td>
 	</tr>
   <tr>
+    <td class="align-middle">Mac Address</td><td><input class="form-control form-control-sm" type="text" value="<?php echo $umac;?>" disabled></td>
+  </tr>
+  <tr>
     <td class="align-middle">Uptime</td><td><input class="form-control form-control-sm" type="text" value="<?php if($uuptime == 0){}else{echo $uuptime;}?>" disabled></td>
   </tr>
   <tr>
-    <td class="align-middle">Bytes Out</td><td><input class="form-control form-control-sm" type="text" value="<?php if($ubytesout == 0){}else{echo formatBytes($ubytesout,0);}?>" disabled></td>
+    <td class="align-middle">Bytes Out</td><td><input class="form-control form-control-sm" type="text" value="<?php if($ubytesout == 0){}else{echo formatBytes($ubytesout,2);}?>" disabled></td>
   </tr>
   <tr>
     <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value="<?php if($utimelimit == "1s"){echo "";}else{ echo $utimelimit;}?>"></td>
@@ -203,13 +221,19 @@ error_reporting(0);
       <div class="input-group input-group-sm">
         <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="<?php echo $udatalimit;?>">
           <div class="input-group-append">
-              <span class="input-group-text">GB</span>
+              <span class="input-group-append">
+              <select class="form-control form-control-sm" name="mbgb" required="1">
+				        <option value="<?php if($MG == "MB"){echo "1000000";}elseif($MG == "GB"){echo "1000000000";}?>"><?php echo $MG;?></option>
+				        <option value=1000000>MB</option>
+				        <option value=1000000000>GB</option>
+			        </select>
+              </span>
           </div>
       </div>
     </td>
   </tr>
   <tr>
-    <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value="<?php echo $ucomment;?>"></td>
+    <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text" id="comment" autocomplete="off" name="comment" title="No special characters" value="<?php echo $ucomment;?>"></td>
   </tr>
   <tr>
     <td class="align-middle">Price</td><td><input class="form-control form-control-sm" type="text" value="<?php if($getprice == 0){}else{if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){echo $curency." ".number_format($getprice,0,",",".");}else{ echo $curency." ".number_format($getprice); }}?>" disabled></td>

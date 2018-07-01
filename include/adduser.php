@@ -36,8 +36,9 @@ echo "<!--";
     $timelimit = ($_POST['timelimit']);
     $datalimit = ($_POST['datalimit']);
     $comment = ($_POST['comment']);
+    $mbgb = ($_POST['mbgb']);
     if($timelimit == ""){$timelimit = "0";}else{$timelimit = $timelimit;}
-    if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*1000000000;}
+    if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*1000000;}
     $API->comm("/ip/hotspot/user/add", array(
 	    "server" => "$server",
 	    "name" => "$name",
@@ -133,15 +134,20 @@ echo "<!--";
   <tr>
     <td class="align-middle">Data Limit</td><td>
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="">
+        <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="<?php echo $udatalimit;?>">
           <div class="input-group-append">
-            <span class="input-group-text">GB</span>
+              <span class="input-group-append">
+              <select class="form-control form-control-sm" name="mbgb" required="1">
+				        <option value=1000000>MB</option>
+				        <option value=1000000000>GB</option>
+			        </select>
+              </span>
           </div>
       </div>
     </td>
   </tr>
   <tr>
-    <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text"  autocomplete="off" name="comment" value=""></td>
+    <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text" title="No special characters" id="comment" autocomplete="off" name="comment" value=""></td>
   </tr>
   <tr>
     <td colspan="2">

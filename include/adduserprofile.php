@@ -33,22 +33,24 @@ echo "<!--";
     $graceperiod = ($_POST['graceperiod']);
     $getprice = ($_POST['price']);
     if($getprice == ""){$price = "0";}else{$price = $getprice;}
+    $getlock = ($_POST['lockunlock']);
+    if($getlock == Enable){$lock = ';[:local mac $"mac-address"; /ip hotspot user set mac-address=$mac [find where name=$user]]';}else{$lock = "";}
     
-      $onlogin1 = ':put (",rem,'.$price.','.$validity.','.$graceperiod.',"); {:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event="[/ip hotspot active remove [find where user=$user]];[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/sys sch re [find where name=$user]];[/sys script run [find where name=$user]];[/sys script re [find where name=$user]]" start-date=$date start-time=$time];[/system script add name=$user source=":local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$graceperiod.');[/system scheduler add disabled=no interval=\$uptime name=$user on-event= \"[/ip hotspot user remove [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]\"]"] }}';
-			$onlogin2 = ':put (",ntf,'.$price.','.$validity.',,"); {:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]" start-date=$date start-time=$time] }}';
-			$onlogin3 = ':put (",remc,'.$price.','.$validity.','.$graceperiod.',"); {:local price ('.$price.');:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event="[/ip hotspot active remove [find where user=$user]];[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/sys sch re [find where name=$user]];[/sys script run [find where name=$user]];[/sys script re [find where name=$user]]" start-date=$date start-time=$time];[/system script add name=$user source=":local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$graceperiod.');[/system scheduler add disabled=no interval=\$uptime name=$user on-event= \"[/ip hotspot user remove [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]\"]"];:local bln [:pick $date 0 3]; :local thn [:pick $date 7 11];[:local mac $"mac-address"; /system script add name="$date-|-$time-|-$user-|-$price-|-$address-|-$mac-|-'.$validity.'" owner="$bln$thn" source=$date comment=mikhmon] }}';
-			$onlogin4 = ':put (",ntfc,'.$price.','.$validity.',,"); {:local price ('.$price.');:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]" start-date=$date start-time=$time];:local bln [:pick $date 0 3]; :local thn [:pick $date 7 11];[:local mac $"mac-address"; /system script add name="$date-|-$time-|-$user-|-$price-|-$address-|-$mac-|-'.$validity.'" owner="$bln$thn" source=$date comment=mikhmon] }}';
+      $onlogin1 = ':put (",rem,'.$price.','.$validity.','.$graceperiod.',,'.$getlock.',"); {:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event="[/ip hotspot active remove [find where user=$user]];[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/sys sch re [find where name=$user]];[/sys script run [find where name=$user]];[/sys script re [find where name=$user]]" start-date=$date start-time=$time];[/system script add name=$user source=":local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$graceperiod.');[/system scheduler add disabled=no interval=\$uptime name=$user on-event= \"[/ip hotspot user remove [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]\"]"]'; 
+			$onlogin2 = ':put (",ntf,'.$price.','.$validity.',,,'.$getlock.',"); {:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]" start-date=$date start-time=$time]';
+			$onlogin3 = ':put (",remc,'.$price.','.$validity.','.$graceperiod.',,'.$getlock.',"); {:local price ('.$price.');:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event="[/ip hotspot active remove [find where user=$user]];[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/sys sch re [find where name=$user]];[/sys script run [find where name=$user]];[/sys script re [find where name=$user]]" start-date=$date start-time=$time];[/system script add name=$user source=":local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$graceperiod.');[/system scheduler add disabled=no interval=\$uptime name=$user on-event= \"[/ip hotspot user remove [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]\"]"];:local bln [:pick $date 0 3]; :local thn [:pick $date 7 11];[:local mac $"mac-address"; /system script add name="$date-|-$time-|-$user-|-$price-|-$address-|-$mac-|-'.$validity.'" owner="$bln$thn" source=$date comment=mikhmon]';
+			$onlogin4 = ':put (",ntfc,'.$price.','.$validity.',,,'.$getlock.',"); {:local price ('.$price.');:local date [/system clock get date ];:local time [/system clock get time ];:local uptime ('.$validity.');[/system scheduler add disabled=no interval=$uptime name=$user on-event= "[/ip hotspot user set limit-uptime=1s [find where name=$user]];[/ip hotspot active remove [find where user=$user]];[/sys sch re [find where name=$user]]" start-date=$date start-time=$time];:local bln [:pick $date 0 3]; :local thn [:pick $date 7 11];[:local mac $"mac-address"; /system script add name="$date-|-$time-|-$user-|-$price-|-$address-|-$mac-|-'.$validity.'" owner="$bln$thn" source=$date comment=mikhmon]';
 			
 			if($expmode == "rem"){
-			$onlogin = "$onlogin1";
+      $onlogin = $onlogin1.$lock."}}";
 			}elseif($expmode == "ntf"){
-			$onlogin = "$onlogin2";
+      $onlogin = $onlogin2.$lock."}}";
 			}elseif($expmode == "remc"){
-			$onlogin = "$onlogin3";
+      $onlogin = $onlogin3.$lock."}}";
 			}elseif($expmode == "ntfc"){
-			$onlogin = "$onlogin4";
+      $onlogin = $onlogin4.$lock."}}";
 			}elseif($expmode == "0" && $price != "" ){
-			$onlogin = ':put (",,'.$price.',,,noexp,")';
+			$onlogin = ':put (",,'.$price.',,,noexp,'.$getlock.',")'.$lock;
 			}else{
 			$onlogin = "";
 			}
@@ -121,6 +123,15 @@ echo "<!--";
     <td class="align-middle">Price <?php echo $curency;?></td><td><input class="form-control form-control-sm" type="number" size="10" min="0" name="price" value="" ></td>
   </tr>
   <tr>
+    <td>Lock User</td><td>
+      <select class="form-control form-control-sm" id="lockunlock" name="lockunlock" required="1">
+        <option value="<?php echo $getlocku;?>"><?php echo $getlocku;?></option>
+        <option value="Enable">Enable</option>
+        <option value="Disable">Disable</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
     <td colspan="2">
       <?php if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){?>
       <p style="padding:0px 5px;">
@@ -132,6 +143,7 @@ echo "<!--";
         <li>Record : Menyimpan data harga tiap user yang login. Untuk menghitung total penjualan user hotspot.</li>
         </ul>
       </p>
+      <p>Lock User : Username/Kode voucher hanya bisa digunakan pada 1 perangkat saja.</p>
       <p style="padding:0px 5px;">
         Format Validity & Grace Period.<br>
         [wdhm] Contoh : 30d = 30hari, 12h = 12jam, 4w3d = 31hari.
@@ -146,6 +158,7 @@ echo "<!--";
         <li>Record: Save the price of each user login. To calculate total sales of hotspot users.</li>
         </ul>
       </p>
+      <p>Lock User : Username can only be used on 1 device only</p>
       <p style="padding:0px 5px;">
         Format Validity & Grace Period.<br>
         [wdhm] Example : 30d = 30days, 12h = 12hours, 4w3d = 31days.

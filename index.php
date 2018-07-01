@@ -17,7 +17,7 @@
  */
 session_start();
 // hide all error
-error_reporting(0);
+//error_reporting(0);
 
 // load ip user pass MikroTik
 include('./include/config.php');
@@ -31,7 +31,7 @@ include_once('./lib/routeros_api.class.php');
 include_once('./lib/formatbytesbites.php');
 $API = new RouterosAPI();
 $API->debug = false;
-$API->connect( $iphost, $userhost, $passwdhost );
+$API->connect( $iphost, $userhost, decrypt($passwdhost));
 
 $getidentity = $API->comm("/system/identity/print");
   $identity = $getidentity[0]['name'];
@@ -45,13 +45,13 @@ $url = $_SERVER['REQUEST_URI'];
 $hotspot = $_GET['hotspot'];
 $hotspotuser = $_GET['hotspot-user'];
 $userbyname = $_GET['hotspot-user'];
-$userbyprofile = $_GET['user-by-profile'];
 $removeuseractive = $_GET['remove-user-active'];
 $removehost = $_GET['remove-host'];
 $removeipbinding = $_GET['remove-ip-binding'];
 $removehotspotuser = $_GET['remove-hotspot-user'];
 $removeuserprofile = $_GET['remove-user-profile'];
 $resethotspotuser = $_GET['reset-hotspot-user'];
+$removehotspotuserbycomment = $_GET['remove-hotspot-user-by-comment'];
 $enablehotspotuser = $_GET['enable-hotspot-user'];
 $disablehotspotuser = $_GET['disable-hotspot-user'];
 $enableipbinding = $_GET['enable-ip-binding'];
@@ -61,6 +61,8 @@ $userprofilebyname = $_GET['user-profile'];
 $macbinding = $_GET['mac'];
 $ipbinding = $_GET['addr'];
 $srv = $_GET['srv'];
+$prof = $_GET['profile'];
+$comm = $_GET['comment'];
 
 }
 ?>
@@ -76,8 +78,8 @@ if(!isset($_SESSION["$userhost"])){
 <?php
 // logout
 if($hotspot == "logout"){
-  echo "<b class='cl-w'>Logout...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Logout...</b>";
+  
   session_destroy();
   echo "<script>window.location='./admin.php?id=login'</script>";
 }
@@ -95,6 +97,11 @@ elseif($hotspot == "log"){
 	include_once('./include/log.php');
 }
 
+// hotspot log
+elseif($hotspot == "userlog"){
+  include_once('./include/userlog.php');
+}
+
 // about
 elseif($hotspot == "about"){
   include_once('./include/about.php');
@@ -102,16 +109,9 @@ elseif($hotspot == "about"){
 
 // bad request
 elseif(substr($url,-1) == "="){
-  echo "<b>Bad request! redirect to Home...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Bad request! redirect to Home......</b>";
+  
   echo "<script>window.location='./'</script>";
-}
-
-// hotspot users
-elseif($hotspot == "users"){
-  $_SESSION['ubp'] = "";
-  $_SESSION['hua'] = "";
-  include_once('./include/users.php');
 }
 
 // hotspot add users
@@ -120,11 +120,28 @@ elseif($hotspot == "add-user"){
   include_once('./include/adduser.php');
 }
 
-// hotspot users filter by profile
-elseif($userbyprofile != ""){
-  $_SESSION['ubp'] = $userbyprofile;
+// hotspot users
+elseif($hotspot == "users" && $prof == "all"){
+  $_SESSION['ubp'] = "";
   $_SESSION['hua'] = "";
-  include_once('./include/userbyprofile.php');
+  $_SESSION['ubc'] = "";
+  include_once('./include/users.php');
+}
+
+// hotspot users filter by profile
+elseif($hotspot == "users" && $prof!= ""){
+  $_SESSION['ubp'] = $prof;
+  $_SESSION['hua'] = "";
+  $_SESSION['ubc'] = "";
+  include_once('./include/users.php');
+}
+
+// hotspot users filter by comment
+elseif($hotspot == "users" && $comm!= ""){
+  $_SESSION['ubc'] = $comm;
+  $_SESSION['hua'] = "";
+  $_SESSION['ubp'] = "";
+  include_once('./include/users.php');
 }
 
 // add hotspot user
@@ -149,29 +166,36 @@ elseif(substr($hotspotuser,0,1) == "*"){
 
 // remove hotspot user
 elseif($removehotspotuser != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/removehotspotuser.php');
+}
+
+// remove hotspot user by comment
+elseif($removehotspotuserbycomment != ""){
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
+  include_once('./process/removehotspotuserbycomment.php');
 }
 
 // reset hotspot user
 elseif($resethotspotuser != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/resethotspotuser.php');
 }
 
 // enable hotspot user
 elseif($enablehotspotuser != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/enablehotspotuser.php');
 }
 
 // disable hotspot user
 elseif($disablehotspotuser != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/disablehotspotuser.php');
 }
 
@@ -195,8 +219,8 @@ elseif(substr($userprofile,0,1) == "*"){
 
 // remove user profile
 elseif($removeuserprofile != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/removeuserprofile.php');
 }
 
@@ -204,6 +228,7 @@ elseif($removeuserprofile != ""){
 elseif($hotspot == "active"){
   $_SESSION['ubp'] = "";
   $_SESSION['hua'] = "hotspotactive";
+  $_SESSION['ubc'] = "";
   include_once('./include/hotspotactive.php');
 }
 
@@ -224,43 +249,43 @@ elseif($hotspot == "ipbinding"){
 
 // enable hotspot user
 elseif($enableipbinding != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/enableipbinding.php');
 }
 
 // disable hotspot user
 elseif($disableipbinding != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/disableipbinding.php');
 }
 
 // remove user active
 elseif($removeuseractive != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/removeuseractive.php');
 }
 
 // remove host
 elseif($removehost != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/removehost.php');
 }
 
 // remove ipbinding
 elseif($removeipbinding != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/removeipbinding.php');
 }
 
 // makebinding
 elseif($macbinding != ""){
-  echo "<b class='cl-w'>Processing...</b>";
-  echo "<div class='loader'></div>";
+  echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
+  
   include_once('./process/makebinding.php');
 }
 

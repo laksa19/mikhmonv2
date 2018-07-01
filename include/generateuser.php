@@ -35,17 +35,21 @@ echo "<!--";
     $char = ($_POST['char']);
     $profile = ($_POST['profile']);
     $timelimit = ($_POST['timelimit']);
-    $datalimit = ($_POST['datalimit']);
+		$datalimit = ($_POST['datalimit']);
+		$adcomment = ($_POST['adcomment']);
+		$mbgb = ($_POST['mbgb']);
     if($timelimit == ""){$timelimit = "0";}else{$timelimit = $timelimit;}
-    if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*1000000000;}
+		if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*$mbgb;}
+		if($adcomment == ""){$adcomment = "";}else{$adcomment = $adcomment;}
     $getprofile = $API->comm("/ip/hotspot/user/profile/print", array("?name" => "$profile"));
     $ponlogin = $getprofile[0]['on-login'];
     $getvalid = explode(",",$ponlogin)[3];
-    $getprice = explode(",",$ponlogin)[2];
+		$getprice = explode(",",$ponlogin)[2];
+		$getlock = explode(",",$ponlogin)[6];
     
-    $commt = $user . "-" . rand(100,999) . "-" . date("m.d.y") . "";
+    $commt = $user . "-" . rand(100,999) . "-" . date("m.d.y") . "-" .$adcomment;
     
-    $gen = '<?php $genu="'. $commt . "-" . $profile . "-" . $getvalid . '";?>';
+    $gen = '<?php $genu="'. $commt . "-" . $profile . "-" . $getvalid . "-" . $getprice . "-" . $timelimit ."-" . $datalimit . "-" . $getlock .'";?>';
     $temp = './voucher/temp.php';
 		$handle = fopen($temp, 'w') or die('Cannot open file:  '.$temp);
 		$data = $gen;
@@ -182,9 +186,23 @@ echo "<!--";
   $umode = $genuser[0];
   $ucode = $genuser[1];
   $udate = $genuser[2];
-  $uprofile = $genuser[3];
-  $uvalid = $genuser[4];
-  $urlprint = "$umode-$ucode-$udate";
+  $uprofile = $genuser[4];
+	$uvalid = $genuser[5];
+	$ucommt = $genuser[3];
+	if($uvalid == ""){$uvalid = "-";}else{$uvalid = $uvalid;}
+	$uprice = $genuser[6];
+	if($uprice == "0"){$uprice = "-";}else{$uprice = $uprice;}
+	$utlimit = $genuser[7];
+	if($utlimit == "0"){$utlimit = "-";}else{$utlimit = $utlimit;}
+	$udlimit = $genuser[8];
+	if($udlimit == "0"){$udlimit = "-";}else{$udlimit = formatBytes2($udlimit,2);}
+	$ulock = $genuser[9];
+	$urlprint = "$umode-$ucode-$udate-$ucommt";
+	if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){
+		$uprice = $curency." ".number_format($uprice,0,",",".");
+	}else{
+ $uprice = $curency." ".number_format($uprice);
+}
 }
 ?>
 <div>
@@ -203,11 +221,12 @@ echo "<!--";
   <tr>
   	<td colspan="2">
   <?php if($_SESSION['ubp'] != ""){
-    echo "    <a class='btn btn-sm btn-warning' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users&profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
-    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning' href='./?hotspot=users&profile=all'> <i class='fa fa-close'></i> Close</a>";
 }
 ?>
+	<a class="btn btn-sm btn-dark btn-mrg" title="Open User List by Profile <?php echo $uprofile;?>" href="./?hotspot=users&profile=<?php echo $uprofile;?>"> <i class="fa fa-users"></i> User List</a>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg" title="Generate User"> <i class="fa fa-save"></i> Generate</button>
     <a class="btn btn-sm btn-secondary btn-mrg" title="Print Default" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=no" target="_blank"> <i class="fa fa-print"></i> Print</a>
     <a class="btn btn-sm btn-danger btn-mrg" title="Print QR" href="./voucher/print.php?id=<?php echo $urlprint;?>&qr=yes" target="_blank"> <i class="fa fa-qrcode"></i> QR</a>
@@ -284,25 +303,33 @@ echo "<!--";
 	<tr>
     <td class="align-middle">Time Limit</td><td><input class="form-control form-control-sm" type="text" size="4" autocomplete="off" name="timelimit" value=""></td>
   </tr>
-  <tr>
+	<tr>
     <td class="align-middle">Data Limit</td><td>
-	<div class="input-group input-group-sm">
-        <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="">
-            <div class="input-group-append">
-                <span class="input-group-text">GB</span>
-            </div>
-    </div>
-	</td>
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-sm" type="number" min="0" max="9999" name="datalimit" value="<?php echo $udatalimit;?>">
+          <div class="input-group-append">
+              <span class="input-group-append">
+              <select class="form-control form-control-sm" name="mbgb" required="1">
+				        <option value=1000000>MB</option>
+				        <option value=1000000000>GB</option>
+			        </select>
+              </span>
+          </div>
+      </div>
+    </td>
+  </tr>
+	<tr>
+    <td class="align-middle">Comment</td><td><input class="form-control form-control-sm" type="text" title="No special characters" id="comment" autocomplete="off" name="adcomment" value=""></td>
   </tr>
   <tr >
-    <td class="align-middle">Validity | Price</td><td id="GetValidPrice"></td>
+    <td  colspan=2 class="align-middle"  id="GetValidPrice"></td>
   </tr>
   <tr >
     <td colspan="2">
       <?php if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){
-         echo "Generate Terakhir:<br>Kode Generate: $ucode | Tanggal: $udate | Profile: $uprofile | Validity: $uvalid";
+         echo "Generate Terakhir:<br>Kode Generate: $ucode | Tanggal: $udate | Profile: $uprofile | Validity: $uvalid | Time Limit: $utlimit | Data Limit: $udlimit | Price: $uprice | Lock User: $ulock";
       }else{
-        echo "Last Generated:<br>Generate Code: $ucode | Date: $udate | Profile: $uprofile | Validity: $uvalid";
+        echo "Last Generated:<br>Generate Code: $ucode | Date: $udate | Profile: $uprofile | Validity: $uvalid | Time Limit: $utlimit | Data Limit: $udlimit | Price: $uprice | Lock User: $ulock";
       }
       ?>
     </td>

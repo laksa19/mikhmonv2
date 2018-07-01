@@ -72,6 +72,8 @@ function defUserl(){
    var upper1 = document.getElementById('upper1').style;
    var upplow1 = document.getElementById('upplow1').style;
    var mix = document.getElementById('mix').style;
+   var mix1 = document.getElementById('mix1').style;
+   var mix2 = document.getElementById('mix2').style;
   if(usr === 'up'){
      $('select[name=userl] option:first').html('4');
      $('select[name=char] option:first').html('abcd');
@@ -82,7 +84,9 @@ function defUserl(){
      upper1.display = 'none';
      upplow1.display = 'none';
      num.display = 'none';
-     mix.display = 'none';
+     mix.display = 'block';
+     mix1.display = 'block';
+     mix2.display = 'block';
   }else if(usr === 'vc'){
     $('select[name=userl] option:first').html('8');
     $('select[name=char] option:first').html('abcd1234');
@@ -94,6 +98,8 @@ function defUserl(){
     upplow1.display = 'block';
     num.display = 'block';
     mix.display = 'block';
+    mix1.display = 'block';
+    mix2.display = 'block';
 }}
 
 // get valid $ price
@@ -149,7 +155,7 @@ function fTable2() {
   table = document.getElementById("tFilter");
   tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[6];
+    td = tr[i].getElementsByTagName("td")[7];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
@@ -177,3 +183,9 @@ function fTable3() {
     }
   }
 }
+
+document.getElementById("comment").onkeypress = function(e) {
+    var chr = String.fromCharCode(e.which);
+    if ("></\"'-_~`@#$%^&*(){}[]|:;'.,?+=".indexOf(chr) >= 0)
+        return false;
+};

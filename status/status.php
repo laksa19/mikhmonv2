@@ -23,7 +23,7 @@ include_once('../lib/routeros_api.class.php');
 
 $API = new RouterosAPI();
 $API->debug = false;
-$API->connect( $iphost, $userhost, $passwdhost );
+$API->connect( $iphost, $userhost, decrypt($passwdhost));
 
 $uname = $_GET['name'];
 if($uname != ""){

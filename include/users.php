@@ -20,14 +20,41 @@
 error_reporting(0);
 ini_set('max_execution_time', 300);
 
+
+if($prof == "all"){
   $getuser = $API->comm("/ip/hotspot/user/print");
 	$TotalReg = count($getuser);
 	
   $counttuser = $API->comm("/ip/hotspot/user/print", array(
 	 "count-only" => ""));
-	
+}elseif($prof != "all"){
+  $getuser = $API->comm("/ip/hotspot/user/print", array(
+    "?profile" => "$prof",
+    ));
+  $TotalReg = count($getuser);
+  
+  $counttuser = $API->comm("/ip/hotspot/user/print", array(
+   "count-only" => "",
+   "?profile" => "$prof",
+   ));
+  
+}
+if($comm != ""){
+  $getuser = $API->comm("/ip/hotspot/user/print", array(
+    "?comment" => "$comm",
+    //"?uptime" => "00:00:00"
+  ));
+  $TotalReg = count($getuser);
+  
+  $counttuser = $API->comm("/ip/hotspot/user/print", array(
+   "count-only" => "",
+   "?comment" => "$comm",
+   ));
+  if($counttuser == 0){echo "<script>window.location='./?hotspot=users&profile=all'</script>";}
+}
 	$getprofile = $API->comm("/ip/hotspot/user/profile/print");
 	$TotalReg2 = count($getprofile);
+
 ?>
 <div>
 <section class="content p-0 bg-trp">
@@ -37,7 +64,12 @@ ini_set('max_execution_time', 300);
     <h3 class="card-title pull-left">
         <?php
 				  if($counttuser < 2 ){echo "$counttuser item  ";
-				  }elseif($counttuser > 1){echo "$counttuser items  ";}
+				  }elseif($counttuser > 1){echo "$counttuser items  ";
+          }
+          if($counttuser == 0 ){echo "<script>window.location='./?hotspot=users&profile=all'</script>";}
+          if($comm != ""){
+            echo '<a class="btn btn-sm btn-warning" href="./?hotspot=users&profile=all"><i class="fa fa-close"></i> Close</a> <a class="btn btn-sm btn-danger btn-mrg" title="Remove user by comment '.$comm.'" href="./?remove-hotspot-user-by-comment='.$comm.'"> <i class="fa fa-minus-square"></i> Remove All</a>';
+          }
 				?>    
     </h3>
 </div>
@@ -68,10 +100,10 @@ ini_set('max_execution_time', 300);
 if($userbyprofile == ""){echo "Profile";}else {echo $userbyprofile;}
 ?>
         </option>
-        <option value="./?hotspot=users">Show All</option>
+        <option value="./?hotspot=users&profile=all">Show All</option>
 <?php
 for ($i=0; $i<$TotalReg2; $i++){
-	$profile = $getprofile[$i];echo "<option value='./?user-by-profile=".$profile['name'] . "'>". $profile['name']."</option>";
+	$profile = $getprofile[$i];echo "<option value='./?hotspot=users&profile=".$profile['name'] . "'>". $profile['name']."</option>";
 	}
 ?>
         </select>
@@ -80,6 +112,9 @@ for ($i=0; $i<$TotalReg2; $i++){
       <div style="width:80%;">
         <input class="form-control form-control-sm" style="width:80%;" type="text" id="filterTable3" size="auto" onkeyup='fTable3()' placeholder="Uptime" title="Filter by Uptime">
       </div>
+    </th>
+    <th class="text-center align-middle">
+      Bytes Out
     </th>
     <th style="min-width:85px;" >
       <div style="width:80%;">
@@ -99,8 +134,14 @@ for ($i=0; $i<$TotalReg; $i++){
 	$upass = $userdetails['password'];
 	$uprofile = $userdetails['profile'];
 	$uuptime = $userdetails['uptime'];
+  $ubyteso = formatBytes($userdetails['bytes-out'],2);
+  if($ubyteso == 0){$ubyteso = "";}else{$ubyteso = $ubyteso;}
 	$ucomment = $userdetails['comment'];
-	$udisabled = $userdetails['disabled'];
+  $udisabled = $userdetails['disabled'];
+  $utimelimit = $userdetails['limit-uptime'];
+  if($utimelimit == '1s'){$utimelimit = ' expired';}else{$utimelimit = ' '.$utimelimit;}
+  $udatalimit = $userdetails['limit-bytes-out'];
+  if($udatalimit == ''){$udatalimit = '';}else{$udatalimit = ' '.formatBytes2($udatalimit,2);}
 
 	echo "<tr>";
 	echo "<td style='text-align:center;'><a  title='Remove ".$uname. "' href=./?remove-hotspot-user=".$uid . "><i class='fa fa-minus-square text-danger'></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
@@ -111,7 +152,8 @@ for ($i=0; $i<$TotalReg; $i++){
 	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo '</td><td class"text-center"><a style="color:'.$tcolor.';"  title="Print '.$uname.'" href="'.$popup.'"><i class="fa fa-print text-right"></i></a></td>';
 	echo "<td style='color:".$tcolor.";'>" . $uprofile;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>" . $uuptime;echo "</td>";
-	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo $ucomment;}; echo "</td>";
+  echo "<td style='color:".$tcolor."; text-align:right'>" . $ubyteso;echo "</td>";
+	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo "<a style='color:".$tcolor.";' href=./?hotspot=users&comment=".$ucomment." title='Filter by ".$ucomment."'>".$ucomment."</a>";}; echo $utimelimit.' '.$udatalimit."</td>";
 	echo "<td style='color:".$tcolor.";'>";
 
 	if(substr($ucomment,0,2) == "vc" || substr($ucomment,0,2) == "up"){echo "<a style='color:".$tcolor.";' title='Print' href='./voucher/print.php?id=" . $ucomment . "&qr=no' target='_blank'>Default</a>";echo "</td>";

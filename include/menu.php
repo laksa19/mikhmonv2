@@ -144,7 +144,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./?hotspot=users" class="nav-link <?php echo $susersl;?>">
+                <a href="./?hotspot=users&profile=all" class="nav-link <?php echo $susersl;?>">
                   <i class="fa fa-list nav-icon"></i>
                   <p>User List</p>
                 </a>
@@ -158,7 +158,7 @@ if($hotspot == "home" || substr($url,-1) == "/"){
               <li class="nav-item">
                 <a href="./?hotspot-user=generate" class="nav-link <?php echo $sgenuser;?>">
                   <i class="fa fa-users nav-icon"></i>
-                  <p>Ganerate</p>
+                  <p>Generate</p>
                 </a>
               </li>
             </ul>
@@ -246,6 +246,12 @@ if($hotspot == "home" || substr($url,-1) == "/"){
                 <a href="./admin.php?id=uplogo" class="nav-link <?php echo $sadduser;?>">
                   <i class="fa fa-upload nav-icon"></i>
                   <p>Upload Logo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./admin.php?id=reboot" class="nav-link">
+                  <i class="fa fa-power-off nav-icon"></i>
+                  <p>Reboot</p>
                 </a>
               </li>
             </ul>

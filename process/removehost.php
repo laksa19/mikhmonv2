@@ -19,17 +19,9 @@ session_start();
 // hide all error
 error_reporting(0);
 
-$API->comm("/ip/hotspot/user/set", array(
-	    ".id"=> "$enablehotspotuser",
-	    "disabled" => "no",
-	    ));
-if($_SESSION['ubp'] != ""){
-echo "<script>window.location='./?hotspot=users&profile=".$_SESSION['ubp']."'</script>";
-}elseif($_SESSION['ubc'] != ""){
-echo "<script>window.location='./?hotspot=users&comment=".$_SESSION['ubc']."'</script>";
-}else{
-echo "<script>window.location='./?hotspot=users&profile=all'</script>";
-}
-  
-  
+// remove host
+$API->comm("/ip/hotspot/host/remove", array(
+".id"=> "$removehost",));
+// redirect to host
+echo "<script>window.location='./?hotspot=hosts'</script>";
 ?>

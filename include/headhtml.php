@@ -24,6 +24,7 @@ error_reporting(0);
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="cache-control" content="no-cache" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">

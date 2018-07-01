@@ -18,7 +18,7 @@
 session_start();
 ?>
 <?php
-error_reporting(0);
+//error_reporting(0);
 
 include('../include/config.php');
 include('../lib/formatbytesbites.php');
@@ -35,7 +35,7 @@ $userp = $_GET['user'];
 require('../lib/routeros_api.class.php');
 $API = new RouterosAPI();
 $API->debug = false;
-$API->connect( $iphost, $userhost, $passwdhost );
+$API->connect( $iphost, $userhost, decrypt($passwdhost));
 
 if($userp != ""){
   $usermode = explode('-',$userp)[0];
@@ -44,14 +44,11 @@ if($userp != ""){
   $TotalReg = count($getuser);
 }elseif($id != ""){
   $usermode = explode('-',$id)[0];
-$getuser = $API->comm('/ip/hotspot/user/print', array("?comment" => "$id", "?uptime"=> "0s"));
+  $getuser = $API->comm('/ip/hotspot/user/print', array("?comment" => "$id", "?uptime"=> "0s"));
   $TotalReg = count($getuser);
 }
   $getuprofile = $getuser[0]['profile'];
-  $timelimit = $getuser[0]['limit-uptime'];
-  $getdatalimit = $getuser[0]['limit-bytes-out'];
-  if($getdatalimit == 0){$datalimit = "";}else{$datalimit = formatBytes2($getdatalimit,0);}
-  
+    
 
 $getprofile = $API->comm("/ip/hotspot/user/profile/print", array("?name" => "$getuprofile"));
   $ponlogin = $getprofile[0]['on-login'];
@@ -123,6 +120,9 @@ table.voucher {
    $regtable = $getuser[$i];
    $username = $regtable['name'];
    $password = $regtable['password'];
+   $timelimit = $regtable['limit-uptime'];
+   $getdatalimit = $regtable['limit-bytes-out'];
+   if($getdatalimit == 0){$datalimit = "";}else{$datalimit = formatBytes2($getdatalimit,2);}
    // CHart Size
 	$chs = "80x80";
 	// CHart Link

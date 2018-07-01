@@ -124,7 +124,7 @@ textarea,input,select {
 <?php
 	if(isset($_POST['nama'])){
 	$name = ($_POST['nama']);
-	if ($API->connect( $iphost, $userhost, $passwdhost )) {
+	if ($API->connect( $iphost, $userhost, decrypt($passwdhost))) {
 	$API->write('/system/scheduler/print', false);
 	$API->write('?=name='.$name.'');
 	$ARRAY1 = $API->read();
@@ -166,10 +166,10 @@ textarea,input,select {
 	$profile = $getuser[0]['profile'];
 	$uptime = $getuser[0]['uptime'];
 	$getbyteo = $getuser[0]['bytes-out'];
-	$byteo = formatBytes2($getbyteo, 0);
+	$byteo = formatBytes2($getbyteo, 2);
 	$limitup = $getuser[0]['limit-uptime'];
 	$limitbyte = $getuser[0]['limit-bytes-out'];
-	if($limitbyte == ""){$dataleft = "Unlimited";}else{$dataleft = formatBytes2($limitbyte-$getbyteo,0);}
+	if($limitbyte == ""){$dataleft = "Unlimited";}else{$dataleft = formatBytes2($limitbyte-$getbyteo,2);}
 	}
 	if($user == "" || $exp == ""){
 		echo "<h3>User <i style='color:#008CCA;'>$name</i> $title9</h3>";

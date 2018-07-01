@@ -20,7 +20,7 @@
 error_reporting(0);
 
 include_once('./config.php');
-include_once('./lib/routeros_api.class.php');
+include_once('../lib/routeros_api.class.php');
 $API = new RouterosAPI();
 $API->debug = false;
 
@@ -34,9 +34,9 @@ if(isset($_POST['save'])){
 	$setupdata = ($_POST['setupdata']);
 	$siphost = ($_POST['ipmik']);
 	$suserhost = ($_POST['usermik']);
-	$spasswdhost = ($_POST['passmik']);
+	$spasswdhost = encrypt($_POST['passmik']);
 	$suseradm = ($_POST['useradm']);
-	$spassadm = ($_POST['passadm']);
+	$spassadm = encrypt($_POST['passadm']);
     $shotspotname = ($_POST['hotspotname']);
     $sdnsname = ($_POST['dnsname']);
     $scurency = ($_POST['curency']);
@@ -63,7 +63,7 @@ if(isset($_POST['save'])){
 		
 	// Export to MikroTik
 	}elseif($setupdata == "export"){
-	  $API->connect( $iphost, $userhost, $passwdhost);
+	  $API->connect( $iphost, $userhost, decrypt($passwdhost));
 	   $arrID=$API->comm("/system/script/getall",
 						  array(
 				  ".proplist"=> ".id",
@@ -83,7 +83,7 @@ if(isset($_POST['save'])){
   
 //Import from MikroTik
 	}elseif($setupdata == "import"){
-	 $API->connect( $iphost, $userhost, $passwdhost);
+	 $API->connect( $iphost, $userhost, decrypt($passwdhost));
 	 $getmikhmondata = $API->comm("/system/script/print", array(
 	    "?name" => "mikhmonv2"));
     $import = $getmikhmondata[0]['source'];
@@ -154,7 +154,7 @@ if(isset($_POST['save'])){
 					<tr>
 						<td class="align-middle">Password  </td><td>
 							<div class="input-group">
-        						<input class="form-control form-control-sm" id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo $passwdhost ;?>" required="1"/>
+        						<input class="form-control form-control-sm" id="passmk" type="password" size="10" name="passmik" title="Password MikroTik" value="<?php echo decrypt($passwdhost) ;?>" required="1"/>
             					<div class="input-group-append">
                 					<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassMk()"></span>
             					</div>
@@ -192,7 +192,7 @@ if(isset($_POST['save'])){
 					<td class="align-middle">Password  </td>
 				<td>
 					<div class="input-group">
-        				<input class="form-control form-control-sm" id="passadm" type="password" size="10" name="passadm" title="Password Admin" value="<?php echo $passadm; ?>" required="1"/>
+        				<input class="form-control form-control-sm" id="passadm" type="password" size="10" name="passadm" title="Password Admin" value="<?php echo decrypt($passadm); ?>" required="1"/>
              		<div class="input-group-append">
                 		<span class="input-group-text"><input title="Show/Hide Password" type="checkbox" onclick="PassAdm()"></span>
              		</div>
@@ -234,7 +234,7 @@ if(isset($_POST['save'])){
 	<td class="align-middle">Traffic Ether  </td><td><input class="form-control form-control-sm" type="number" min="1" max="99" name="iface" title="Traffic Interface" value="<?php echo $iface; ?>" required="1"/></td>
 	</tr>
 	<tr>
-	<td colspan="2">Mikhmon V2.11</td>
+	<td colspan="2">Mikhmon V2.12</td>
 	</tr>
 	</table>
     </div>

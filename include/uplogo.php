@@ -50,7 +50,7 @@ $imageFileType = strtolower(pathinfo($logo_file,PATHINFO_EXTENSION));
 
 
 // Check file size
-if ($_FILES["UploadLogo"]["size"] > 5000000) {
+if ($_FILES["UploadLogo"]["size"] > 2000000) {
   if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){
           $galat = '<div class="alert alert-danger alert-dismissible"><h5><i class="icon fa fa-ban"></i> Ukuran file terlalu besar. </div>';
       }else{

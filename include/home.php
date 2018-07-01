@@ -36,7 +36,7 @@ include_once('../lib/routeros_api.class.php');
 include_once('../lib/formatbytesbites.php');
 $API = new RouterosAPI();
 $API->debug = false;
-$API->connect( $iphost, $userhost, $passwdhost );
+$API->connect( $iphost, $userhost, decrypt($passwdhost));
 }
 ?>
 
@@ -55,7 +55,7 @@ $API->connect( $iphost, $userhost, $passwdhost );
           $clock = $getclock[0];
         ?>
               <div class="info-box-content">
-                <span class="info-box-text">System Date & Time</span>
+                <span class="info-box-number">System Date & Time</span>
                 <span class="info-box-number"><?php echo $clock['date'];?></span>
                 <span class="info-box-number"><?php echo $clock['time'];?></span>
                 <div class="progress">
@@ -102,8 +102,8 @@ $routerboard = $getrouterboard[0];
               <div class="info-box-content">
                 <span class="info-box-number">
         CPU Load <?php echo $resource['cpu-load']?>%<br/>
-        Free Memory <?php echo formatBytes($resource['free-memory'],0)?><br/>
-        Free HDD <?php echo formatBytes($resource['free-hdd-space'],0)?>
+        Free Memory <?php echo formatBytes($resource['free-memory'],2)?><br/>
+        Free HDD <?php echo formatBytes($resource['free-hdd-space'],2)?>
                 </span>
                 <div class="progress">
                   <div class="progress-bar" style="width: <?php echo $resource['cpu-load'];?>%"></div>
@@ -164,7 +164,7 @@ $routerboard = $getrouterboard[0];
           <div class="col-sm-3 col-6">
             <!-- small card -->
             <div class="small-box bg-<?php echo $color[rand(1,6)];?> p-2">
-              <a href="./?hotspot=users">
+              <a href="./?hotspot=users&profile=all">
               <div class="inner">
                 <h5>
 <?php
