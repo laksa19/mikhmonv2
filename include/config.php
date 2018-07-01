@@ -1,1 +1,0 @@
-<?php $iphost=""; $userhost=""; $passwdhost=""; $useradm="mikhmon"; $passadm="aWNlbA=="; $hotspotname="Kemangi 41"; $dnsname="k41.net"; $curency="Rp";  $areload="5";  $iface="1"; if(substr($_SERVER["REQUEST_URI"], -10) == "config.php"){header("Location:./");};?>
