@@ -40,7 +40,7 @@ session_start();
 
       </form>
     <div style="margin-top: 10px;" class="block">
-    <?php if(isset($_POST['login'])){ echo '<div class="alert alert-danger alert-dismissible"><h5><i class="icon fa fa-ban"></i> Alert!</h5>' .$error.'</div>'; }?>
+    <?php echo $error; ?>
     </div>
     </div>
   </div>
