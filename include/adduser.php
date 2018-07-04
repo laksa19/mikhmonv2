@@ -83,9 +83,9 @@ echo "<!--";
   <tr>
     <td colspan="2">
       <?php if($_SESSION['ubp'] != ""){
-    echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?user-by-profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?hotspot=users&profile=".$_SESSION['ubp']."'> <i class='fa fa-close'></i> Close</a>";
 }else{
-    echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?hotspot=users'> <i class='fa fa-close'></i> Close</a>";
+    echo "    <a class='btn btn-sm btn-warning btn-mrg' href='./?hotspot=users&profile=all'> <i class='fa fa-close'></i> Close</a>";
 }
 ?>
     <button type="submit" name="save" class="btn btn-sm btn-primary btn-mrg"> <i class="fa fa-save"></i> Save</button>
