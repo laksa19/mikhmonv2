@@ -17,7 +17,7 @@
  */
 session_start();
 // hide all error
-//error_reporting(0);
+error_reporting(0);
 
 // load ip user pass MikroTik
 include('./include/config.php');
