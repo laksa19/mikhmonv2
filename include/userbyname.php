@@ -42,7 +42,7 @@ error_reporting(0);
   $upass = $userdetails['password'];
   $umac = $userdetails['mac-address'];
 	$uprofile = $userdetails['profile'];
-	$uuptime = $userdetails['uptime'];
+	$uuptime = formatDTM($userdetails['uptime']);
 	$ueduser = $userdetails['disabled'];
 	$utimelimit = $userdetails['limit-uptime'];
 	$udatalimit = $userdetails['limit-bytes-out'];

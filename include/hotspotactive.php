@@ -81,7 +81,7 @@ $API->connect( $iphost, $userhost, decrypt($passwdhost));
 	$user = $hotspotactive['user'];
 	$address = $hotspotactive['address'];
 	$mac = $hotspotactive['mac-address'];
-	$uptime = $hotspotactive['uptime'];
+	$uptime = formatDTM($hotspotactive['uptime']);
 	$byteso = formatBytes($hotspotactive['bytes-out'], 2);
 	$loginby = $hotspotactive['login-by'];
 	

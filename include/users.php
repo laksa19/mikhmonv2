@@ -133,7 +133,7 @@ for ($i=0; $i<$TotalReg; $i++){
 	$uname = $userdetails['name'];
 	$upass = $userdetails['password'];
 	$uprofile = $userdetails['profile'];
-	$uuptime = $userdetails['uptime'];
+	$uuptime = formatDTM($userdetails['uptime']);
   $ubyteso = formatBytes($userdetails['bytes-out'],2);
   if($ubyteso == 0){$ubyteso = "";}else{$ubyteso = $ubyteso;}
 	$ucomment = $userdetails['comment'];
@@ -150,8 +150,8 @@ for ($i=0; $i<$TotalReg; $i++){
   if($uname == $upass){$usermode = "vc";}else{$usermode = "up";} 
   $popup = "javascript:window.open('./voucher/print.php?user=".$usermode."-".$uname."&qr=no','_blank','width=310,height=450').print();";
 	echo "<td style='color:".$tcolor.";'><a title='Open User ".$uname . "' style='color:".$tcolor.";' href=./?hotspot-user=".$uid . "><i class='fa fa-edit'></i> ". $uname." </a>";echo '</td><td class"text-center"><a style="color:'.$tcolor.';"  title="Print '.$uname.'" href="'.$popup.'"><i class="fa fa-print text-right"></i></a></td>';
-	echo "<td style='color:".$tcolor.";'>" . $uprofile;echo "</td>";
-	echo "<td style='color:".$tcolor.";'>" . $uuptime;echo "</td>";
+	echo "<td style='color:".$tcolor."; '>" . $uprofile;echo "</td>";
+	echo "<td style='color:".$tcolor."; text-align:right'>" . $uuptime;echo "</td>";
   echo "<td style='color:".$tcolor."; text-align:right'>" . $ubyteso;echo "</td>";
 	echo "<td style='color:".$tcolor.";'>"; if($uname == "default-trial"){}else{echo "<a style='color:".$tcolor.";' href=./?hotspot=users&comment=".$ucomment." title='Filter by ".$ucomment."'>".$ucomment."</a>";}; echo $utimelimit.' '.$udatalimit."</td>";
 	echo "<td style='color:".$tcolor.";'>";

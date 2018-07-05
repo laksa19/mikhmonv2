@@ -38,6 +38,18 @@ $API = new RouterosAPI();
 $API->debug = false;
 $API->connect( $iphost, $userhost, decrypt($passwdhost));
 }
+
+// get MikroTik system clock
+$getclock = $API->comm("/system/clock/print");
+$clock = $getclock[0];
+     
+// get system resource MikroTik
+$getresource = $API->comm("/system/resource/print");
+$resource = $getresource[0];
+// get routeboard info
+$getrouterboard = $API->comm("/system/routerboard/print");
+$routerboard = $getrouterboard[0];
+
 ?>
 
 <div id="reloadHome">
@@ -49,15 +61,10 @@ $API->connect( $iphost, $userhost, decrypt($passwdhost));
       <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
               <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-calendar"></i></span>
-        <?php
-        // get MikroTik system clock
-          $getclock = $API->comm("/system/clock/print");
-          $clock = $getclock[0];
-        ?>
               <div class="info-box-content">
                 <span class="info-box-number">System Date & Time</span>
-                <span class="info-box-number"><?php echo $clock['date'];?></span>
-                <span class="info-box-number"><?php echo $clock['time'];?></span>
+                <span class="info-box-number"><?php echo $clock['time'];?> <?php echo $clock['date'];?></span>
+                <span class="info-box-number">Uptime <?php echo formatDTM($resource['uptime']);?></span>
                 <div class="progress">
                   <div class="progress-bar" style="width:<?php echo substr($clock['time'],-2)/60*100;?>%"></div>
                 </div>
@@ -72,14 +79,7 @@ $API->connect( $iphost, $userhost, decrypt($passwdhost));
       <div class="col-md-4 col-sm-6 col-12">
             <div class="info-box bg-<?php echo $color[rand(1,6)];?>">
               <span class="info-box-icon bg-<?php echo $color[rand(1,6)];?>"><i class="fa fa-info-circle"></i></span>
-<?php
-// get system resource MikroTik
-$getresource = $API->comm("/system/resource/print");
-$resource = $getresource[0];
-// get routeboard info
-$getrouterboard = $API->comm("/system/routerboard/print");
-$routerboard = $getrouterboard[0];
-?>
+
               <div class="info-box-content">
                 <span class="info-box-number">
         Board Name : <?php echo $resource['board-name'];?><br/>

@@ -426,7 +426,7 @@ class RouterosAPI
 
 // encrypt decript
 
-function encrypt($string, $key=128) {
+function encrypt($string, $key=5) {
 	$result = '';
 	for($i=0, $k= strlen($string); $i<$k; $i++) {
 		$char = substr($string, $i, 1);
@@ -436,7 +436,7 @@ function encrypt($string, $key=128) {
 	}
 	return base64_encode($result);
 }
-function decrypt($string, $key=128) {
+function decrypt($string, $key=5) {
 	$result = '';
 	$string = base64_decode($string);
 	for($i=0, $k=strlen($string); $i< $k ; $i++) {
@@ -446,5 +446,13 @@ function decrypt($string, $key=128) {
 		$result .= $char;
 	}
 	return $result;
+}
+
+// Reformat date time MikroTik
+
+function formatDTM($dtm){
+$val_conver = $dtm; 
+$new_format = str_replace("s", "", str_replace("m", ":", str_replace("h", ":", str_replace("d", "d ", str_replace("w", "w ", $val_conver)))));
+return $new_format;
 }
 ?>

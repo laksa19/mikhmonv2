@@ -53,6 +53,9 @@ if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="pragma" content="no-cache" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+<link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+  		<!-- Theme style -->
+  		<link rel="stylesheet" href="../css/adminlte.min.css">
 <link rel="icon" href="../img/favicon.png" />
 <script>
 function goBack() {
@@ -60,67 +63,34 @@ function goBack() {
 }
 </script>
 <style>
-table {
-  table-layout: fixed;
-  width: 330;
-  border-collapse: collapse;
-  margin-left:auto;
-  margin-right:auto;
-}
-/* Zebra striping */
-tr:nth-of-type(odd) {
-  background: #eee;
-}
-th {
-  background: #333;
-  color: white;
-  font-weight: bold;
-}
-td, th {
-  padding: 6px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-.button {
-    background-color: #008CCA;
-    border: none;
-    padding: 5px 5px;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-table.tnav {
-  table-layout: fixed;
-  white-space: nowrap;
-  width: 200;
-  border-collapse: collapse;
-  
-}
-table.tnav td {
-  padding: 3px;
-  border: 0px;
-  text-align: left;
-}
-textarea,input,select {
-  padding: 2px;
-  margin: 2px;
+body{
+  font-family: 'Helvetica', arial, sans-serif;
+  background-color: #f5f5f5;
   font-size: 14px;
 }
+
 </style>
+
 </head>
-<body align="center">
-<h3 style="text-align:center;">Status Voucher<br><?php echo $hotspotname;?></h3>
-<p style="text-align:center;" id="date1"><?php echo $title11." : " . date("d-m-Y") . "<br>";?></p>
-<form autocomplete="off" method="post" action="">
-	<table class="tnav">
-		<tr><td><?php echo $title1;?> :</td><td><input type="text" size="15" name="nama" autofocus required="1" /></td></tr>
-		<tr><td></td><td><input type="submit" class="button" value=<?php echo '"'.$title12.'"';?>/></td></tr>
-	</table>
+<body >
+	<div class="container col-sm-4">
+<h3 class="text-dark text-center">Status Voucher<br><?php echo $hotspotname;?></h3>
+<p class="text-dark text-center"" id="date1"><?php echo $title11." : " . date("d-m-Y") . "<br>";?></p>
+<section>
+<div class="row">
+    <div class="col-sm p-2">
+<form autocomplete="off"class="form" method="post" action="">
+	<div class="form-group form-group-sm">
+            			<div class="input-group input-group-sm">
+		<input type="text" class="form-control form-control-sm" name="nama" placeholder="<?php echo $title1;?>" autofocus required="1" />
+		<div class="input-group-append ">
+		<button type="submit" class="input-group-text"><i class="fa fa-search"></i> <?php echo " ".$title12;?></button>
+	</div>
+</div>
+</div>
 </form>
+</div>
+</section>
 <?php
 	if(isset($_POST['nama'])){
 	$name = ($_POST['nama']);
@@ -164,7 +134,7 @@ textarea,input,select {
 	$getuser = $API->comm("/ip/hotspot/user/print", array("?name"=> "$name"));
 	$user = $getuser[0]['name'];
 	$profile = $getuser[0]['profile'];
-	$uptime = $getuser[0]['uptime'];
+	$uptime = formatDTM($getuser[0]['uptime']);
 	$getbyteo = $getuser[0]['bytes-out'];
 	$byteo = formatBytes2($getbyteo, 2);
 	$limitup = $getuser[0]['limit-uptime'];
@@ -177,8 +147,18 @@ textarea,input,select {
 		echo "<h3>User <i style='color:#008CCA;'>$name</i> $title10</h3>";
 	}
 	if($user == "" || $exp == ""){}else{
+		?>
+<section>
+<div class="card">
+<div class="card-header p-2">
+    <h3 class="card-title">
+      <i class="fa fa-user mr-1"></i>
+        User Details
+    </h3>
+  </div>
+  <?php
 	echo "<div style='overflow-x:auto;'>";
-	echo "<table style='width:200;'>";
+	echo "<table class='table table-sm table-bordered table-hover text-nowrap'>";
 	echo "	<tr>";
 	echo "		<td >$title1</td>";
 	echo "		<td > $user</td>";
@@ -233,5 +213,13 @@ textarea,input,select {
 
 ?>
 </div>
+</section>
+</div>
+</div>
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../js/adminlte.js"></script>
 </body>
 </html>
