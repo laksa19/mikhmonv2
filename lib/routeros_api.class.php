@@ -426,7 +426,7 @@ class RouterosAPI
 
 // encrypt decript
 
-function encrypt($string, $key=5) {
+function encrypt($string, $key=128) {
 	$result = '';
 	for($i=0, $k= strlen($string); $i<$k; $i++) {
 		$char = substr($string, $i, 1);
@@ -436,7 +436,7 @@ function encrypt($string, $key=5) {
 	}
 	return base64_encode($result);
 }
-function decrypt($string, $key=5) {
+function decrypt($string, $key=128) {
 	$result = '';
 	$string = base64_decode($string);
 	for($i=0, $k=strlen($string); $i< $k ; $i++) {
