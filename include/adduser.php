@@ -38,7 +38,7 @@ echo "<!--";
     $comment = ($_POST['comment']);
     $mbgb = ($_POST['mbgb']);
     if($timelimit == ""){$timelimit = "0";}else{$timelimit = $timelimit;}
-    if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*1000000;}
+    if($datalimit == ""){$datalimit = "0";}else{$datalimit = $datalimit*$mbgb;}
     $API->comm("/ip/hotspot/user/add", array(
 	    "server" => "$server",
 	    "name" => "$name",
