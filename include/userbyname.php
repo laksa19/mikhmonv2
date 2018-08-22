@@ -45,7 +45,7 @@ error_reporting(0);
 	$uuptime = formatDTM($userdetails['uptime']);
 	$ueduser = $userdetails['disabled'];
 	$utimelimit = $userdetails['limit-uptime'];
-	$udatalimit = $userdetails['limit-bytes-out'];
+	$udatalimit = $userdetails['limit-bytes-total'];
   $ubytesout = $userdetails['bytes-out'];
   $ubytesin = $userdetails['bytes-in'];
   $ucomment = $userdetails['comment'];
@@ -102,7 +102,7 @@ error_reporting(0);
 	    "profile" => "$profile",
 	    "disabled" => "$disabled",
 	    "limit-uptime" => "$timelimit",
-			"limit-bytes-out" => "$datalimit",
+			"limit-bytes-total" => "$datalimit",
       "comment" => "$comment",
 	    ));
     echo "<script>window.location='./?hotspot-user=".$uid."'</script>";

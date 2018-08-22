@@ -46,7 +46,7 @@ echo "<!--";
 	    "profile" => "$profile",
 	    "disabled" => "no",
 	    "limit-uptime" => "$timelimit",
-			"limit-bytes-out" => "$datalimit",
+			"limit-bytes-total" => "$datalimit",
       "comment" => "$comment",
 	    ));
     $getuser = $API->comm("/ip/hotspot/user/print", array(

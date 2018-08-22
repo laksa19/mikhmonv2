@@ -96,7 +96,7 @@ echo "<!--";
 			"password" => "$p[$i]",
 			"profile" => "$profile",
 			"limit-uptime" => "$timelimit",
-			"limit-bytes-out" => "$datalimit",
+			"limit-bytes-total" => "$datalimit",
 			"comment" => "$commt",
 			));
 		}}
@@ -167,7 +167,7 @@ echo "<!--";
 			"password" => "$u[$i]",
 			"profile" => "$profile",
 			"limit-uptime" => "$timelimit",
-			"limit-bytes-out" => "$datalimit",
+			"limit-bytes-total" => "$datalimit",
 			"comment" => "$commt",
 			));
 		}}
