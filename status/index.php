@@ -101,7 +101,7 @@ body{
 	$uptime = formatDTM($getuser[0]['uptime']);
 	$getbytein = $getuser[0]['bytes-in'];
 	$getbyteo = $getuser[0]['bytes-out'];
-	$getbytetot = ($getbytin + $getbyteo);
+	$getbytetot = ($getbytein + $getbyteo);
 	$bytetot = formatBytes2($getbyteo, 2);
 	$limitup = $getuser[0]['limit-uptime'];
 	$limitbyte = $getuser[0]['limit-bytes-total'];
