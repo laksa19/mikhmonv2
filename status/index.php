@@ -95,6 +95,25 @@ body{
 	if(isset($_POST['nama'])){
 	$name = ($_POST['nama']);
 	if ($API->connect( $iphost, $userhost, decrypt($passwdhost))) {
+	$getuser = $API->comm("/ip/hotspot/user/print", array("?name"=> "$name"));
+	$user = $getuser[0]['name'];
+	$profile = $getuser[0]['profile'];
+	$uptime = formatDTM($getuser[0]['uptime']);
+	$getbytein = $getuser[0]['bytes-in'];
+	$getbyteo = $getuser[0]['bytes-out'];
+	$getbytetot = ($getbytin + $getbyteo);
+	$bytetot = formatBytes2($getbyteo, 2);
+	$limitup = $getuser[0]['limit-uptime'];
+	$limitbyte = $getuser[0]['limit-bytes-total'];
+	if($limitbyte == ""){$dataleft = "Unlimited";}else{$dataleft = formatBytes2($limitbyte-$getbytetot,2);}
+
+	$getprofile = $API->comm("/ip/hotspot/user/profile/print", array("?name"=> "$profile",));
+    $ponlogin = $getprofile[0]['on-login'];
+    $getvalid = explode(",",$ponlogin)[3];
+    $unit = substr($getvalid,-1);
+    if($unit == "d"){$getvalid = substr($getvalid,0, strlen($getvalid)-1)." ".$title13;}
+    elseif($unit == "h"){$getvalid = substr($getvalid,0, strlen($getvalid)-1)." ".$title14;}
+
 	$API->write('/system/scheduler/print', false);
 	$API->write('?=name='.$name.'');
 	$ARRAY1 = $API->read();
@@ -102,49 +121,11 @@ body{
 				$exp = $regtable['next-run'];
 				$strd = $regtable['start-date'];
 				$strt = $regtable['start-time'];
-				$cek = $regtable['interval'];
-					$ceklen = strlen(substr($cek,0));
-					$cekw = substr($cek, 0,2);
-					$cekw1 = substr($cekw, 0,1)*7;
-					$cekd = substr($cek, 2,2);
-					$cekd1 = substr($cek, 2,1);
-				if ($ceklen > 3){
-					if($curency == "Rp" || $curency == "rp" || $curency == "IDR" || $curency == "idr"){
-						$cekall = $cekw1 + $cekd1 .$title13;
-					}else{
-						$cekall = $cekw1 + $cekd1;
-						if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title13.$s;}else{$cekall = $cekw1 + $cekd1 .$title13;}
-					}
-				}elseif (substr($cek, -1) == "h"){
-					$cek1 = substr($cek, 0,-1);
-					$cekall = $cek1;
-					if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title14.$s;}else{$cekall = $cekw1 + $cekd1 .$title14;}
-				}elseif (substr($cek, -1) == "d"){
-					$cek1 = substr($cek, 0,-1);
-					$cekall = $cek1 .$title13;
-				}elseif (substr($cek, -1) == "w"){
-					$cek1 = substr($cek, 0,-1);
-					$cekall = ($cek1*7);
-					if($cekall > 1){$cekall = $cekw1 + $cekd1 .$title13.$s;}else{$cekall = $cekw1 + $cekd1 .$title13;}
-				}elseif($cekall == ""){
-					}
-				 $cekall;
-
-	
-	$getuser = $API->comm("/ip/hotspot/user/print", array("?name"=> "$name"));
-	$user = $getuser[0]['name'];
-	$profile = $getuser[0]['profile'];
-	$uptime = formatDTM($getuser[0]['uptime']);
-	$getbyteo = $getuser[0]['bytes-out'];
-	$byteo = formatBytes2($getbyteo, 2);
-	$limitup = $getuser[0]['limit-uptime'];
-	$limitbyte = $getuser[0]['limit-bytes-total'];
-	if($limitbyte == ""){$dataleft = "Unlimited";}else{$dataleft = formatBytes2($limitbyte-$getbyteo,2);}
 	}
 	if($user == "" || $exp == ""){
-		echo "<h3>User <i style='color:#008CCA;'>$name</i> $title9</h3>";
+		echo "<h3 class='text-center'>User <i style='color:#008CCA;'>$name</i> $title9</h3>";
 	}elseif($limitup == "1s" || $uptime == $limitup || $getbyteo == $limitbyte){
-		echo "<h3>User <i style='color:#008CCA;'>$name</i> $title10</h3>";
+		echo "<h3 class='text-center'>User <i style='color:#008CCA;'>$name</i> $title10</h3>";
 	}
 	if($user == "" || $exp == ""){}else{
 		?>
